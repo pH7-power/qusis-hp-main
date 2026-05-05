@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACTIVITY | QUSIS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><a href="index.html"><img src="assets/images/qusis-logo-color.png" alt="QUSIS"></a></div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="about.html">ABOUT</a></li>
+                <li class="nav-item"><a href="activity.html">ACTIVITY</a></li>
+                <li class="nav-item"><a href="member.html">MEMBER</a></li>
+                <li class="nav-item"><a href="co-creation.html">CO-CREATION</a></li>
+                <li class="nav-item"><a href="news.html">NEWS</a></li>
+                <li class="nav-item"><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <a href="contact.html" class="cta-btn">Contact</a>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="activity-hero">
+            <h1 class="hero-title">ACTIVITY</h1>
+            <hr class="hero-underline" />
+            <p class="hero-caption">-活動内容-</p>
+        </section>
+
+        <!-- POSTER CARD SECTION -->
+        <div class="poster-container">
+            <div class="poster-card" data-key="zero_one">
+                <img src="images/ゼロイチ画像.png" alt="ゼロイチ" class="poster-img" />
+                <div class="poster-card-info">
+                    <h3 class="poster-title">ゼロイチ</h3>
+                    <p class="poster-caption">新入部員を対象とした、1ヶ月の事業創造プログラム</p>
+                    <p class="click-info">詳細はクリックで確認</p>
+                </div>
+            </div>
+            <div class="poster-card" data-key="shura">
+                <img src="images/修羅プログラム画像.png" alt="修羅プログラム" class="poster-img" />
+                <div class="poster-card-info">
+                    <h3 class="poster-title">修羅プログラム</h3>
+                    <p class="poster-caption">自身の現状と目標を明確化し、検証していくプログラム</p>
+                    <p class="click-info">詳細はクリックで確認</p>
+                </div>
+            </div>
+            <div class="poster-card" data-key="club">
+                <img src="images/部室活動日画像.png" alt="部室活動日" class="poster-img" />
+                <div class="poster-card-info">
+                    <h3 class="poster-title">部室活動日</h3>
+                    <p class="poster-caption">セレンディピティを生み出す、週1開催コンテンツ</p>
+                    <p class="click-info">詳細はクリックで確認</p>
+                </div>
+            </div>
+            <div class="poster-card" data-key="other">
+                <img src="images/その他画像.png" alt="その他の活動" class="poster-img" />
+                <div class="poster-card-info">
+                    <h3 class="poster-title">その他の活動</h3>
+                    <p class="poster-caption">QUSISでこれまで取り組んできたその他の活動</p>
+                    <p class="click-info">詳細はクリックで確認</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL -->
+        <div id="activity-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-body">
+                    <div class="modal-info">
+                        <h2 class="modal-title" style="font-size: 2rem; margin-bottom: 20px;"></h2>
+                        <div class="modal-text" style="font-size: 1.1rem; line-height: 1.6;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">© 2026 QUSIS</div>
+        </div>
+    </footer>
+
+    <script src="assets/js/activity.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

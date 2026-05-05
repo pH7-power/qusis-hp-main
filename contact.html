@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT | QUSIS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="assets/images/qusis-logo-color.png" alt="QUSIS"></a>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="about.html">ABOUT</a></li>
+                <li class="nav-item"><a href="activity.html">ACTIVITY</a></li>
+                <li class="nav-item"><a href="member.html">MEMBER</a></li>
+                <li class="nav-item"><a href="co-creation.html">CO-CREATION</a></li>
+                <li class="nav-item"><a href="news.html">NEWS</a></li>
+                <li class="nav-item"><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section hero-sub">
+            <div class="container">
+                <h1 class="section-title text-teal">Contact</h1>
+                <p>お問い合わせ</p>
+                <p>協賛・共創・部室活動日枠・その他のお問い合わせはこちらから。</p>
+            </div>
+        </section>
+
+        <section class="section contact-form-section">
+            <div class="container">
+                <form id="contact-form" class="contact-form" action="https://formspree.io/f/mjgewlkn" method="POST">
+                    <div class="form-group">
+                        <label for="name">お名前 <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="お名前" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="affiliation">所属（学部/ 企業名） <span class="required">*</span></label>
+                        <input type="text" id="affiliation" name="affiliation" placeholder="所属（学部/ 企業名）" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="メールアドレス" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">電話番号 <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="電話番号" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">お問い合わせ種別 <span class="required">*</span></label>
+                        <select id="type" name="type" required>
+                            <option value="">お問い合わせ種別</option>
+                            <option value="入部に関して">入部に関して</option>
+                            <option value="ご協賛に関して">ご協賛に関して</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">内容 <span class="required">*</span></label>
+                        <textarea id="message" name="message" rows="6" placeholder="内容" required></textarea>
+                    </div>
+
+                    <!-- Spam Protection -->
+                    <input type="text" name="_gotcha" style="display:none">
+
+                    <button type="submit" id="submit-btn" class="btn-primary">送信</button>
+
+                    <p id="form-status" style="display:none; margin-top: 1rem; font-weight: bold;"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">&copy; 2026 QUSIS</div>
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
