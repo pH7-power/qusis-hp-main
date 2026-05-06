@@ -115,14 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     // Activate Section
                     entry.target.classList.add('is-active');
-
-                    // Background Blending
-                    const bg = entry.target.getAttribute('data-bg');
-                    if (bg) {
-                        body.style.backgroundColor = bg;
-                    }
+                    entry.target.classList.add('is-visible');
                 } else {
                     entry.target.classList.remove('is-active');
+                    entry.target.classList.remove('is-visible');
                 }
             });
         }, options);
@@ -225,20 +221,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const startApp = () => {
         initSectionObserver();
 
-        if (!prefersReducedMotion) {
-            initScrollControl();
-        } else {
-            // Restore scroll if reduced motion
-            document.documentElement.style.overflow = 'auto';
-            document.body.style.overflow = 'auto';
-        }
+        // if (!prefersReducedMotion) {
+        //     initScrollControl();
+        // } else {
+        //     // Restore scroll if reduced motion
+        //     document.documentElement.style.overflow = 'auto';
+        //     document.body.style.overflow = 'auto';
+        // }
 
         // Force hero active
         const hero = document.getElementById('hero');
         if (hero) {
             hero.classList.add('is-active');
-            const bg = hero.getAttribute('data-bg');
-            if (bg) document.body.style.backgroundColor = bg;
         }
     };
 

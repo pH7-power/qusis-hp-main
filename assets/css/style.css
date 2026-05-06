@@ -47,7 +47,6 @@ body {
   line-height: 1.8;
   background-color: var(--color-white);
   overflow-x: hidden;
-  transition: background-color 0.8s cubic-bezier(.22, 1, .36, 1);
 }
 
 a {
@@ -102,7 +101,7 @@ h6 {
 }
 
 .section {
-  padding: var(--sp-xl) 0;
+  padding: 100px 0;
 }
 
 /* Header */
@@ -135,7 +134,7 @@ h6 {
 }
 
 .nav {
-  /* Using absolute positioning for SP menu or simple flex for PC */
+  margin-left: auto;
 }
 
 .nav-list {
@@ -151,27 +150,7 @@ h6 {
   letter-spacing: 0.1em;
 }
 
-.cta-btn {
-  background: var(--color-black);
-  color: var(--color-white);
-  padding: 0.8rem 1.5rem;
-  font-family: var(--font-en);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.9rem;
-  position: fixed;
-  right: var(--sp-md);
-  top: 20px;
-  /* same align as header items approx */
-  z-index: 1001;
-  /* Above header */
-}
 
-.cta-btn:hover {
-  background: var(--color-teal);
-  opacity: 1;
-}
 
 /* Footer */
 .footer {
@@ -313,7 +292,6 @@ body.intro-done .intro-logo {
   transition: opacity 1.5s ease-in-out, transform 6s ease-out;
   /* Fade and slow zoom */
   transform: scale(1);
-  filter: grayscale(100%);
 }
 
 .hero-slide.active {
@@ -328,8 +306,7 @@ body.intro-done .intro-logo {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  /* Black overlay */
+  background: rgba(0, 0, 0, 0.3); /* Softened from 0.6 */
   z-index: 2;
 }
 
@@ -340,11 +317,11 @@ body.intro-done .intro-logo {
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: clamp(2.5rem, 8vw, 5rem); /* Extremely large typography */
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-bottom: var(--sp-md);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
 }
 
 .hero-sub {
@@ -450,17 +427,20 @@ body.intro-done .intro-logo {
   color: var(--color-white);
 }
 
-.member-summary .section-title {
-  color: var(--color-white);
-  /* Better contrast against #487f7e */
-}
+
 
 .member-grid-preview {
-  display: flex;
-  justify-content: center;
-  gap: var(--sp-lg);
-  flex-wrap: wrap;
-  margin-bottom: var(--sp-md);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto var(--sp-md);
+}
+
+@media (max-width: 768px) {
+  .member-grid-preview {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Movie Poster Style Cards */
@@ -1246,7 +1226,7 @@ body.top-page main section {
   transition: opacity 0.7s cubic-bezier(.22, 1, .36, 1), transform 0.7s cubic-bezier(.22, 1, .36, 1);
 }
 
-body.top-page main section.is-active {
+main section.is-active {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1454,20 +1434,7 @@ main section.is-active {
     font-size: 0.8rem;
   }
 
-  .cta-btn {
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-    padding: 1rem;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.6rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
+
 
   .section-title {
     font-size: 2rem;
@@ -1745,19 +1712,21 @@ body.modal-open {
   position: relative;
   height: auto;
   min-height: 70vh;
-  margin-bottom: 20vh;
+  margin-bottom: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow: visible; /* 人々のはみ出しを許可 */
+  overflow: visible; /* 枠外への飛び出しを許可 */
+  z-index: 5;
 }
 
 .climax-container {
   position: relative;
-  width: 80%;
+  width: 75%; /* 指定に基づき75% */
   max-width: 1000px; /* 舞台の基準幅 */
   margin: 0 auto;
+  overflow: visible; /* 必須：はみ出しを許可 */
 }
 
 .stage-frame {
@@ -1770,13 +1739,12 @@ body.modal-open {
 
 .jumping-people {
   position: absolute;
-  /* 舞台画像の上に重ねてはみ出させる */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%); /* 少し上にずらして飛び出し感を強調 */
-  width: 140%; /* 舞台の枠を大きく越えるサイズ */
+  transform: translate(-50%, -60%) scale(1.4); /* 指定に基づきscale(1.4) */
+  width: 100%; /* 基準幅を舞台に合わせる */
   max-width: none;
-  z-index: 5; /* 中間 */
+  z-index: 5; /* 中間層 */
   pointer-events: none;
 } 
 
@@ -1785,8 +1753,8 @@ body.modal-open {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -60%);
-  width: 140%;
+  transform: translate(-50%, -60%) scale(1.4);
+  width: 100%;
   max-width: none;
   z-index: 5;
   pointer-events: none;
@@ -1798,17 +1766,34 @@ body.modal-open {
   bottom: 12%; /* 赤い絨毯のスポットライト位置 */
   left: 50%;
   transform: translate(-50%, 0);
-  font-size: 8rem; /* 大幅に拡大 */
+  font-size: 8rem; /* 極大サイズ */
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0.05em;
   color: #ffffff;
-  /* 強力な発光グローエフェクト */
+  /* 基本の発光グローエフェクト */
   text-shadow: 
-    0 0 20px rgba(255, 255, 255, 0.9),
-    0 0 40px var(--color-teal);
+    0 0 10px rgba(255, 255, 255, 1),
+    0 0 30px rgba(255, 255, 255, 0.8),
+    0 0 50px var(--color-teal),
+    0 0 80px var(--color-teal);
   z-index: 10; /* 最前面 */
   white-space: nowrap;
+}
+
+/* TOPページ（白背景）向けの調整 */
+.sv-summary .on-stage-text {
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 1),
+    0 0 30px var(--color-teal),
+    0 0 60px var(--color-teal);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .sv-summary .on-stage-text {
+    font-size: 3.5rem;
+  }
 }
 
 /* Animations for Climax */
@@ -1826,24 +1811,28 @@ body.modal-open {
 }
 
 .jumping-people.story-climax-anim {
-  transform: translate(-50%, -40%); /* 下から上がってくるような初期値 */
+  opacity: 0;
+  transform: translate(-50%, -40%) scale(1.1); /* 初期値：小さめ・下め */
 }
 
 /* is-visible 付与時の順次発動 */
-.sv-climax.is-visible .stage-frame {
+.sv-climax.is-visible .stage-frame,
+.is-visible .sv-climax .stage-frame {
   opacity: 1;
   transform: translateY(0);
 }
 
-.sv-climax.is-visible .on-stage-text {
+.sv-climax.is-visible .on-stage-text,
+.is-visible .sv-climax .on-stage-text {
   opacity: 1;
   transform: translate(-50%, 0);
   transition-delay: 0.4s;
 }
 
-.sv-climax.is-visible .jumping-people {
+.sv-climax.is-visible .jumping-people,
+.is-visible .sv-climax .jumping-people {
   opacity: 1;
-  transform: translate(-50%, -60%); /* ベースの配置に戻る */
+  transform: translate(-50%, -60%) scale(1.4); /* 飛び出す最終位置 */
   transition-delay: 0.8s;
 }
 
@@ -1962,3 +1951,112 @@ body.modal-open {
 }
 
 .hidden { display: none; }
+
+/* --- TOP Page Redesign Components --- */
+
+/* Activity Grid */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.activity-item {
+  background: #ffffff;
+  padding: 30px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  transition: var(--trans-fast);
+  text-align: left;
+}
+
+.activity-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.activity-img-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.activity-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.activity-item:hover .activity-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.activity-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--color-teal);
+}
+
+.activity-item p {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* News List Alt */
+.news-list-alt {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.news-list-alt li {
+  border-bottom: 1px solid #eee;
+}
+
+.news-list-alt li a {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  gap: 30px;
+}
+
+.news-list-alt .date {
+  font-family: var(--font-en);
+  color: var(--color-teal);
+  font-weight: 700;
+  min-width: 100px;
+}
+
+.news-list-alt .title {
+  font-weight: 500;
+  color: #333;
+}
+
+/* Shared Value Summary Overrides */
+.sv-summary .sv-climax {
+  min-height: 50vh;
+  margin-bottom: 50px;
+}
+
+.sv-summary .on-stage-text {
+  font-size: 6rem; /* Slightly smaller for top page */
+}
+
+@media (max-width: 768px) {
+  .activity-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sv-summary .on-stage-text {
+    font-size: 3rem;
+  }
+
+  .news-list-alt li a {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
