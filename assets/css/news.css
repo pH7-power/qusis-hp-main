@@ -271,6 +271,19 @@
     color: #333;
     font-size: 1.1rem;
     white-space: pre-wrap; /* 改行を反映 */
+    text-align: left !important;
+    text-indent: 0 !important; /* 1行目のズレ防止 */
+}
+
+/* 見出し（【 】）のスタイル */
+.detail-content h3 {
+    font-size: 1.3rem; /* 文字を大きく */
+    font-weight: bold; /* 太字 */
+    color: var(--color-teal); /* QUSISのティールカラー */
+    margin: 2.5rem 0 1.2rem 0; /* 前後に余白を作る */
+    border-left: 5px solid var(--color-teal); /* 左側にアクセントの縦線 */
+    padding-left: 12px;
+    display: block; /* 独立した行にする */
 }
 
 .detail-content p {

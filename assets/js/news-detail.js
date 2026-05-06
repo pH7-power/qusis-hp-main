@@ -82,6 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderDetail = (article) => {
         document.title = `${article.title} | QUSIS`;
 
+        // Data Cleansing and Header Conversion
+        const cleanContent = article.content.trim().replace(/^\ufeff/g, '');
+        const formattedContent = cleanContent.replace(/【(.*?)】/g, '<h3>【$1】</h3>');
+
         detailContainer.innerHTML = `
             <article class="news-article fade-in">
                 <header class="news-detail-header">
@@ -105,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="detail-content">
-                    ${article.content}
+                    ${formattedContent}
                 </div>
                 
                 <div style="text-align: center; margin-top: 80px;">
