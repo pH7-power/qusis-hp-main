@@ -1,5 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Shared elements
+    // --- Navigation (Hamburger Menu) ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.querySelector('.nav');
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('is-open');
+            document.body.classList.toggle('menu-open'); // Prevent scroll
+        });
+
+        // Close menu on link click
+        const navLinks = document.querySelectorAll('.nav-item a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('is-open');
+                document.body.classList.remove('menu-open');
+            });
+        });
+    }
+
     const header = document.querySelector('.header');
 
     // Intro Logic
@@ -116,9 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Activate Section
                     entry.target.classList.add('is-active');
                     entry.target.classList.add('is-visible');
-                } else {
-                    entry.target.classList.remove('is-active');
-                    entry.target.classList.remove('is-visible');
+                    // Stop observing once visible if we want it to persist?
+                    // The user said "completely outside until leaves" 
+                    // or "maintain state". Let's keep it visible once seen.
+                } else if (entry.boundingClientRect.top > 0) {
+                    // Only remove if it's below the viewport (scrolling up)
+                    // But usually for "persistent" we just don't remove it.
+                    // entry.target.classList.remove('is-active');
+                    // entry.target.classList.remove('is-visible');
                 }
             });
         }, options);
