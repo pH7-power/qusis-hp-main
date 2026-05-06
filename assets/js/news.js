@@ -28,7 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Initialization ---
     const init = async () => {
         try {
-            const response = await fetch(GAS_API_URL);
+            // Cache Busting: Add timestamp to URL
+            const urlWithCacheBust = `${GAS_API_URL}?t=${new Date().getTime()}`;
+            const response = await fetch(urlWithCacheBust);
             allNews = await response.json();
             
             // Sort by date descending

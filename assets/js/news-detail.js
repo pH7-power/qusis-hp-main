@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const init = async () => {
         try {
-            const response = await fetch(GAS_API_URL);
+            // Cache Busting: Add timestamp to URL
+            const urlWithCacheBust = `${GAS_API_URL}?t=${new Date().getTime()}`;
+            const response = await fetch(urlWithCacheBust);
             const allNews = await response.json();
             const article = allNews.find(n => String(n.id) === String(articleId));
 

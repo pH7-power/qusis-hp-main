@@ -108,6 +108,7 @@
 /* News List */
 .news-list-page-container {
     border-top: 1px solid #eee;
+    min-height: 500px; /* ガタつき防止 */
 }
 
 .news-list-item {
@@ -193,6 +194,7 @@
 /* --- NEWS DETAIL PAGE --- */
 .news-detail-page {
     padding: 100px 0;
+    min-height: 80vh; /* ガタつき防止 */
 }
 
 .news-detail-header {
