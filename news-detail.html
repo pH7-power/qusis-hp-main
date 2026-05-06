@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWS | QUSIS</title>
+    <title>NEWS DETAIL | QUSIS</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/news.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
@@ -34,36 +33,11 @@
         </nav>
     </header>
 
-    <main>
-        <!-- 1. PICKUP Section -->
-        <section id="news-pickup" class="news-pickup-section">
+    <main class="news-detail-page">
+        <div id="news-detail-container" class="container">
             <!-- Dynamically populated -->
-            <div class="pickup-placeholder">Loading Pickup...</div>
-        </section>
-
-        <!-- 2. News Filter & List -->
-        <section class="section news-main-section">
-            <div class="container">
-                <!-- Filter Tabs -->
-                <div class="news-filter">
-                    <button class="filter-tab active" data-category="すべて">すべて</button>
-                    <button class="filter-tab" data-category="お知らせ">お知らせ</button>
-                    <button class="filter-tab" data-category="イベント">イベント</button>
-                    <button class="filter-tab" data-category="メディア情報">メディア情報</button>
-                </div>
-
-                <!-- News List -->
-                <div id="news-list-container" class="news-list-page-container">
-                    <!-- Dynamically populated -->
-                    <div class="loading-spinner">Loading news...</div>
-                </div>
-
-                <!-- Pagination -->
-                <div id="pagination" class="pagination-container">
-                    <!-- Dynamically populated -->
-                </div>
-            </div>
-        </section>
+            <div class="loading-spinner">Loading article...</div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -87,7 +61,7 @@
     </footer>
 
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/news.js"></script>
+    <script src="assets/js/news-detail.js"></script>
 </body>
 
 </html>
