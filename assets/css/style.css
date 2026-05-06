@@ -2161,27 +2161,34 @@ body.modal-open {
 
   /* Shared Value */
   .climax-container {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
+    overflow: visible !important; /* 枠外への突き出しを許可 */
   }
 
   .stage-frame {
     width: 100%;
     height: auto;
+    border-radius: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+    clip-path: none;
   }
 
   .jumping-people {
-    width: 80%;
-    transform: translate(-50%, -50%) scale(0.8); /* Scale down for mobile */
+    width: 120%;
+    transform: translate(-50%, -50%) scale(1.0);
   }
 
   .is-visible .sv-climax .jumping-people {
-    transform: translate(-50%, -60%) scale(0.8);
+    transform: translate(-50%, -60%) scale(1.3); /* 舞台から大胆に突き出させる */
+    z-index: 10;
   }
 
   .on-stage-text {
-    font-size: 3rem !important;
-    bottom: 15%;
+    font-size: 4rem !important;
+    bottom: 8%; /* 絨毯のスポットライト位置へ */
+    z-index: 20;
   }
 
   /* Activity Grid (TOP Page) */
