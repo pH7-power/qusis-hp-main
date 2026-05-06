@@ -279,3 +279,20 @@
     .detail-subtitle { font-size: 1.1rem; }
     .news-detail-page { padding: 60px 0; }
 }
+
+/* Animation */
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
