@@ -270,6 +270,7 @@
     line-height: 1.8;
     color: #333;
     font-size: 1.1rem;
+    white-space: pre-wrap; /* 改行を反映 */
 }
 
 .detail-content p {
