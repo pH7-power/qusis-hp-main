@@ -141,6 +141,19 @@ body.menu-open {
   margin-left: auto;
   display: flex;
   align-items: center;
+  gap: 15px; /* Space between persistent button and hamburger */
+}
+
+.mobile-contact-btn {
+  display: none; /* PCでは非表示 */
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--color-teal);
+  border: 1px solid var(--color-teal);
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
 .menu-toggle {
@@ -148,7 +161,7 @@ body.menu-open {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 10px;
+  padding: 5px;
   z-index: 2000;
   position: relative;
 }
@@ -2151,6 +2164,10 @@ body.modal-open {
 
   .menu-toggle {
     display: block;
+  }
+
+  .mobile-contact-btn {
+    display: block; /* スマホで表示 */
   }
 
   /* HERO */
