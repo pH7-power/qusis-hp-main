@@ -1947,7 +1947,48 @@ body.modal-open {
 
 .poster-card {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.poster-card:hover {
+  transform: translateY(-5px);
+}
+
+.poster-img {
+  width: 100%;
   height: auto;
+  display: block;
+}
+
+.poster-card-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.poster-title {
+  font-size: 1.5rem;
+  color: var(--color-teal);
+  margin-bottom: 8px;
+}
+
+.poster-caption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.click-info {
+  font-size: 0.8rem;
+  color: var(--color-teal);
+  font-weight: bold;
+  opacity: 0.7;
 }
 
 .hidden { display: none; }
@@ -2048,6 +2089,11 @@ body.modal-open {
 @media (max-width: 768px) {
   .activity-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .activity-item {
+    padding: 20px;
   }
   
   .sv-summary .on-stage-text {
@@ -2058,5 +2104,14 @@ body.modal-open {
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+  }
+
+  .poster-container {
+    padding: 20px;
+    gap: 30px;
+  }
+
+  .activity-hero .hero-title {
+    font-size: 2.5rem;
   }
 }
