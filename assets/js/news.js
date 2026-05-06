@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // API URL
     const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyU06AKU3Pq4v7tqEQzCkDv1-FgZGMW0eewWvWRVwHjCnwlD2GhotLgWROS2qjsgIU45g/exec'; 
+    const CACHE_KEY = 'qusis_news_cache';
 
     // Elements
     const pickupSection = document.getElementById('news-pickup');
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     const itemsPerPage = 10;
 
-    // --- Date Formatter ---
+    // --- Helpers ---
     const formatDate = (dateStr) => {
         if (!dateStr) return '';
         const date = new Date(dateStr);
@@ -25,25 +26,61 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${y}.${m}.${d}`;
     };
 
-    // --- Initialization ---
+    const optimizeDriveUrl = (url) => {
+        if (!url || !url.includes('drive.google.com')) return url;
+        const match = url.match(/\/d\/([^\/]+)/);
+        if (match && match[1]) {
+            return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+        }
+        return url;
+    };
+
+    // --- Initialization (SWR Pattern) ---
     const init = async () => {
+        // 1. Load from Cache first
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        if (cachedData) {
+            allNews = JSON.parse(cachedData);
+            renderAll();
+        } else {
+            renderSkeleton();
+        }
+
+        // 2. Fetch fresh data from API
         try {
-            // Cache Busting: Add timestamp to URL
             const urlWithCacheBust = `${GAS_API_URL}?t=${new Date().getTime()}`;
             const response = await fetch(urlWithCacheBust);
-            allNews = await response.json();
+            const freshData = await response.json();
             
             // Sort by date descending
-            allNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+            freshData.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-            renderAll();
+            // 3. If data changed, update UI and Cache
+            if (JSON.stringify(freshData) !== cachedData) {
+                allNews = freshData;
+                localStorage.setItem(CACHE_KEY, JSON.stringify(freshData));
+                renderAll();
+            }
         } catch (err) {
             console.error('Failed to fetch news:', err);
-            newsContainer.innerHTML = '<p style="text-align:center; padding: 40px;">ニュースの読み込みに失敗しました。後ほど再度お試しください。</p>';
+            if (!cachedData) {
+                newsContainer.innerHTML = '<p style="text-align:center; padding: 40px;">ニュースの読み込みに失敗しました。</p>';
+            }
         }
     };
 
     // --- Render Functions ---
+
+    const renderSkeleton = () => {
+        pickupSection.innerHTML = `<div class="skeleton skeleton-pickup"></div>`;
+        newsContainer.innerHTML = Array(5).fill(0).map(() => `
+            <div class="skeleton-list-item">
+                <div class="skeleton skeleton-date"></div>
+                <div class="skeleton skeleton-tag"></div>
+                <div class="skeleton skeleton-title"></div>
+            </div>
+        `).join('');
+    };
 
     const renderAll = () => {
         renderPickup();
@@ -51,13 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderPickup = () => {
-        // Find latest pickup item (pickup header is used)
         const pickupItem = allNews.find(n => n.pickup === true || String(n.pickup).toUpperCase() === 'TRUE') || allNews[0];
         if (!pickupItem) return;
 
         pickupSection.innerHTML = `
             <a href="news-detail.html?id=${pickupItem.id}" class="pickup-item fade-in">
-                <div class="pickup-bg" style="background-image: url('${pickupItem.image_url}')"></div>
+                <div class="pickup-bg" style="background-image: url('${optimizeDriveUrl(pickupItem.image_url)}')"></div>
                 <div class="pickup-overlay"></div>
                 <div class="pickup-content">
                     <span class="pickup-label">PICKUP</span>
@@ -70,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderFilteredList = () => {
         const filtered = allNews.filter(n => currentCategory === 'すべて' || n.category === currentCategory);
-        
         const startIndex = (currentPage - 1) * itemsPerPage;
         const pageItems = filtered.slice(startIndex, startIndex + itemsPerPage);
 
