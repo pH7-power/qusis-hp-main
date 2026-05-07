@@ -83,6 +83,14 @@
                     <!-- Spam Protection -->
                     <input type="text" name="_gotcha" style="display:none">
 
+                    <!-- Privacy Agreement -->
+                    <div class="privacy-agreement" style="margin-bottom: 25px; display: flex; align-items: center; gap: 10px; font-size: 0.9rem;">
+                        <input type="checkbox" id="privacy_check" name="privacy_agreement" required style="width: auto; margin: 0;">
+                        <label for="privacy_check">
+                            <a href="privacy-policy.html" target="_blank" style="text-decoration: underline; color: var(--color-teal);">プライバシーポリシー</a>に同意する
+                        </label>
+                    </div>
+
                     <button type="submit" id="submit-btn" class="btn-primary">送信</button>
 
                     <p id="form-status" style="display:none; margin-top: 1rem; font-weight: bold;"></p>
