@@ -1522,33 +1522,12 @@ main section.is-active {
   }
 
   .header {
-    height: auto;
-    flex-wrap: wrap;
-    padding: 10px var(--sp-md);
+    height: 70px;
+    flex-wrap: nowrap;
+    padding: 0 var(--sp-md);
   }
 
-  .logo {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 10px;
-  }
 
-  .nav {
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 5px;
-  }
-
-  .nav-list {
-    gap: var(--sp-sm);
-    justify-content: center;
-  }
-
-  .nav-item a {
-    font-size: 0.8rem;
-  }
 
 
 
@@ -2206,7 +2185,23 @@ body.modal-open {
   /* Header & Nav */
   .header {
     height: 70px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
     padding: 0 var(--sp-md);
+  }
+
+  .logo {
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .nav {
+    margin-left: auto;
+    display: flex !important;
+    align-items: center;
+    gap: 12px;
   }
 
   .nav-list {
