@@ -1879,36 +1879,73 @@ body.modal-open {
 
 .on-stage-text {
   position: absolute;
-  bottom: 12%; /* 赤い絨毯のスポットライト位置 */
+  bottom: 5%; /* 舞台境界線をまたぐように配置 */
   left: 50%;
-  transform: translate(-50%, 0);
-  font-size: 8rem; /* 極大サイズ */
+  transform: translate(-50%, 0) rotate(-7deg); /* 躍動感のある傾き */
+  font-size: 14rem; /* インパクト重視の巨大サイズ */
   font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  color: #ffffff;
-  /* 基本の発光グローエフェクト */
-  text-shadow: 
-    0 0 10px rgba(255, 255, 255, 1),
-    0 0 30px rgba(255, 255, 255, 0.8),
-    0 0 50px var(--color-teal),
-    0 0 80px var(--color-teal);
-  z-index: 10; /* 最前面 */
+  line-height: 0.8;
+  letter-spacing: -0.02em;
   white-space: nowrap;
+  z-index: 20;
+  
+  /* エネルギッシュな多色グラデーション */
+  background: linear-gradient(to right, #008080, #ffffff 50%, #FF4500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* 強い光彩エフェクト */
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.8)) 
+          drop-shadow(0 0 30px rgba(0, 128, 128, 0.6));
+  
+  /* アニメーションの初期状態（story-climax-anim用） */
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+/* エネルギーの渦（火花エフェクト） */
+.on-stage-text::before,
+.on-stage-text::after {
+  content: '★';
+  position: absolute;
+  font-size: 1rem;
+  -webkit-text-fill-color: #FFD700;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.on-stage-text::before {
+  top: -10%; left: 20%;
+  animation: spark-1 2s infinite;
+}
+
+.on-stage-text::after {
+  bottom: -10%; right: 20%;
+  animation: spark-2 2.5s infinite;
+}
+
+@keyframes spark-1 {
+  0% { transform: scale(0) rotate(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: scale(1.5) rotate(180deg) translate(-50px, -50px); opacity: 0; }
+}
+
+@keyframes spark-2 {
+  0% { transform: scale(0) rotate(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: scale(1.5) rotate(-180deg) translate(50px, 50px); opacity: 0; }
 }
 
 /* TOPページ（白背景）向けの調整 */
 .sv-summary .on-stage-text {
-  text-shadow: 
-    0 0 15px rgba(255, 255, 255, 1),
-    0 0 30px var(--color-teal),
-    0 0 60px var(--color-teal);
-  color: #ffffff;
+  font-size: 10rem;
 }
 
 @media (max-width: 768px) {
   .sv-summary .on-stage-text {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
+    transform: translate(-50%, 0) rotate(-5deg);
+    bottom: 5%;
   }
 }
 
@@ -1923,7 +1960,7 @@ body.modal-open {
 }
 
 .on-stage-text.story-climax-anim {
-  transform: translate(-50%, 20px);
+  transform: translate(-50%, 40px) rotate(-7deg);
 }
 
 .jumping-people.story-climax-anim {
@@ -1941,7 +1978,7 @@ body.modal-open {
 .sv-climax.is-visible .on-stage-text,
 .is-visible .sv-climax .on-stage-text {
   opacity: 1;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0) rotate(-7deg);
   transition-delay: 0.4s;
 }
 
@@ -2204,7 +2241,11 @@ body.modal-open {
 /* Shared Value Summary Overrides */
 .sv-summary .sv-climax {
   min-height: 50vh;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
+}
+
+.sv-summary {
+  padding-bottom: 100px; /* はみ出し防止用 */
 }
 
 .sv-summary .on-stage-text {
