@@ -276,7 +276,7 @@ body.menu-open {
   height: 100%;
   background: #200;
   /* Fallback */
-  background-image: url('../images/curtain.jpg');
+  background-image: url('../images/curtain.webp');
   background-size: cover;
   background-position: center;
   transform-origin: top;
@@ -456,7 +456,7 @@ body.intro-done .intro-logo {
 /* Concept Section */
 .concept {
   text-align: center;
-  background-image: url('../images/concept-bg.png');
+  background-image: url('../images/concept-bg.webp');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -466,7 +466,7 @@ body.intro-done .intro-logo {
 
 /* About Summary Section */
 .about-summary {
-  background-image: url('../images/about-bg.png');
+  background-image: url('../images/about-bg.webp');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -476,7 +476,7 @@ body.intro-done .intro-logo {
 
 /* Co-creation Summary Section */
 .co-creation-summary {
-  background-image: url('../images/co-creation-bg.png');
+  background-image: url('../images/co-creation-bg.webp');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -486,7 +486,7 @@ body.intro-done .intro-logo {
 
 /* Activity Summary Section */
 .activity-summary {
-  background-image: url('../images/activity-bg.png');
+  background-image: url('../images/activity-bg.webp');
   background-size: cover;
   background-position: center;
   position: relative;

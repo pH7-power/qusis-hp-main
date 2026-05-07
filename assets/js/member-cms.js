@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rolesDisplay = member.roles.join(' / ');
 
             card.innerHTML = `
-                <img src="${optimizeDriveUrl(member.image, 400)}" alt="${member.nameJa}" loading="lazy" onerror="this.src='assets/images/qusis-logo-color.png'; this.style.objectFit='contain';">
+                <img src="${optimizeDriveUrl(member.image, 400)}" alt="${member.nameJa}" loading="lazy" onerror="this.src='assets/images/qusis-logo-color.webp'; this.style.objectFit='contain';">
                 <div class="poster-card-info">
                     <h3>${member.nameJa}<br><span style="font-size: 0.8rem; font-family: var(--font-en); font-weight: 400;">${member.nameEn}</span></h3>
                     <p style="font-size: 0.8rem; opacity: 0.9; margin-bottom: 2px;">${rolesDisplay}</p>
@@ -133,11 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Error handling for image in modal
         modalImg.onerror = () => {
-            modalImg.src = 'assets/images/qusis-logo-color.png';
+            modalImg.src = 'assets/images/qusis-logo-color.webp';
             modalImg.style.objectFit = 'contain';
         }; 
         modalImg.onload = () => {
-            if(modalImg.src.includes('qusis-logo-color.png')) {
+            if(modalImg.src.includes('qusis-logo-color.webp')) {
                 modalImg.style.objectFit = 'contain';
             } else {
                 modalImg.style.objectFit = 'cover';
