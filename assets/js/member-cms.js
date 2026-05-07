@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalNameEn = document.getElementById('modal-name-en');
     const modalFaculty = document.getElementById('modal-faculty');
     const modalRoles = document.getElementById('modal-roles');
+    const modalHistory = document.getElementById('modal-history');
+    const modalHistoryContainer = document.getElementById('modal-history-container');
     const closeBtn = document.querySelector('.close');
 
     const allRoles = membersData.flatMap(m => m.roles);
@@ -112,6 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
         modalNameEn.textContent = member.nameEn;
         modalFaculty.textContent = member.faculty;
         modalRoles.textContent = member.roles.join(' / ');
+        
+        if (member.history) {
+            modalHistory.textContent = member.history;
+            modalHistoryContainer.style.display = 'block';
+        } else {
+            modalHistoryContainer.style.display = 'none';
+        }
         
         // Error handling for image in modal
         modalImg.onerror = () => {

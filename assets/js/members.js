@@ -5,7 +5,16 @@ const membersData = [
         nameEn: "Nakanishi Keito",
         roles: ["Co-Representatives", "Member Manager", "PR/ Media Manager", "Self Resource Manager"],
         faculty: "経済学部3年",
-        image: "assets/images/member-nakanishi.jpg"
+        image: "assets/images/member-nakanishi.jpg",
+        history: `2024/09 ビジネスコンテストKING出場
+2024/09 CM参画
+2025/01 株式会社ジコウ_インターン
+2025/04 農業PJ始動
+2025/07 農業PJ離脱
+2025/07 株式会社ジコウ離脱
+2025/10 QUSIS共同代表就任
+2025/10 株式会社アルファドライブ_インターン
+2026/02 株式会社MarchOn（アルファドライブの子会社）_インターン`
     },
     {
         id: "matsuo",

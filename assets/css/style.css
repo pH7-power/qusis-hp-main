@@ -2353,3 +2353,11 @@ body.modal-open {
     font-size: 1.8rem !important;
   }
 }
+/* Member Modal History */
+.member-history {
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #666;
+    margin-top: 5px;
+}
