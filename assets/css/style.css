@@ -138,10 +138,17 @@ body.menu-open {
 }
 
 .nav {
-  margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 15px; /* Space between persistent button and hamburger */
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .mobile-contact-btn {
@@ -186,10 +193,7 @@ body.menu-open {
   transform: rotate(45deg) translate(-5px, -5px);
 }
 
-.nav-list {
-  display: flex;
-  gap: var(--sp-md);
-}
+
 
 .nav-item a {
   font-family: var(--font-en);
@@ -197,6 +201,26 @@ body.menu-open {
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.1em;
+  color: var(--color-black);
+  transition: color 0.3s ease;
+}
+
+.nav-item a:hover {
+  color: var(--color-teal);
+}
+
+/* CONTACT Button Highlight */
+.nav-item:last-child a {
+  background: var(--color-teal);
+  color: var(--color-white);
+  padding: 8px 20px;
+  border-radius: 4px;
+  transition: opacity 0.3s ease;
+}
+
+.nav-item:last-child a:hover {
+  opacity: 0.8;
+  color: var(--color-white);
 }
 
 
