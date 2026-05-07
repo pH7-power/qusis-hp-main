@@ -1842,7 +1842,7 @@ body.modal-open {
   width: 75%; /* 指定に基づき75% */
   max-width: 1000px; /* 舞台の基準幅 */
   margin: 0 auto;
-  overflow: visible; /* 必須：はみ出しを許可 */
+  overflow: visible;
 }
 
 .stage-frame {
@@ -1882,12 +1882,12 @@ body.modal-open {
   bottom: 5%; /* 舞台境界線をまたぐように配置 */
   left: 50%;
   transform: translate(-50%, 0) rotate(-7deg); /* 躍動感のある傾き */
-  font-size: 14rem; /* インパクト重視の巨大サイズ */
+  font-size: clamp(4rem, 18vw, 15rem); /* レスポンシブな可変サイズ */
   font-weight: 900;
   line-height: 0.8;
   letter-spacing: -0.02em;
   white-space: nowrap;
-  z-index: 20;
+  z-index: 100; /* 最前面に固定 */
   
   /* エネルギッシュな多色グラデーション */
   background: linear-gradient(to right, #008080, #ffffff 50%, #FF4500);
@@ -1938,12 +1938,12 @@ body.modal-open {
 
 /* TOPページ（白背景）向けの調整 */
 .sv-summary .on-stage-text {
-  font-size: 10rem;
+  font-size: clamp(4rem, 15vw, 12rem);
 }
 
 @media (max-width: 768px) {
   .sv-summary .on-stage-text {
-    font-size: 4.5rem;
+    font-size: clamp(3rem, 12vw, 6rem);
     transform: translate(-50%, 0) rotate(-5deg);
     bottom: 5%;
   }
