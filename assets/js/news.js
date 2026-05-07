@@ -88,20 +88,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderPickup = () => {
-        const pickupItem = allNews.find(n => n.pickup === true || String(n.pickup).toUpperCase() === 'TRUE') || allNews[0];
-        if (!pickupItem) return;
+        const pickupItems = allNews.filter(n => n.pickup === true || String(n.pickup).toUpperCase() === 'TRUE');
+        
+        if (pickupItems.length === 0 && allNews.length > 0) {
+            pickupItems.push(allNews[0]); // Fallback to latest
+        }
 
-        pickupSection.innerHTML = `
-            <a href="news-detail.html?id=${pickupItem.id}" class="pickup-item fade-in">
-                <div class="pickup-bg" style="background-image: url('${optimizeDriveUrl(pickupItem.image_url)}')"></div>
+        if (pickupItems.length === 0) {
+            pickupSection.style.display = 'none';
+            return;
+        }
+
+        pickupSection.style.display = 'grid';
+        pickupSection.innerHTML = pickupItems.map(item => `
+            <a href="news-detail.html?id=${item.id}" class="pickup-item fade-in">
+                <div class="pickup-bg" style="background-image: url('${optimizeDriveUrl(item.image_url)}')"></div>
                 <div class="pickup-overlay"></div>
                 <div class="pickup-content">
                     <span class="pickup-label">PICKUP</span>
-                    <h2 class="pickup-title">${pickupItem.title}</h2>
+                    <h2 class="pickup-title">${item.title}</h2>
                     <p>MORE DETAIL →</p>
                 </div>
             </a>
-        `;
+        `).join('');
     };
 
     const renderFilteredList = () => {
