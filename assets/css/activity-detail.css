@@ -1,0 +1,292 @@
+/* Activity Detail: Zero-Ichi 2026 */
+
+:root {
+    --color-zi-accent: #FF4500; /* Orange-Red for Passion */
+    --color-zi-bg-light: #f9fbfb;
+}
+
+/* Hero Section */
+.zeroichi-hero {
+    height: 80vh;
+    min-height: 600px;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../images/zero-ichi.webp');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.zeroichi-hero .hero-label {
+    display: block;
+    font-family: var(--font-en);
+    font-weight: 700;
+    color: var(--color-teal);
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+}
+
+.zeroichi-hero .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.zeroichi-hero .hero-title .year {
+    color: var(--color-zi-accent);
+}
+
+.zeroichi-hero .hero-catchcopy {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+/* Section Headers */
+.zi-section-header {
+    margin-bottom: 50px;
+}
+
+.zi-section-header.center {
+    text-align: center;
+}
+
+.zi-title {
+    font-family: var(--font-en);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-teal);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.zi-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--color-zi-accent);
+}
+
+.zi-section-header.center .zi-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.zi-subtitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 10px;
+    color: #333;
+}
+
+/* About Grid */
+.zi-content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.zi-text p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.zi-text p.lead {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-teal);
+}
+
+/* Philosophy Cards */
+.philosophy-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.p-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border-top: 4px solid var(--color-teal);
+}
+
+.p-card:hover {
+    transform: translateY(-10px);
+    border-top-color: var(--color-zi-accent);
+}
+
+.p-num {
+    font-family: var(--font-en);
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(0, 128, 128, 0.1);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.p-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Vertical Timeline */
+.vertical-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 50px;
+}
+
+.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: #eee;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -50px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    background: var(--color-teal);
+    border: 4px solid white;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 0 4px rgba(0, 128, 128, 0.1);
+}
+
+.timeline-item.highlight::before {
+    background: var(--color-zi-accent);
+    box-shadow: 0 0 0 8px rgba(255, 69, 0, 0.2);
+    width: 20px;
+    height: 20px;
+    left: -52px;
+}
+
+.t-date {
+    font-family: var(--font-en);
+    font-weight: 900;
+    color: var(--color-zi-accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+}
+
+.t-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--color-teal);
+}
+
+/* Demo Day Frame */
+.demoday-frame {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    background: #000;
+    color: white;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.demoday-info {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Placeholder */
+.placeholder-img {
+    background: #eee;
+    aspect-ratio: 16/10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.placeholder-img.full {
+    border-radius: 0;
+    height: 100%;
+}
+
+.img-label {
+    font-family: var(--font-en);
+    font-size: 0.8rem;
+    color: #999;
+    letter-spacing: 0.1em;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+}
+
+/* CTA */
+.zi-cta {
+    background-color: var(--color-zi-bg-light);
+    padding: 120px 0;
+}
+
+.zi-cta h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--color-teal);
+}
+
+.cta-btns {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .zi-content-grid,
+    .demoday-frame {
+        grid-template-columns: 1fr;
+    }
+    
+    .demoday-info {
+        padding: 40px;
+        order: 2;
+    }
+    
+    .philosophy-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .zeroichi-hero {
+        height: 70vh;
+    }
+    
+    .cta-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -36,8 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // カードクリックでモーダル表示
   document.querySelectorAll('.poster-card').forEach(card => {
-    card.addEventListener('click', () => {
+    card.addEventListener('click', (e) => {
       const key = card.dataset.key;
+      if (key === 'zero_one') return; // ゼロイチは別ページへ遷移するためモーダル不要
+      
       const data = activityData[key];
       if (data) {
         modalTitle.textContent = data.title;

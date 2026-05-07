@@ -2109,6 +2109,8 @@ body.modal-open {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   cursor: pointer;
   transition: transform 0.3s ease;
+  text-decoration: none;
+  color: inherit;
 }
 
 .poster-card:hover {
