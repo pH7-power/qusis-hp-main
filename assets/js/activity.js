@@ -38,7 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.poster-card').forEach(card => {
     card.addEventListener('click', (e) => {
       const key = card.dataset.key;
-      if (key === 'zero_one') return; // ゼロイチは別ページへ遷移するためモーダル不要
+      if (key === 'zero_one') {
+        window.location.href = 'activity-zeroichi.html';
+        return;
+      }
       
       const data = activityData[key];
       if (data) {
