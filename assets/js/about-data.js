@@ -1,29 +1,32 @@
 const aboutData = {
     basicFacts: [
-        { label: "部員数", value: "75", unit: "名", sub: "在籍メンバー総数" },
+        { label: "部員数", value: "78", unit: "名", sub: "在籍メンバー総数" },
         { label: "稼働プロジェクト数", value: "12", unit: "+", sub: "Project" }, // Placeholder value
         { label: "設立", value: "2017", unit: "", sub: "Rebranding: 2022" }
     ],
     compositionData: {
         grade: [
-            { name: "B1", value: 25 },
-            { name: "B2", value: 11 },
-            { name: "B3", value: 15 },
-            { name: "B4", value: 16 },
-            { name: "M1", value: 2 },
-            { name: "M2", value: 1 },
-            { name: "D1", value: 1 },
-            { name: "その他", value: 4 },
+            { name: "学部1年 (B1)", value: 32 },
+            { name: "学部2年 (B2)", value: 27 },
+            { name: "学部3年 (B3)", value: 7 },
+            { name: "学部4年 (B4)", value: 7 },
+            { name: "修士1年 (M1)", value: 2 },
+            { name: "修士2年 (M2)", value: 1 },
+            { name: "博士2年 (D2)", value: 1 },
+            { name: "研究生", value: 1 }
         ],
         faculty: [
-            { name: "経済学部", value: 20 },
-            { name: "理学部", value: 15 },
+            { name: "経済学部", value: 23 },
             { name: "工学部", value: 15 },
-            { name: "共創学部", value: 10 },
-            { name: "その他", value: 15 }
+            { name: "共創学部", value: 15 },
+            { name: "農学部", value: 10 },
+            { name: "理学部", value: 5 },
+            { name: "法学部", value: 4 },
+            { name: "文学部", value: 2 },
+            { name: "その他 (芸術工/情報/人間環境等)", value: 4 }
         ],
         country: [
-            { name: "Japan", value: 65, code: "JP" },
+            { name: "Japan", value: 68, code: "JP" },
             { name: "China", value: 4, code: "CN" },
             { name: "Korea", value: 3, code: "KR" },
             { name: "Malaysia", value: 2, code: "MY" },
