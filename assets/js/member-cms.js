@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Members data not found. Make sure members.js is loaded.');
         return;
     }
+    
+    const optimizeDriveUrl = (url, width = 400) => {
+        if (!url || !url.includes('drive.google.com')) return url;
+        const match = url.match(/\/d\/([^\/]+)/);
+        if (match && match[1]) {
+            return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w${width}`;
+        }
+        return url;
+    };
 
     const filterContainer = document.getElementById('member-filter');
     const gridContainer = document.getElementById('member-grid');
@@ -78,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rolesDisplay = member.roles.join(' / ');
 
             card.innerHTML = `
-                <img src="${member.image}" alt="${member.nameJa}" onerror="this.src='assets/images/qusis-logo-color.png'; this.style.objectFit='contain';">
+                <img src="${optimizeDriveUrl(member.image, 400)}" alt="${member.nameJa}" loading="lazy" onerror="this.src='assets/images/qusis-logo-color.png'; this.style.objectFit='contain';">
                 <div class="poster-card-info">
                     <h3>${member.nameJa}<br><span style="font-size: 0.8rem; font-family: var(--font-en); font-weight: 400;">${member.nameEn}</span></h3>
                     <p style="font-size: 0.8rem; opacity: 0.9; margin-bottom: 2px;">${rolesDisplay}</p>
@@ -109,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = (member) => {
         if (!modal) return;
         
-        modalImg.src = member.image;
+        modalImg.src = optimizeDriveUrl(member.image, 800);
         modalNameJa.textContent = member.nameJa;
         modalNameEn.textContent = member.nameEn;
         modalFaculty.textContent = member.faculty;

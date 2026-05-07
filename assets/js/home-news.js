@@ -15,6 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const d = String(date.getDate()).padStart(2, '0');
         return `${y}.${m}.${d}`;
     };
+    
+    const optimizeDriveUrl = (url, width = 400) => {
+        if (!url || !url.includes('drive.google.com')) return url;
+        const match = url.match(/\/d\/([^\/]+)/);
+        if (match && match[1]) {
+            return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w${width}`;
+        }
+        return url;
+    };
 
     const renderNews = (newsItems) => {
         const top3 = newsItems.slice(0, 3);

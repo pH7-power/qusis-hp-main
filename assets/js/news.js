@@ -26,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${y}.${m}.${d}`;
     };
 
-    const optimizeDriveUrl = (url) => {
+    const optimizeDriveUrl = (url, width = 400) => {
         if (!url || !url.includes('drive.google.com')) return url;
         const match = url.match(/\/d\/([^\/]+)/);
         if (match && match[1]) {
-            return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+            return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w${width}`;
         }
         return url;
     };
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pickupSection.style.display = 'grid';
         pickupSection.innerHTML = pickupItems.map(item => `
             <a href="news-detail.html?id=${item.id}" class="pickup-item fade-in">
-                <div class="pickup-bg" style="background-image: url('${optimizeDriveUrl(item.image_url)}')"></div>
+                <div class="pickup-bg" style="background-image: url('${optimizeDriveUrl(item.image_url, 1000)}')"></div>
                 <div class="pickup-overlay"></div>
                 <div class="pickup-content">
                     <span class="pickup-label">PICKUP</span>

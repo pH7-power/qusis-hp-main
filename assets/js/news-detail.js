@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${y}.${m}.${d}`;
     };
 
-    const optimizeDriveUrl = (url) => {
+    const optimizeDriveUrl = (url, width = 1200) => {
         if (!url || !url.includes('drive.google.com')) return url;
         const match = url.match(/\/d\/([^\/]+)/);
         if (match && match[1]) {
-            return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1200`;
+            return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w${width}`;
         }
         return url;
     };
