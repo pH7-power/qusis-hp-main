@@ -5,7 +5,7 @@ const membersData = [
         nameEn: "Nakanishi Keito",
         roles: ["Co-Representatives", "Member Manager", "PR/ Media Manager", "Self Resource Manager"],
         faculty: "経済学部3年",
-        image: "assets/images/member-nakanishi.jpg",
+        image: "images/中西渓斗.webp",
         history: `2024/09 ビジネスコンテストKING出場
 2024/09 CM参画
 2025/01 株式会社ジコウ_インターン
@@ -22,7 +22,7 @@ const membersData = [
         nameEn: "Matsuo Hibiki",
         roles: ["Co-Representatives"],
         faculty: "経済学部3年",
-        image: "assets/images/member-matsuo.jpg"
+        image: "images/松尾響起.webp"
     },
     {
         id: "sakai",
