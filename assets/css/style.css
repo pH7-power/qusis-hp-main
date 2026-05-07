@@ -1884,7 +1884,8 @@ body.modal-open {
   transform: translate(-50%, 0) rotate(-7deg); /* 躍動感のある傾き */
   font-size: clamp(4rem, 18vw, 15rem); /* レスポンシブな可変サイズ */
   font-weight: 900;
-  line-height: 0.8;
+  line-height: 1.1; /* 下端の切れを防止するために調整 */
+  padding-bottom: 0.1em; /* gのしっぽ部分のスペース確保 */
   letter-spacing: -0.02em;
   white-space: nowrap;
   z-index: 100; /* 最前面に固定 */
@@ -2242,6 +2243,7 @@ body.modal-open {
 .sv-summary .sv-climax {
   min-height: 50vh;
   margin-bottom: 80px;
+  overflow: visible !important; /* クリッピング防止 */
 }
 
 .sv-summary {
