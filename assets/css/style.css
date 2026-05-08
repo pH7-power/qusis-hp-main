@@ -380,47 +380,59 @@ body.intro-done .intro-logo {
 .font-comfortaa { font-family: 'Comfortaa', cursive; }
 .font-afacad { font-family: 'Afacad Flux', sans-serif; }
 
-.philosophy-section {
+/* --- DEFINITION SECTION (New 第2セクション) --- */
+.definition-section {
   background-color: #ffffff;
-  padding: 120px 0;
+  padding: 180px 0;
   text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
-.philosophy-vertical-stack {
+.definition-message-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
+  gap: 1.5rem;
 }
 
-.philosophy-item {
-  margin-bottom: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.philosophy-item:last-child {
-  margin-bottom: 0;
-}
-
-.phil-label {
-  color: #008080;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.phil-content {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  color: #1e1e1e;
-  font-weight: 900;
-  margin: 0;
-  line-height: 1.4;
+.definition-line {
   font-family: 'Afacad Flux', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #1e1e1e;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+/* Fire Divider */
+.fire-divider-wrapper {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background: #000;
+  margin-top: -1px; /* Avoid gap */
+  overflow: hidden;
+  z-index: 5;
+}
+
+.fire-divider-svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fire-path {
+  fill: #ffffff;
+  animation: fire-wave 8s infinite alternate ease-in-out;
+}
+
+@keyframes fire-wave {
+  from { d: path("M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,128C960,139,1056,181,1152,192C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"); }
+  to { d: path("M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,213.3C672,213,768,171,864,144C960,117,1056,107,1152,128C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"); }
 }
 
 /* "熱" Accent (Brush Stroke) */
@@ -428,6 +440,7 @@ body.intro-done .intro-logo {
   position: relative;
   display: inline-block;
   padding: 0 5px;
+  color: #FF4500; /* Direct color for impact */
 }
 
 .heat-accent::before {
@@ -437,9 +450,8 @@ body.intro-done .intro-logo {
   left: -5%;
   width: 110%;
   height: 45%;
-  background: linear-gradient(90deg, transparent, #FF4500, transparent);
   background-color: #FF4500;
-  opacity: 0.25;
+  opacity: 0.2;
   border-radius: 100% 60% 100% 40%;
   transform: rotate(-3deg);
   z-index: -1;
