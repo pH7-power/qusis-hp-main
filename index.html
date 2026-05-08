@@ -161,15 +161,20 @@
                     requestAnimationFrame(animateHaze);
                 }
                 animateHaze();
+                // Start on Load
+                let isHeroStarted = false;
+                const triggerHero = () => {
+                    if (isHeroStarted) return;
+                    isHeroStarted = true;
+                    startHeroSequence();
+                };
 
                 // Listen for custom event from script.js
-                window.addEventListener('qusis:introDone', () => {
-                    startHeroSequence();
-                });
+                window.addEventListener('qusis:introDone', triggerHero);
 
                 // Backup if intro is skipped (repeat visits)
                 if (document.body.classList.contains('skip-opening')) {
-                    startHeroSequence();
+                    triggerHero();
                 }
             </script>
 
