@@ -414,8 +414,8 @@ body.intro-done .intro-logo {
   background: #000;
   margin-top: -1px; /* Avoid gap */
   overflow: hidden;
-  z-index: 5;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5); /* Overlay shadow start */
+  z-index: 10; /* Same as sections to cover hero */
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.2); /* Upward shadow */
 }
 
 .fire-divider-svg {
@@ -492,7 +492,7 @@ body.intro-done .intro-logo {
   }
 }
 
-/* Hero Section */
+/* Hero Section - Base Styles (Global) */
 .hero {
   position: relative;
   height: 100vh;
@@ -502,8 +502,6 @@ body.intro-done .intro-logo {
   justify-content: center;
   overflow: hidden;
   color: var(--color-white);
-  padding-top: 80px;
-  /* Header height */
 }
 
 .hero-slides {
@@ -546,12 +544,7 @@ body.intro-done .intro-logo {
   z-index: 1; /* Same as slider */
 }
 
-.hero {
-  background: #000;
-  position: relative;
-  overflow: hidden;
-  height: 100vh;
-}
+/* (Redundant hero def removed) */
 
 .hero-slider {
   position: absolute;
@@ -1560,12 +1553,12 @@ body.intro-done .intro-logo {
   z-index: 2;
 }
 
-/* Scroll Snap & Stage Transitions - JS Controlled (TOP PAGE ONLY) */
+/* Scroll Snap & Stage Transitions - Disabled for natural scroll */
 html.top-page,
 body.top-page {
   height: auto;
   overflow: visible;
-  /* Back to normal scroll */
+  scroll-snap-type: none !important;
 }
 
 /* Default for other pages */
@@ -1588,12 +1581,14 @@ body.top-page main section {
   justify-content: center;
   position: relative;
   z-index: 10;
-  background-color: #ffffff; /* Default background */
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5); /* Overlay shadow */
+  background-color: var(--color-white); 
+  margin-top: 0;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.2); /* Refined overlay shadow */
 
-  /* Section Transition (Opacity effect only, no transform to avoid sticky issues) */
+  /* Reset transitions for main section flow */
   opacity: 1; 
-  transition: opacity 0.7s cubic-bezier(.22, 1, .36, 1);
+  transform: none;
+  transition: opacity 0.7s ease;
 }
 
 .hero {
@@ -1606,7 +1601,7 @@ body.top-page main section {
   padding: 0;
   overflow: hidden;
   background: #000;
-  box-shadow: none; /* No shadow for the base layer */
+  box-shadow: none; 
 }
 
 /* Layer 5: Bottom-most Slideshow */
@@ -1792,40 +1787,7 @@ body.top-page main section {
   transform: none;
 }
 
-main section.is-active {
-  opacity: 1;
-  transform: translateY(0);
-}
 
-/* Previous section state (optional, handled by removing is-active returning to init state or custom class) */
-/* The user asked: "Previous section ... opacity: 0; transform: translateY(-10px)"
-   This implies when a section is SCROLLED PAST (becomes "previous"), it should behave this way.
-   However, removing .is-active usually reverts to init state (translateY(10px)).
-   To strictly follow "translateY(-10px)" for previous, we might need a .is-past class.
-   For now, strictly following the request means when it loses active, if it's ABOVE, it should go -10px.
-   If strictly "when is-active is removed", that applies to BOTH entering from bottom and leaving to top.
-   Let's stick to the base request: "Previous section... active removed... -10px"
-   Actually, usually you want 10px coming IN, and maybe -10px going OUT UP.
-   Let's assume standard behavior: reverts to hidden. 
-   BUT user said: "Previous section is active removed -> transform: translateY(-10px)"
-   I will implement a .is-past class or just handle the revert state.
-   Actually, if I just change the defaults, it applies to all non-active.
-   Let's set default (non-active) to translateY(10px).
-   If we want -10px specifically when it's "previous", we need JS to track direction.
-   Let's approximate: simple fade out/in is robust.
-   User request: "Previous section is active removed... translateY(-10px)" matches "Leaving up".
-   I will add a specific rule if I can, but standard "not active" = "hidden" is safer for bi-directional scroll.
-   Reflecting on user requirement: "Previous section...". I will stick to the generic "not active" state being `translateY(10px)` which implies "waiting to come up" or "just left down". 
-   Wait, if I scroll DOWN, the Top section goes UP. So it should move to -10px?
-   If I scroll UP, the Bottom section goes DOWN. So it should move to 10px?
-   CSS transitions are state-based.
-   Let's simple set non-active to translateY(10px) (coming from bottom). 
-   The user specific request about "previous" might just be a mental model of "sliding out".
-   I'll stick to one non-active state for simplicity unless they crave the specific directional exit.
-   Actually, "Previous section" usually means the one ABOVE the current one.
-   If I am at Section 2, Section 1 is "previous".
-   If Section 1 is -10px, that fits.
-*/
 
 @media (prefers-reduced-motion: reduce) {
   main section {

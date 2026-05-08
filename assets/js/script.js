@@ -202,91 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Enhanced Scroll Control (Trackpad Optimized: Accumulated Delta)
-    const initScrollControl = () => {
-        // Only run on Top Page
-        if (!document.body.classList.contains('top-page')) return;
 
-        const sections = Array.from(document.querySelectorAll('main section'));
-        if (sections.length === 0) return;
-
-        // Variables
-        let isLocked = false;
-        let accumulated = 0;
-        let currentSectionIndex = 0;
-
-        // Handle Wheel Event
-        window.addEventListener('wheel', (e) => {
-            // Always prevent default to hijack scroll
-            if (!isLocked) {
-                e.preventDefault();
-            } else {
-                e.preventDefault();
-                return;
-            }
-
-            accumulated += e.deltaY;
-
-            // Ignore small jitters (Threshold 160)
-            if (Math.abs(accumulated) < 160) {
-                return;
-            }
-
-            // Determine direction
-            const direction = accumulated > 0 ? 1 : -1;
-
-            // Calculate next index
-            let nextIndex = currentSectionIndex + direction;
-
-            // Clamp index
-            if (nextIndex < 0) nextIndex = 0;
-            if (nextIndex >= sections.length) nextIndex = sections.length - 1;
-
-            if (nextIndex !== currentSectionIndex) {
-                // Update state
-                currentSectionIndex = nextIndex;
-
-                // Scroll to section
-                sections[nextIndex].scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-
-                // Reset accumulated
-                accumulated = 0;
-
-                // Strong Lock (1300ms)
-                isLocked = true;
-                setTimeout(() => {
-                    isLocked = false;
-                }, 1300);
-            } else {
-                // Boundary reached, reset accumulated
-                accumulated = 0;
-            }
-        }, { passive: false });
-
-        // Handle Keys
-        window.addEventListener('keydown', (e) => {
-            if (['ArrowUp', 'ArrowDown', 'Space'].includes(e.code)) {
-                e.preventDefault();
-                if (isLocked) return;
-
-                const direction = (e.code === 'ArrowDown' || e.code === 'Space') ? 1 : -1;
-                let nextIndex = currentSectionIndex + direction;
-
-                if (nextIndex < 0) nextIndex = 0;
-                if (nextIndex >= sections.length) nextIndex = sections.length - 1;
-
-                if (nextIndex !== currentSectionIndex) {
-                    isLocked = true;
-                    currentSectionIndex = nextIndex;
-                    sections[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    setTimeout(() => { isLocked = false; }, 1300);
-                }
-            }
-        });
-    };
 
     // Check Reduced Motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -294,14 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger Logic
     const startApp = () => {
         initSectionObserver();
-
-        // if (!prefersReducedMotion) {
-        //     initScrollControl();
-        // } else {
-        //     // Restore scroll if reduced motion
-        //     document.documentElement.style.overflow = 'auto';
-        //     document.body.style.overflow = 'auto';
-        // }
 
         // Force hero active
         const hero = document.getElementById('hero');
@@ -378,5 +286,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initialization ---
     initSectionObserver();
-    // initScrollControl(); // Disabled to return to normal scrolling
 });
