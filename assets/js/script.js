@@ -44,9 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.add('intro-done');
             body.classList.remove('intro-active');
 
-            // Custom Event
-            const event = new CustomEvent('qusis:introDone');
-            window.dispatchEvent(event);
+            // Custom Event - Delayed to wait for curtain animation (1.5s)
+            setTimeout(() => {
+                const event = new CustomEvent('qusis:introDone');
+                window.dispatchEvent(event);
+            }, 1500);
 
             // Cleanup listener
             intro.removeEventListener('click', skipIntro);

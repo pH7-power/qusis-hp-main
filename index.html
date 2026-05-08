@@ -162,10 +162,15 @@
                 }
                 animateHaze();
 
-                // Start on Load
-                window.addEventListener('load', () => {
+                // Listen for custom event from script.js
+                window.addEventListener('qusis:introDone', () => {
                     startHeroSequence();
                 });
+
+                // Backup if intro is skipped (repeat visits)
+                if (document.body.classList.contains('skip-opening')) {
+                    startHeroSequence();
+                }
             </script>
 
             <!-- Hidden SVG for Heat Haze Filter -->
