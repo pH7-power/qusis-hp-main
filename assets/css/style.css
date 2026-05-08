@@ -479,9 +479,9 @@ body.intro-done .intro-logo {
 }
 
 #heat-text {
-  font-size: 75vw; /* Extremely huge hole */
+  font-size: 45vw; /* Balanced size */
   transform-origin: center;
-  transform: scaleX(1.6);
+  transform: scaleX(1.4); /* Horizontal character feel */
 }
 
 .masked-rect {
@@ -490,27 +490,40 @@ body.intro-done .intro-logo {
 
 .hero-sub-copy-container {
   position: absolute;
-  bottom: 15vh;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   z-index: 10;
   text-align: center;
   pointer-events: none;
 }
 
-.hero-sub-copy {
-  font-size: clamp(1rem, 2vw, 1.6rem);
-  font-weight: 300;
-  color: #fff;
-  letter-spacing: 0.5em;
-  margin: 0;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: 1.5s;
+.sequential-copy-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-@keyframes slideUpFade {
+.sequential-copy {
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.4em;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(30px);
+  /* Sharp look with shadow for legibility */
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
+  animation: slideUpFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Sequential Delays */
+.sequential-copy:nth-child(1) { animation-delay: 1.0s; }
+.sequential-copy:nth-child(2) { animation-delay: 1.5s; }
+.sequential-copy:nth-child(3) { animation-delay: 2.0s; }
+
+@keyframes slideUpFadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
@@ -519,13 +532,16 @@ body.intro-done .intro-logo {
 
 @media (max-width: 768px) {
   #heat-text {
-    font-size: 85vw;
-    transform: scaleX(1.3);
+    font-size: 80vw;
+    transform: scaleX(1.1);
   }
-  .hero-sub-copy {
-    font-size: 0.9rem;
+  .sequential-copy {
+    font-size: 1.2rem;
     letter-spacing: 0.2em;
-    padding: 0 20px;
+    padding: 0 15px;
+  }
+  .sequential-copy-group {
+    gap: 15px;
   }
 }
 

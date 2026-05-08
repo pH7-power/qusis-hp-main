@@ -75,9 +75,13 @@
                     </svg>
                 </div>
 
-                <!-- 3. Front Content (Subcopy) -->
+                <!-- 3. Front Content Layer (Sequential Messages) -->
                 <div class="hero-sub-copy-container">
-                    <p class="hero-sub-copy">それは人を動かす。それは自分を動かす。それは世界を変える。</p>
+                    <div class="sequential-copy-group">
+                        <p class="sequential-copy">それは人を動かす</p>
+                        <p class="sequential-copy">それは自分を動かす</p>
+                        <p class="sequential-copy">それは世界を変える</p>
+                    </div>
                 </div>
             </div>
 
@@ -94,7 +98,7 @@
                 }
                 animateHaze();
 
-                // Initial Reveal
+                // Initial Reveal Sequence
                 window.addEventListener('load', () => {
                     setTimeout(() => {
                         document.getElementById('hero').classList.add('is-active');
