@@ -75,22 +75,53 @@
                     </svg>
                 </div>
 
-                <!-- 3. Front Content Layer (Sequential Messages) -->
+                <!-- 3. Front Content Layer (Typing Messages) -->
                 <div class="hero-sub-copy-container">
-                    <div class="sequential-copy-group">
-                        <p class="sequential-copy">それは人を動かす</p>
-                        <p class="sequential-copy">それは自分を動かす</p>
-                        <p class="sequential-copy">それは世界を変える</p>
+                    <div class="sequential-copy-group" id="typing-group">
+                        <p class="typing-line" id="line1"></p>
+                        <p class="typing-line" id="line2"></p>
+                        <p class="typing-line" id="line3"></p>
                     </div>
                 </div>
             </div>
 
             <script>
-                // Animate SVG Turbulence
+                // Typing Animation Logic
+                const lines = [
+                    { id: 'line1', text: 'それは自分を動かす' },
+                    { id: 'line2', text: 'それは人を動かす' },
+                    { id: 'line3', text: 'それは世界を変える' }
+                ];
+
+                async function typeText(elementId, text, speed = 100) {
+                    const el = document.getElementById(elementId);
+                    for (let i = 0; i < text.length; i++) {
+                        el.textContent += text.charAt(i);
+                        await new Promise(resolve => setTimeout(resolve, speed));
+                    }
+                }
+
+                async function startHeroSequence() {
+                    // 1. Typing Phase (0s - 3s approx)
+                    await typeText('line1', lines[0].text);
+                    await new Promise(r => setTimeout(r, 300));
+                    await typeText('line2', lines[1].text);
+                    await new Promise(r => setTimeout(r, 300));
+                    await typeText('line3', lines[2].text);
+
+                    // 2. Heat Mask Awakening (3.5s+)
+                    setTimeout(() => {
+                        document.getElementById('hero').classList.add('is-revealed');
+                        // Also trigger slider visibility
+                        document.getElementById('hero').classList.add('is-active');
+                    }, 500);
+                }
+
+                // Animate SVG Turbulence (Constant)
                 const turb = document.querySelector('#turbulence');
                 let frame = 0;
                 function animateHaze() {
-                    frame += 0.005; // Slower movement
+                    frame += 0.005;
                     const bfX = 0.005 + Math.sin(frame) * 0.001;
                     const bfY = 0.001 + Math.cos(frame * 0.8) * 0.0005;
                     turb.setAttribute('baseFrequency', `${bfX} ${bfY}`);
@@ -98,11 +129,9 @@
                 }
                 animateHaze();
 
-                // Initial Reveal Sequence
+                // Start on Load
                 window.addEventListener('load', () => {
-                    setTimeout(() => {
-                        document.getElementById('hero').classList.add('is-active');
-                    }, 500);
+                    setTimeout(startHeroSequence, 500);
                 });
             </script>
 

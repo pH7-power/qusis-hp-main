@@ -1504,6 +1504,12 @@ body.top-page main section {
   height: 100%;
   z-index: 5;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero.is-revealed .hero-overlay-mask {
+  opacity: 1;
 }
 
 #heat-text {
@@ -1533,27 +1539,14 @@ body.top-page main section {
   gap: 20px;
 }
 
-.sequential-copy {
+.typing-line {
   font-size: clamp(1.2rem, 2.5vw, 2.2rem);
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.4em;
   margin: 0;
-  opacity: 0;
-  transform: translateY(30px);
+  min-height: 1.5em; /* Prevent layout jump */
   text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
-  animation: slideUpFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.sequential-copy:nth-child(1) { animation-delay: 1.0s; }
-.sequential-copy:nth-child(2) { animation-delay: 1.5s; }
-.sequential-copy:nth-child(3) { animation-delay: 2.0s; }
-
-@keyframes slideUpFadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
