@@ -45,11 +45,8 @@
     <main>
         <!-- 1. HERO -->
         <section class="hero" id="hero">
-            <!-- 1. Background Slideshow (Masked) -->
             <div class="hero-mask-container">
-                <!-- Layer 1.5: White Glow Layer -->
-                <div class="hero-text-glow">熱</div>
-                
+                <!-- 1. Background Slider -->
                 <div class="hero-slider" id="hero-slider">
                     <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
                     <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
@@ -59,33 +56,30 @@
                     <div class="hero-slide" style="background-image: url('images/HP使用画像/12.webp');"></div>
                     <div class="hero-slide" style="background-image: url('images/HP使用画像/13.webp');"></div>
                 </div>
-            </div>
 
-            <!-- 2. Front Content Layer (Subcopy) -->
-            <div class="sub-copy-layer container">
-                <div class="sub-copy-group">
-                    <p class="sub-copy">それは人を動かす。</p>
-                    <p class="sub-copy">それは自分を動かす。</p>
-                    <p class="sub-copy">それは世界を変える。</p>
+                <!-- 2. SVG Overlay Mask (Black plate with '熱' hole) -->
+                <div class="hero-overlay-mask">
+                    <svg class="mask-svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <mask id="text-mask">
+                                <rect width="100%" height="100%" fill="white" />
+                                <text id="heat-text" x="50%" y="50%" text-anchor="middle" dominant-baseline="central" 
+                                      fill="black" style="font-family: 'Montserrat', 'Zen Kaku Gothic New', sans-serif; font-weight: 900;">熱</text>
+                            </mask>
+                            <filter id="heat-haze">
+                                <feTurbulence id="turbulence" baseFrequency="0.02 0.01" numOctaves="3" seed="1" />
+                                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="35" />
+                            </filter>
+                        </defs>
+                        <rect width="100%" height="100%" fill="black" mask="url(#text-mask)" class="masked-rect" />
+                    </svg>
+                </div>
+
+                <!-- 3. Front Content (Subcopy) -->
+                <div class="hero-sub-copy-container">
+                    <p class="hero-sub-copy">それは人を動かす。それは自分を動かす。それは世界を変える。</p>
                 </div>
             </div>
-
-            <!-- Advanced Mask & Distortion SVG -->
-            <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
-                <defs>
-                    <mask id="hero-text-mask" maskUnits="userSpaceOnUse">
-                        <!-- Horizontal Stretch: scale(1.5, 1) -->
-                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" 
-                              class="mask-text-element" 
-                              style="font-family: 'Montserrat', 'Zen Kaku Gothic New', sans-serif; font-weight: 900; fill: white; transform-origin: center; transform: scale(1.5, 1);">熱</text>
-                    </mask>
-                    <filter id="heat-haze">
-                        <!-- Emphasizing horizontal distortion: 0.02 0.01 -->
-                        <feTurbulence id="turbulence" baseFrequency="0.02 0.01" numOctaves="3" seed="1" />
-                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="35" />
-                    </filter>
-                </defs>
-            </svg>
 
             <script>
                 // Animate SVG Turbulence
@@ -100,7 +94,7 @@
                 }
                 animateHaze();
 
-                // Reveal Sequence
+                // Initial Reveal
                 window.addEventListener('load', () => {
                     setTimeout(() => {
                         document.getElementById('hero').classList.add('is-active');
