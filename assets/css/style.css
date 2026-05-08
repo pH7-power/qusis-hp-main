@@ -253,6 +253,62 @@ body.menu-open {
   color: #888;
 }
 
+/* Unified Footer CTA */
+.footer-cta {
+  background-color: #86cac9;
+  color: var(--color-white);
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.footer-cta h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+}
+
+.footer-cta p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-cta .cta-btn {
+  display: inline-block;
+  padding: 15px 50px;
+  border: 2px solid var(--color-white);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 700;
+  font-family: var(--font-en);
+  letter-spacing: 0.15em;
+  transition: all 0.3s ease;
+}
+
+.footer-cta .cta-btn:hover {
+  background: var(--color-white);
+  color: var(--color-teal);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .footer-cta {
+    padding: 80px 20px;
+  }
+  .footer-cta h2 {
+    font-size: 2rem;
+  }
+  .footer-cta p {
+    font-size: 0.95rem;
+  }
+}
+
 /* Intro Curtain */
 #intro {
   position: fixed;
