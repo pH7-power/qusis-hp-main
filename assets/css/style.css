@@ -387,6 +387,7 @@ body.intro-done .intro-logo {
   text-align: center;
   position: relative;
   z-index: 10;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for straight boundary */
 }
 
 .definition-message-stack {
@@ -404,36 +405,6 @@ body.intro-done .intro-logo {
   line-height: 1.3;
   margin: 0;
   letter-spacing: 0.05em;
-}
-
-/* Fire Divider */
-.fire-divider-wrapper {
-  position: relative;
-  width: 100%;
-  height: 150px;
-  background: #000;
-  margin-top: -1px; /* Avoid gap */
-  overflow: hidden;
-  z-index: 10; /* Same as sections to cover hero */
-  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.2); /* Upward shadow */
-}
-
-.fire-divider-svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.fire-path {
-  fill: #ffffff;
-  animation: fire-wave 8s infinite alternate ease-in-out;
-}
-
-@keyframes fire-wave {
-  from { d: path("M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,165.3C672,139,768,117,864,128C960,139,1056,181,1152,192C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"); }
-  to { d: path("M0,192L48,181.3C96,171,192,149,288,160C384,171,480,213,576,213.3C672,213,768,171,864,144C960,117,1056,107,1152,128C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"); }
 }
 
 /* "熱" Accent (Brush Stroke) */
@@ -492,7 +463,7 @@ body.intro-done .intro-logo {
   }
 }
 
-/* Hero Section - Base Styles (Global) */
+/* Hero Section */
 .hero {
   position: relative;
   height: 100vh;
@@ -502,6 +473,8 @@ body.intro-done .intro-logo {
   justify-content: center;
   overflow: hidden;
   color: var(--color-white);
+  padding-top: 80px;
+  /* Header height */
 }
 
 .hero-slides {
@@ -544,7 +517,12 @@ body.intro-done .intro-logo {
   z-index: 1; /* Same as slider */
 }
 
-/* (Redundant hero def removed) */
+.hero {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
 
 .hero-slider {
   position: absolute;
@@ -1553,12 +1531,12 @@ body.intro-done .intro-logo {
   z-index: 2;
 }
 
-/* Scroll Snap & Stage Transitions - Disabled for natural scroll */
+/* Scroll Snap & Stage Transitions - JS Controlled (TOP PAGE ONLY) */
 html.top-page,
 body.top-page {
   height: auto;
   overflow: visible;
-  scroll-snap-type: none !important;
+  /* Back to normal scroll */
 }
 
 /* Default for other pages */
@@ -1581,14 +1559,12 @@ body.top-page main section {
   justify-content: center;
   position: relative;
   z-index: 10;
-  background-color: var(--color-white); 
-  margin-top: 0;
-  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.2); /* Refined overlay shadow */
+  background-color: #ffffff; /* Default background */
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Overlay shadow */
 
-  /* Reset transitions for main section flow */
+  /* Section Transition (Opacity effect only, no transform to avoid sticky issues) */
   opacity: 1; 
-  transform: none;
-  transition: opacity 0.7s ease;
+  transition: opacity 0.7s cubic-bezier(.22, 1, .36, 1);
 }
 
 .hero {
@@ -1601,7 +1577,7 @@ body.top-page main section {
   padding: 0;
   overflow: hidden;
   background: #000;
-  box-shadow: none; 
+  box-shadow: none; /* No shadow for the base layer */
 }
 
 /* Layer 5: Bottom-most Slideshow */
@@ -1787,7 +1763,40 @@ body.top-page main section {
   transform: none;
 }
 
+main section.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
+/* Previous section state (optional, handled by removing is-active returning to init state or custom class) */
+/* The user asked: "Previous section ... opacity: 0; transform: translateY(-10px)"
+   This implies when a section is SCROLLED PAST (becomes "previous"), it should behave this way.
+   However, removing .is-active usually reverts to init state (translateY(10px)).
+   To strictly follow "translateY(-10px)" for previous, we might need a .is-past class.
+   For now, strictly following the request means when it loses active, if it's ABOVE, it should go -10px.
+   If strictly "when is-active is removed", that applies to BOTH entering from bottom and leaving to top.
+   Let's stick to the base request: "Previous section... active removed... -10px"
+   Actually, usually you want 10px coming IN, and maybe -10px going OUT UP.
+   Let's assume standard behavior: reverts to hidden. 
+   BUT user said: "Previous section is active removed -> transform: translateY(-10px)"
+   I will implement a .is-past class or just handle the revert state.
+   Actually, if I just change the defaults, it applies to all non-active.
+   Let's set default (non-active) to translateY(10px).
+   If we want -10px specifically when it's "previous", we need JS to track direction.
+   Let's approximate: simple fade out/in is robust.
+   User request: "Previous section is active removed... translateY(-10px)" matches "Leaving up".
+   I will add a specific rule if I can, but standard "not active" = "hidden" is safer for bi-directional scroll.
+   Reflecting on user requirement: "Previous section...". I will stick to the generic "not active" state being `translateY(10px)` which implies "waiting to come up" or "just left down". 
+   Wait, if I scroll DOWN, the Top section goes UP. So it should move to -10px?
+   If I scroll UP, the Bottom section goes DOWN. So it should move to 10px?
+   CSS transitions are state-based.
+   Let's simple set non-active to translateY(10px) (coming from bottom). 
+   The user specific request about "previous" might just be a mental model of "sliding out".
+   I'll stick to one non-active state for simplicity unless they crave the specific directional exit.
+   Actually, "Previous section" usually means the one ABOVE the current one.
+   If I am at Section 2, Section 1 is "previous".
+   If Section 1 is -10px, that fits.
+*/
 
 @media (prefers-reduced-motion: reduce) {
   main section {

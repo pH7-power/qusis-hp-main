@@ -202,7 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-
+    // Enhanced Scroll Control (Trackpad Optimized: Accumulated Delta)
+    const initScrollControl = () => {
+        // Disabled to support standard smooth scrolling for parallax overlay effect
+        return;
+    };
 
     // Check Reduced Motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -210,6 +214,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Trigger Logic
     const startApp = () => {
         initSectionObserver();
+
+        // if (!prefersReducedMotion) {
+        //     initScrollControl();
+        // } else {
+        //     // Restore scroll if reduced motion
+        //     document.documentElement.style.overflow = 'auto';
+        //     document.body.style.overflow = 'auto';
+        // }
 
         // Force hero active
         const hero = document.getElementById('hero');
@@ -286,4 +298,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initialization ---
     initSectionObserver();
+    // initScrollControl(); // Disabled to return to normal scrolling
 });
