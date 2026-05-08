@@ -440,6 +440,43 @@ body.intro-done .intro-logo {
   z-index: 2;
 }
 
+.hero {
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slides-mask-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 2.5s ease;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slides-mask-container.is-visible {
+  opacity: 1;
+}
+
+.hero-slides {
+  width: 100%;
+  height: 100%;
+  mask-image: url(#hero-text-mask);
+  -webkit-mask-image: url(#hero-text-mask);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  filter: url(#heat-distortion);
+  /* Strong inner glow simulation */
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.2);
+}
+
 .hero-content {
   position: relative;
   z-index: 10;
@@ -448,7 +485,6 @@ body.intro-done .intro-logo {
   align-items: center;
   justify-content: flex-start;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .main-copy-group {
@@ -456,41 +492,21 @@ body.intro-done .intro-logo {
   align-items: flex-end;
   gap: clamp(20px, 4vw, 50px);
   text-align: left;
-  /* Blend text with background slides */
-  mix-blend-mode: lighten;
 }
 
-.main-title {
+.main-title-hidden {
   font-size: clamp(8rem, 25vw, 25rem);
   font-weight: 900;
   line-height: 0.8;
   margin: 0;
-  color: #fff;
-  /* SVG Filter for Haze */
-  filter: url(#heat-haze);
-  /* Strong Glow */
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5), 0 0 80px rgba(0, 128, 128, 0.3);
+  color: transparent;
   letter-spacing: -0.05em;
   padding-bottom: 0.1em;
-  /* Breathing animation remains */
-  animation: heatPulse 5s ease-in-out infinite;
-}
-
-@keyframes heatPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  50% {
-    transform: scale(1.03);
-    opacity: 1;
-  }
+  user-select: none;
 }
 
 .sub-copy-group {
   padding-bottom: clamp(10px, 2vw, 30px);
-  /* Ensure sub-copy is sharp and doesn't inherit filter/blend if not needed */
-  mix-blend-mode: normal;
 }
 
 .sub-copy {
@@ -503,13 +519,11 @@ body.intro-done .intro-logo {
   transform: translateY(20px);
   animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   white-space: nowrap;
-  /* No filter here */
-  filter: none !important;
 }
 
-.sub-copy:nth-child(1) { animation-delay: 1.2s; }
-.sub-copy:nth-child(2) { animation-delay: 1.5s; }
-.sub-copy:nth-child(3) { animation-delay: 1.8s; }
+.sub-copy:nth-child(1) { animation-delay: 2.5s; }
+.sub-copy:nth-child(2) { animation-delay: 2.8s; }
+.sub-copy:nth-child(3) { animation-delay: 3.1s; }
 
 @keyframes slideUpFade {
   to {
@@ -528,7 +542,7 @@ body.intro-done .intro-logo {
     align-items: center;
     gap: 30px;
   }
-  .main-title {
+  .main-title-hidden {
     font-size: 40vw;
   }
   .sub-copy {
