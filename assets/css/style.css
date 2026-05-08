@@ -441,10 +441,13 @@ body.intro-done .intro-logo {
 }
 
 .hero {
-  background: #000;
+  background: #fff;
   position: relative;
   overflow: hidden;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-slider {
@@ -455,85 +458,70 @@ body.intro-done .intro-logo {
   height: 100%;
   z-index: 1;
   opacity: 0;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 1.5s ease-in-out;
 }
 
 .hero.is-active .hero-slider {
   opacity: 1;
 }
 
-.heat-mask-layer {
+.hero-title-heat {
+  font-size: 65vw; /* Extremely huge */
+  font-weight: 900;
+  text-align: center;
+  color: #000; /* Black text creates the 'hole' */
+  background: #fff; /* White bg becomes transparent in screen mode */
+  mix-blend-mode: screen;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-  background: #000;
-  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
-  mix-blend-mode: multiply;
-  pointer-events: none;
+  z-index: 10;
+  filter: url(#heat-haze);
+  line-height: 1;
+  margin: 0;
+  user-select: none;
+  white-space: nowrap;
 }
 
 .sub-copy-layer {
   position: relative;
-  z-index: 10;
-  height: 100%;
+  z-index: 20; /* Topmost */
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   pointer-events: none;
-}
-
-.main-copy-group {
-  display: flex;
-  align-items: flex-end;
-  gap: clamp(20px, 4vw, 50px);
-  text-align: left;
-}
-
-.heat-text {
-  font-size: clamp(8rem, 25vw, 25rem);
-  font-weight: 900;
-  color: #fff;
-  line-height: 0.8;
-  margin: 0;
-  filter: url(#heat-haze);
-  letter-spacing: -0.05em;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-}
-
-.main-title-spacer {
-  font-size: clamp(8rem, 25vw, 25rem);
-  font-weight: 900;
-  line-height: 0.8;
-  color: transparent;
-  letter-spacing: -0.05em;
-  padding-bottom: 0.1em;
-  user-select: none;
+  text-align: center;
 }
 
 .sub-copy-group {
-  padding-bottom: clamp(10px, 2vw, 30px);
+  padding-top: 10vh; /* Positioned relative to the huge text */
 }
 
 .sub-copy {
-  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
-  font-weight: 300;
-  margin: 12px 0;
-  color: var(--color-white);
-  letter-spacing: 0.4em;
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 700;
+  margin: 15px 0;
+  color: #000; /* Dark text for contrast on white bg, or keep white if preferred */
+  /* If the bg is white, subcopy should be black/teal for visibility */
+  color: var(--color-teal); 
+  letter-spacing: 0.3em;
   opacity: 0;
   transform: translateY(20px);
   animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   white-space: nowrap;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-.sub-copy:nth-child(1) { animation-delay: 1.5s; }
-.sub-copy:nth-child(2) { animation-delay: 1.8s; }
-.sub-copy:nth-child(3) { animation-delay: 2.1s; }
+.sub-copy:nth-child(1) { animation-delay: 1s; }
+.sub-copy:nth-child(2) { animation-delay: 1.3s; }
+.sub-copy:nth-child(3) { animation-delay: 1.6s; }
 
 @keyframes slideUpFade {
   to {
@@ -543,21 +531,12 @@ body.intro-done .intro-logo {
 }
 
 @media (max-width: 768px) {
-  .main-copy-group {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    text-align: center;
-  }
-  .main-title-spacer {
-    font-size: 40vw;
-  }
-  .heat-text {
-    font-size: 40vw;
+  .hero-title-heat {
+    font-size: 85vw;
   }
   .sub-copy {
-    font-size: 1.1rem;
-    letter-spacing: 0.2em;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
   }
 }
 

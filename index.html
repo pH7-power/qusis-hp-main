@@ -45,7 +45,7 @@
     <main>
         <!-- 1. HERO -->
         <section class="hero" id="hero">
-            <!-- 1. 最背面: スライドショー本体 -->
+            <!-- 1. Layer 1 (Bottom): スライドショー -->
             <div class="hero-slider" id="hero-slider">
                 <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
                 <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
@@ -56,53 +56,44 @@
                 <div class="hero-slide" style="background-image: url('images/HP使用画像/13.webp');"></div>
             </div>
 
-            <!-- 2. 中間層: マスクレイヤー -->
-            <div class="heat-mask-layer">
-                <div class="main-copy-group">
-                    <h1 class="heat-text">熱</h1>
-                </div>
-            </div>
+            <!-- 2. Layer 2 (Middle): マスクレイヤー -->
+            <h1 class="hero-title-heat">熱</h1>
             
-            <!-- 3. 最前面: サブコピーレイヤー -->
+            <!-- 3. Layer 3 (Top): サブコピーレイヤー -->
             <div class="sub-copy-layer container">
-                <div class="main-copy-group">
-                    <!-- レイアウト維持用のスペーサー -->
-                    <div class="main-title-spacer">熱</div>
-                    <div class="sub-copy-group">
-                        <p class="sub-copy">それは人を動かす。</p>
-                        <p class="sub-copy">それは自分を動かす。</p>
-                        <p class="sub-copy">それは世界を変える。</p>
-                    </div>
+                <div class="sub-copy-group">
+                    <p class="sub-copy">それは人を動かす。</p>
+                    <p class="sub-copy">それは自分を動かす。</p>
+                    <p class="sub-copy">それは世界を変える。</p>
                 </div>
             </div>
 
-            <!-- SVGフィルター定義 -->
+            <!-- 陽炎（ディストーション）SVGフィルター -->
             <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
                 <defs>
                     <filter id="heat-haze">
-                        <feTurbulence id="turbulence" baseFrequency="0.01 0.02" numOctaves="3" seed="1" />
-                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" />
+                        <feTurbulence id="turbulence" baseFrequency="0.015" numOctaves="3" seed="1" />
+                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="30" />
                     </filter>
                 </defs>
             </svg>
 
             <script>
-                // 陽炎アニメーション
+                // 陽炎（feTurbulence）のアニメーション
                 const turb = document.querySelector('#turbulence');
                 let frame = 0;
                 function animateHaze() {
                     frame += 0.01;
-                    const bfX = 0.01 + Math.sin(frame) * 0.002;
-                    const bfY = 0.02 + Math.cos(frame * 0.7) * 0.002;
-                    turb.setAttribute('baseFrequency', `${bfX} ${bfY}`);
+                    const bf = 0.015 + Math.sin(frame) * 0.002;
+                    turb.setAttribute('baseFrequency', bf);
                     requestAnimationFrame(animateHaze);
                 }
                 animateHaze();
 
-                // 起動シーケンス
+                // 起動時の表示制御
                 window.addEventListener('load', () => {
                     setTimeout(() => {
-                        document.querySelector('.hero').classList.add('is-active');
+                        document.getElementById('hero').classList.add('is-active');
                     }, 500);
                 });
             </script>
