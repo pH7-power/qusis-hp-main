@@ -247,16 +247,26 @@
 
 .detail-share-icons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .detail-share-icons a {
     color: #ccc;
-    font-size: 1.2rem;
-    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.detail-share-icons a:hover { color: var(--color-teal); }
+.detail-share-icons a svg {
+    width: 20px;
+    height: 20px;
+}
+
+.detail-share-icons a:hover { 
+    color: var(--color-teal);
+    transform: translateY(-2px);
+}
 
 .detail-main-visual {
     width: 100%;
