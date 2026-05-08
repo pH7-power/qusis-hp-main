@@ -376,71 +376,87 @@ body.intro-done .intro-logo {
 .font-comfortaa { font-family: 'Comfortaa', cursive; }
 .font-afacad { font-family: 'Afacad Flux', sans-serif; }
 
+/* --- PHILOSOPHY (MVC) --- */
+.font-comfortaa { font-family: 'Comfortaa', cursive; }
+.font-afacad { font-family: 'Afacad Flux', sans-serif; }
+
 .philosophy-section {
-  background-color: #ffffff; /* Changed to white */
-  padding: 100px 0;
+  background-color: #ffffff;
+  padding: 120px 0;
+  text-align: center;
 }
 
-.mvc-card-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-top: 50px;
+.philosophy-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.mvc-card {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  border: 1px solid #eee; /* Added border for white background */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
+.philosophy-item {
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.mvc-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+.philosophy-item:last-child {
+  margin-bottom: 0;
 }
 
-.mvc-card h3 {
-  font-size: 1.4rem;
+.phil-label {
   color: #008080;
-  margin-bottom: 15px;
+  font-size: 0.9rem;
   font-weight: 700;
-  border-bottom: 1px solid rgba(0, 128, 128, 0.1);
-  padding-bottom: 10px;
+  letter-spacing: 0.3em;
+  margin-bottom: 20px;
+  display: block;
 }
 
-.mvc-card p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #1e293b;
-  font-weight: 500;
+.phil-content {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: #1e1e1e;
+  font-weight: 900;
   margin: 0;
+  line-height: 1.4;
+  font-family: 'Afacad Flux', sans-serif;
+}
+
+/* "熱" Accent (Brush Stroke) */
+.heat-accent {
+  position: relative;
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.heat-accent::before {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  width: 110%;
+  height: 45%;
+  background: linear-gradient(90deg, transparent, #FF4500, transparent);
+  background-color: #FF4500;
+  opacity: 0.25;
+  border-radius: 100% 60% 100% 40%;
+  transform: rotate(-3deg);
+  z-index: -1;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .philosophy-section {
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
   
-  .mvc-card-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .philosophy-item {
+    margin-bottom: 60px;
   }
   
-  .mvc-card {
-    padding: 24px;
-  }
-  
-  .mvc-card h3 {
-    font-size: 1.2rem;
-  }
-  
-  .mvc-card p {
-    font-size: 1rem;
+  .phil-content {
+    font-size: 1.5rem;
   }
 }
 
