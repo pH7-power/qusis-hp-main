@@ -67,8 +67,8 @@
                                       fill="black" style="font-family: 'Montserrat', 'Zen Kaku Gothic New', sans-serif; font-weight: 900;">熱</text>
                             </mask>
                             <filter id="heat-haze">
-                                <feTurbulence id="turbulence" baseFrequency="0.02 0.01" numOctaves="3" seed="1" />
-                                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="35" />
+                                <feTurbulence id="turbulence" baseFrequency="0.005 0.001" numOctaves="1" seed="1" />
+                                <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" />
                             </filter>
                         </defs>
                         <rect width="100%" height="100%" fill="black" mask="url(#text-mask)" class="masked-rect" />
@@ -90,9 +90,9 @@
                 const turb = document.querySelector('#turbulence');
                 let frame = 0;
                 function animateHaze() {
-                    frame += 0.01;
-                    const bfX = 0.02 + Math.sin(frame) * 0.003;
-                    const bfY = 0.01 + Math.cos(frame * 0.8) * 0.002;
+                    frame += 0.005; // Slower movement
+                    const bfX = 0.005 + Math.sin(frame) * 0.001;
+                    const bfY = 0.001 + Math.cos(frame * 0.8) * 0.0005;
                     turb.setAttribute('baseFrequency', `${bfX} ${bfY}`);
                     requestAnimationFrame(animateHaze);
                 }
