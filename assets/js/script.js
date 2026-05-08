@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroSection = document.getElementById('hero');
 
     // Initial Hide for Top Page
-    if (isTopPage && window.scrollY < 100) {
+    if (header && isTopPage && window.scrollY < 100) {
         header.classList.add('hide');
     }
 
@@ -38,30 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (intro) {
         // Check reduced motion
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        if (prefersReducedMotion) {
-            intro.style.display = 'none';
-            body.classList.remove('intro-active');
-            body.classList.add('intro-done');
-            return;
-        }
-
-        const startIntro = () => {
-            // Wait a bit then start animation
-            setTimeout(() => {
-                // Determine animation end
-                intro.addEventListener('click', skipIntro);
-
-                // Animation Sequence
-                // 1. Logo fades in (handled by CSS transition usually, but let's ensure it)
-
-                // 2. Curtain opens after some time
-                setTimeout(() => {
-                    finishIntro();
-                }, 3400); // 3.4s as per spec
-
-            }, 100);
-        };
 
         const finishIntro = () => {
             // Add class to trigger CSS transforms
@@ -80,7 +56,28 @@ document.addEventListener('DOMContentLoaded', () => {
             finishIntro();
         };
 
-        startIntro();
+        const startIntro = () => {
+            // Wait a bit then start animation
+            setTimeout(() => {
+                // Determine animation end
+                intro.addEventListener('click', skipIntro);
+
+                // Animation Sequence
+                // 2. Curtain opens after some time
+                setTimeout(() => {
+                    finishIntro();
+                }, 3400); // 3.4s as per spec
+
+            }, 100);
+        };
+
+        if (prefersReducedMotion) {
+            intro.style.display = 'none';
+            body.classList.remove('intro-active');
+            body.classList.add('intro-done');
+        } else {
+            startIntro();
+        }
     }
 
     // Parallax Logic
@@ -117,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
         
-        if (isTopPage && heroSection) {
+        if (header && isTopPage && heroSection) {
             const heroHeight = heroSection.offsetHeight;
             // Hide header if HERO is more than 50% visible (scroll < 50% of height)
             if (currentScroll < heroHeight * 0.5) {
@@ -128,10 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Normal Behavior (or after HERO threshold)
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.classList.add('hide');
-        } else {
-            header.classList.remove('hide');
+        if (header) {
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.classList.add('hide');
+            } else {
+                header.classList.remove('hide');
+            }
         }
         lastScroll = currentScroll;
     });
