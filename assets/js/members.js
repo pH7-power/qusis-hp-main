@@ -22,7 +22,10 @@ const membersData = [
         nameEn: "Matsuo Hibiki",
         roles: ["Co-Representatives"],
         faculty: "経済学部3年",
-        image: "images/松尾響起.webp"
+        image: "images/松尾響起.webp",
+        history: `2024/09 CM参画
+2025/04 QUSIS共同代表就任
+2025/11 株式会社oxxx インターン`
     },
     {
         id: "sakai",
@@ -30,7 +33,20 @@ const membersData = [
         nameEn: "Sakai Kota",
         roles: ["Member Manager", "PR/ Media Manager", "Self Resource Manager"],
         faculty: "理学部2年",
-        image: "images/坂井洸太.webp"
+        image: "images/坂井洸太.webp",
+        history: `2025/07 インキュベーションプログラム「ゼロイチ」優勝
+2025/08 株式会社スチームシップ_インターン
+2025/09 CM参画
+2025/10 Giving Campaign 2025_QUSIS全体統括
+2025/11 株式会社丸の内インベストメントグループ_インターン
+2025/11 日本言語学オリンピック2026銅賞
+2026/01 株式会社スチームシップ離脱
+2026/01 基本情報技術者になる
+2026/03 インキュベーションプログラム「ゼロイチ」全体統括
+2026/03 株式会社丸の内インベストメントグループ離脱
+2026/04 Fabeee株式会社_インターン
+2026/04 AIコンサル事業始動
+2026/04 部活動総合アプリ開発PJ始動`
     },
     {
         id: "kimoto",
@@ -54,7 +70,14 @@ const membersData = [
         nameEn: "Sakoziri Reito",
         roles: ["Space Manager"],
         faculty: "工学部2年",
-        image: "images/迫尻礼杜.webp"
+        image: "images/迫尻礼杜.webp",
+        history: `2025/04 QSHOP｢サンキュー！マッスル｣参画
+2025/05 アイデア・バトル採択
+2025/07 株式会社corte_インターン
+2025/09 CM参画
+2025/10 株式会社corte離脱
+2026/03 サンキュー！マッスル解散
+2026/04 先端医療デバイス研究室_研究生`
     },
     {
         id: "nakanome",
