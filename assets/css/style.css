@@ -106,7 +106,18 @@ h6 {
 }
 
 .section {
+  position: relative;
+  width: 100%;
   padding: 100px 0;
+  clip-path: none !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
+  border-radius: 0 !important;
+}
+
+/* Subpage first section padding fix for fixed header */
+body:not(.top-page) main section:first-of-type {
+  padding-top: 180px; /* 80px header + 100px standard padding */
 }
 
 /* Header */
@@ -264,6 +275,9 @@ body.menu-open {
   color: var(--color-white);
   padding: 100px 20px;
   text-align: center;
+  clip-path: none !important;
+  mask-image: none !important;
+  -webkit-mask-image: none !important;
 }
 
 .footer-cta h2 {
