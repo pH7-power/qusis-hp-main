@@ -45,7 +45,7 @@
     <main>
         <!-- 1. HERO -->
         <section class="hero" id="hero">
-            <!-- 5. Background Slideshow Layer (Hidden initially) -->
+            <!-- 5. Background Slideshow Layer -->
             <div class="hero-slider" id="hero-slider">
                 <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
                 <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
@@ -60,21 +60,26 @@
             <div class="hero-black-bg" id="hero-black-bg"></div>
 
             <!-- 3. Background Video Layer -->
-            <video id="hero-video" class="hero-video" muted loop playsinline>
-                <source src="images/火の玉 炎のエフェクト.mp4" type="video/mp4">
-            </video>
-
-            <!-- 2. Title Layer ('熱') -->
-            <div class="hero-title-layer" id="hero-title">
-                <p class="heat-title-serif">熱</p>
+            <div class="hero-video-layer" id="hero-video-layer">
+                <video id="hero-video" class="hero-video" muted loop playsinline>
+                    <source src="images/火の玉 炎のエフェクト.mp4" type="video/mp4">
+                </video>
             </div>
 
-            <!-- 1. Typing Layer -->
-            <div class="hero-typing-layer">
-                <div class="sequential-copy-group">
-                    <p class="typing-line" id="line1"></p>
-                    <p class="typing-line" id="line2"></p>
-                    <p class="typing-line" id="line3"></p>
+            <!-- Content Group (Layers 2 & 1) -->
+            <div class="hero-content-stack">
+                <!-- 2. Title Layer ('熱') -->
+                <div class="hero-title-layer" id="hero-title">
+                    <p class="heat-title-serif">熱</p>
+                </div>
+
+                <!-- 1. Typing Layer -->
+                <div class="hero-typing-layer">
+                    <div class="sequential-copy-group">
+                        <p class="typing-line" id="line1"></p>
+                        <p class="typing-line" id="line2"></p>
+                        <p class="typing-line" id="line3"></p>
+                    </div>
                 </div>
             </div>
 
@@ -90,13 +95,14 @@
                 }
 
                 async function startHeroSequence() {
+                    const videoLayer = document.getElementById('hero-video-layer');
                     const video = document.getElementById('hero-video');
                     const title = document.getElementById('hero-title');
                     const blackBg = document.getElementById('hero-black-bg');
 
                     // 0.5s: Ignition (Video Fade-in & Play)
                     setTimeout(() => {
-                        video.classList.add('is-active');
+                        videoLayer.classList.add('is-active');
                         video.play();
                     }, 500);
 
@@ -115,12 +121,17 @@
 
                         // 5.5s approx: 覚醒 (Burning Text Start)
                         setTimeout(() => {
-                            title.classList.add('is-burning'); // Start Burning effect
+                            // Apply Burning to Title
+                            title.querySelector('.heat-title-serif').classList.add('is-burning');
+                            // Apply Burning to Messages
+                            document.querySelectorAll('.typing-line').forEach(line => {
+                                line.classList.add('is-burning');
+                            });
                             
                             // 6.0s: Background Transition
                             setTimeout(() => {
-                                video.classList.remove('is-active'); // Fade out video
-                                blackBg.classList.add('is-hidden');   // Fade out black bg
+                                videoLayer.classList.remove('is-active'); // Fade out video layer
+                                blackBg.classList.add('is-hidden');       // Fade out black bg
                                 setTimeout(() => video.pause(), 2000);
                             }, 500);
                         }, 500);
