@@ -1512,21 +1512,38 @@ body.top-page main section {
   height: 100vh;
   margin: 0;
   padding: 0;
+  background: #000;
 }
 
-.hero-slider {
+/* Red Tint Overlay for Video */
+.hero-mask-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ff0000;
+  mix-blend-mode: color;
+  opacity: 0.4;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  object-fit: cover;
   z-index: 1;
   opacity: 0;
   transition: opacity 1s ease;
-  filter: brightness(1.6) contrast(1.2);
+  filter: brightness(1.5) contrast(1.1);
 }
 
-.hero.is-active .hero-slider {
+.hero.is-active .hero-video {
   opacity: 1;
 }
 
@@ -1541,9 +1558,10 @@ body.top-page main section {
 }
 
 #heat-text {
-  font-size: 45vw;
+  font-size: 35vw; /* Slightly smaller for 'standard title size' but still impactful */
+  font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
   transform-origin: center;
-  transform: scaleX(1.4);
+  transform: scaleX(1.1); /* Reduced stretch for serif elegance */
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
 }
@@ -1583,7 +1601,7 @@ body.top-page main section {
   letter-spacing: 0.5em;
   margin: 0;
   min-height: 1.6em;
-  text-shadow: 0 0 30px rgba(0, 0, 0, 1);
+  text-shadow: 0 0 30px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 0.5);
   font-family: var(--font-jp);
 }
 
