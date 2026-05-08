@@ -1719,6 +1719,27 @@ body.top-page main section {
     0 0 100px rgba(255, 69, 0, 0.2);
 }
 
+/* --- Skip Opening Styles --- */
+.skip-opening #intro {
+  display: none !important;
+}
+
+.skip-opening .hero-black-bg,
+.skip-opening .hero-video-layer {
+  display: none !important;
+}
+
+.skip-opening .hero-title-layer,
+.skip-opening .heat-title-serif {
+  transition: none !important;
+  opacity: 1 !important;
+}
+
+.skip-opening .typing-line {
+  transition: none !important;
+  opacity: 1 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
 
   html,

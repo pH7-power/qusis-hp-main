@@ -12,6 +12,14 @@
 </head>
 
 <body class="intro-active top-page">
+    <script>
+        // Opening Animation Skip Logic (sessionStorage)
+        if (sessionStorage.getItem('hasSeenOpening')) {
+            document.body.classList.add('skip-opening');
+            document.body.classList.remove('intro-active');
+            document.body.classList.add('intro-done');
+        }
+    </script>
 
     <!-- Intro Curtain -->
     <div id="intro">
@@ -102,6 +110,18 @@
                     const video = document.getElementById('hero-video');
                     const title = document.getElementById('hero-title');
                     const blackBg = document.getElementById('hero-black-bg');
+                    const isSkipped = document.body.classList.contains('skip-opening');
+
+                    if (isSkipped) {
+                        // Immediate State for Skip
+                        title.classList.add('is-active');
+                        title.querySelector('.heat-title-serif').classList.add('is-burning');
+                        blackBg.classList.add('is-hidden');
+                        document.getElementById('line1').textContent = 'それは自分を動かす';
+                        document.getElementById('line2').textContent = 'それは人を動かす';
+                        document.getElementById('line3').textContent = 'それは世界を変える';
+                        return; // Skip sequence
+                    }
 
                     // 0.5s: Ignition (Video Fade-in & Play)
                     setTimeout(() => {
@@ -132,6 +152,9 @@
                                 videoLayer.classList.remove('is-active'); // Fade out video layer
                                 blackBg.classList.add('is-hidden');       // Fade out black bg
                                 setTimeout(() => video.pause(), 2000);
+                                
+                                // Set Session Flag
+                                sessionStorage.setItem('hasSeenOpening', 'true');
                             }, 500);
                         }, 500);
                     }, 2500);
