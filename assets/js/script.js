@@ -187,14 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Activate Section
                     entry.target.classList.add('is-active');
                     entry.target.classList.add('is-visible');
-                    // Stop observing once visible if we want it to persist?
-                    // The user said "completely outside until leaves" 
-                    // or "maintain state". Let's keep it visible once seen.
-                } else if (entry.boundingClientRect.top > 0) {
-                    // Only remove if it's below the viewport (scrolling up)
-                    // But usually for "persistent" we just don't remove it.
-                    // entry.target.classList.remove('is-active');
-                    // entry.target.classList.remove('is-visible');
+
+                    // Update Body Background Color based on data-bg (Sticky Parallax Support)
+                    const bg = entry.target.getAttribute('data-bg');
+                    if (bg) {
+                        body.style.backgroundColor = bg;
+                    }
                 }
             });
         }, options);
