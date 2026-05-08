@@ -1576,6 +1576,21 @@ body.top-page main section {
   letter-spacing: 0.2em;
   margin: 0;
   text-shadow: 0 0 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.2);
+  transition: color 1s ease, text-shadow 1s ease, filter 1s ease;
+}
+
+/* Burning State */
+.heat-title-serif.is-burning {
+  color: transparent;
+  background: linear-gradient(to bottom, #ffcc00, #ff4500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 
+    0 0 10px rgba(255, 204, 0, 0.8),
+    0 0 20px rgba(255, 69, 0, 0.6),
+    0 0 40px rgba(255, 0, 0, 0.4),
+    0 0 80px rgba(255, 69, 0, 0.2);
+  filter: url(#heat-haze);
 }
 
 /* Layer 1: Typing Text */

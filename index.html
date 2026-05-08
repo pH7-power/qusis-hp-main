@@ -93,7 +93,6 @@
                     const video = document.getElementById('hero-video');
                     const title = document.getElementById('hero-title');
                     const blackBg = document.getElementById('hero-black-bg');
-                    const hero = document.getElementById('hero');
 
                     // 0.5s: Ignition (Video Fade-in & Play)
                     setTimeout(() => {
@@ -114,21 +113,49 @@
                         await new Promise(r => setTimeout(r, 400));
                         await typeText('line3', 'それは世界を変える');
 
-                        // 覚醒 (Typing complete trigger)
+                        // 5.5s approx: 覚醒 (Burning Text Start)
                         setTimeout(() => {
-                            video.classList.remove('is-active'); // Fade out video
-                            blackBg.classList.add('is-hidden');   // Fade out black bg
-                            // Video will stop after fade
-                            setTimeout(() => video.pause(), 1500);
-                        }, 800);
+                            title.classList.add('is-burning'); // Start Burning effect
+                            
+                            // 6.0s: Background Transition
+                            setTimeout(() => {
+                                video.classList.remove('is-active'); // Fade out video
+                                blackBg.classList.add('is-hidden');   // Fade out black bg
+                                setTimeout(() => video.pause(), 2000);
+                            }, 500);
+                        }, 500);
                     }, 2500);
                 }
+
+                // Animate SVG Turbulence for Burning Text
+                const turb = document.querySelector('#turbulence');
+                let frame = 0;
+                function animateHaze() {
+                    if (turb) {
+                        frame += 0.01;
+                        const bfX = 0.01 + Math.sin(frame) * 0.005;
+                        const bfY = 0.03 + Math.cos(frame * 0.8) * 0.01;
+                        turb.setAttribute('baseFrequency', `${bfX} ${bfY}`);
+                    }
+                    requestAnimationFrame(animateHaze);
+                }
+                animateHaze();
 
                 // Start on Load
                 window.addEventListener('load', () => {
                     startHeroSequence();
                 });
             </script>
+
+            <!-- Hidden SVG for Heat Haze Filter -->
+            <svg style="display: none;">
+                <defs>
+                    <filter id="heat-haze">
+                        <feTurbulence id="turbulence" baseFrequency="0.01 0.03" numOctaves="1" seed="1" />
+                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="15" />
+                    </filter>
+                </defs>
+            </svg>
 
             <div class="scroll-indicator">
                 <span class="scroll-text font-en">SCROLL</span>
