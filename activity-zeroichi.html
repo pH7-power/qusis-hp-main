@@ -30,18 +30,47 @@
         </nav>
     </header>
 
-    <main>
         <!-- HERO SECTION -->
-        <section class="zeroichi-hero">
-            <div class="container">
-                <div class="hero-content" data-aos="fade-up">
-                    <span class="hero-label">ACTIVITY DETAIL</span>
-                    <h1 class="hero-title">ゼロイチ <span class="year">2026</span></h1>
-                    <p class="hero-catchcopy">変化を遊べ。</p>
+        <section class="section hero-sub zi-hero">
+            <div class="zi-hero-bg-graphics">
+                <span class="bg-text bg-0">0</span>
+                <span class="bg-text bg-1">1</span>
+            </div>
+            <div id="hero-particles" class="hero-particles"></div>
+            <div class="container hero-content-rich">
+                <h1 class="zi-hero-title" data-aos="fade-down">ZERO ICHI 2026</h1>
+                <div class="zi-main-copy-wrapper" data-aos="zoom-in" data-aos-delay="200">
+                    <p class="zi-main-copy">変化を遊べ。</p>
                 </div>
             </div>
-            <div class="hero-scroll-down"></div>
         </section>
+
+        <script>
+            // Particle Generation
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('hero-particles');
+                const particleCount = 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    
+                    // Random positions and animations
+                    const size = Math.random() * 6 + 2;
+                    p.style.width = `${size}px`;
+                    p.style.height = `${size}px`;
+                    p.style.left = `${Math.random() * 100}%`;
+                    p.style.bottom = `-20px`;
+                    
+                    const delay = Math.random() * 10;
+                    const duration = Math.random() * 5 + 5;
+                    p.style.animationDelay = `${delay}s`;
+                    p.style.animationDuration = `${duration}s`;
+                    
+                    container.appendChild(p);
+                }
+            });
+        </script>
 
         <!-- ABOUT SECTION -->
         <section class="section zi-about">
@@ -56,36 +85,42 @@
                         <p>1ヶ月という限られた時間の中で、チーム結成から市場調査、プロトタイプ開発、そして最終ピッチまでを一気に駆け抜けます。</p>
                     </div>
                     <div class="zi-image" data-aos="zoom-in">
-                        <div class="placeholder-img">
-                            <span class="img-label">ACTIVITY PHOTO</span>
-                        </div>
+                        <img src="images/ゼロイチ説明ページ画像/ABOUT画像.webp" alt="ゼロイチ デモデイ" class="zi-about-img">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PHILOSOPHY SECTION -->
-        <section class="section zi-philosophy bg-light">
+        <!-- FEATURES SECTION -->
+        <section class="section zi-features bg-light">
             <div class="container">
                 <div class="zi-section-header center" data-aos="fade-up">
-                    <h2 class="zi-title">PHILOSOPHY</h2>
-                    <p class="zi-subtitle">AIに任せてはいけない3つのこと</p>
+                    <h2 class="zi-title">FEATURES</h2>
                 </div>
-                <div class="philosophy-cards">
-                    <div class="p-card" data-aos="flip-left" data-aos-delay="100">
-                        <div class="p-num">01</div>
-                        <h3>人に会う</h3>
-                        <p>現場の生の声、熱量、そして偶然の出会い。画面越しでは得られない「一次情報」こそが事業の核になります。</p>
+                <div class="features-grid">
+                    <!-- Feature 1 -->
+                    <div class="f-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="f-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </div>
+                        <h3>インプットコンテンツ</h3>
+                        <p>QUSISの先輩によるインプットコンテンツを通して、事業立案の基本を学びます。ただのインプットではなく、コンテンツを受けた後に行動に移せるように、「行動」をベースにおいた内容を提供します。</p>
                     </div>
-                    <div class="p-card" data-aos="flip-left" data-aos-delay="200">
-                        <div class="p-num">02</div>
-                        <h3>壊れる</h3>
-                        <p>失敗を恐れず、作ったものを壊し、作り直す。その試行錯誤のプロセスこそが、本質的な学びを生みます。</p>
+                    <!-- Feature 2 -->
+                    <div class="f-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="f-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3>メンター制度</h3>
+                        <p>先輩メンバーが1チーム1人付き、即座にFB（フィードバック）をもらえる環境を構築。プレイヤーの行動が最大化されるようサポートします。</p>
                     </div>
-                    <div class="p-card" data-aos="flip-left" data-aos-delay="300">
-                        <div class="p-num">03</div>
-                        <h3>決断する</h3>
-                        <p>不確実な状況下で、最後の一線を越えるのはあなたの意志です。論理を超えた「決断」が物語を動かします。</p>
+                    <!-- Feature 3 -->
+                    <div class="f-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="f-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3>検証費の支給</h3>
+                        <p>前年まで、行動の大きな障害として金銭の問題がありました。交通費やその他検証費として、1チームに4万円を支給することで、行動における大きな障壁を取り除きます。</p>
                     </div>
                 </div>
             </div>
@@ -98,67 +133,94 @@
                     <h2 class="zi-title">TIMELINE</h2>
                 </div>
                 <div class="vertical-timeline">
-                    <!-- June -->
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="t-date">JUNE</div>
+                    <!-- Kick-off Camp -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="t-date">KICK-OFF CAMP</div>
                         <div class="t-content">
-                            <h3>Kick-off & Team Building</h3>
-                            <p>最高の仲間と出会い、世の中の課題を徹底的に洗い出します。アイデアを爆発させるフェーズです。</p>
+                            <h3>キックオフ合宿</h3>
+                            <p>チームビルディング、課題選定を行い、最高のスタートダッシュを切ります。</p>
+                            <img src="images/ゼロイチ説明ページ画像/九大起業部 合宿利用 DSC 4196.webp" alt="キックオフ合宿" class="t-photo">
                         </div>
                     </div>
-                    <!-- Mid June -->
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="t-date">MID JUNE</div>
+                    <!-- First Week -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="t-date">FIRST WEEK</div>
                         <div class="t-content">
-                            <h3>Hypothesis & Prototype</h3>
-                            <p>「本当に必要とされているか？」を検証。ユーザーへのヒアリングを重ね、プロトタイプを形にします。</p>
+                            <h3>FIRST WEEK</h3>
+                            <p>課題仮説の設定と、インタビューを開始します。</p>
+                            <img src="images/ゼロイチ説明ページ画像/1周目.webp" alt="FIRST WEEK" class="t-photo">
                         </div>
                     </div>
-                    <!-- Early July -->
-                    <div class="timeline-item" data-aos="fade-left">
-                        <div class="t-date">EARLY JULY</div>
+                    <!-- Second Week -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="t-date">SECOND WEEK</div>
                         <div class="t-content">
-                            <h3>Brush-up & Pitch Training</h3>
-                            <p>メンターからのフィードバックを受け、事業モデルを磨き上げます。ピッチ構成を練り込み、最高の一分一秒を追求します。</p>
+                            <h3>SECOND WEEK</h3>
+                            <p>インタビューを通した事実からインサイトを見つけていく、これを高速で繰り返す。</p>
+                            <img src="images/ゼロイチ説明ページ画像/2周目画像.webp" alt="SECOND WEEK" class="t-photo">
+                        </div>
+                    </div>
+                    <!-- Mid Camp -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="t-date">MID CAMP</div>
+                        <div class="t-content">
+                            <h3>中間合宿</h3>
+                            <p>これまでの課題仮説、ターゲット設定の整理、そして解決策仮説へと進めていきます。</p>
+                            <img src="images/ゼロイチ説明ページ画像/九大起業部 合宿利用 250621-22.webp" alt="中間合宿" class="t-photo">
+                        </div>
+                    </div>
+                    <!-- Third Week -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="t-date">THIRD WEEK</div>
+                        <div class="t-content">
+                            <h3>THIRD WEEK</h3>
+                            <p>解決策仮説を立て、それを検証していくことをヒアリングを通して繰り返す。</p>
+                            <img src="images/ゼロイチ説明ページ画像/3周目画像.webp" alt="THIRD WEEK" class="t-photo">
+                        </div>
+                    </div>
+                    <!-- Final Week -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="t-date">FINAL WEEK</div>
+                        <div class="t-content">
+                            <h3>FINAL WEEK</h3>
+                            <p>ビジネスモデルや競合比較などを検討していき、デモデイに向けたピッチ資料を作成していく。</p>
+                            <img src="images/ゼロイチ説明ページ画像/4周目画像.webp" alt="FINAL WEEK" class="t-photo">
                         </div>
                     </div>
                     <!-- Demo Day -->
-                    <div class="timeline-item highlight" data-aos="fade-left">
-                        <div class="t-date">LATE JULY</div>
+                    <div class="timeline-item highlight-fgn" data-aos="fade-up">
+                        <div class="t-date">DEMO DAY @FGN</div>
                         <div class="t-content">
                             <h3>DEMO DAY @FGN</h3>
                             <p>福岡市のスタートアップ拠点「FGN」にて、投資家や起業家の前で渾身のプレゼンテーション。1ヶ月の成果を解き放ちます。</p>
+                            <img src="images/ゼロイチ説明ページ画像/デモデイ画像.webp" alt="DEMO DAY" class="t-photo">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- DEMO DAY DETAIL -->
-        <section class="section zi-demoday">
+        <!-- REGISTRATION & NAVIGATION -->
+        <section class="section zi-bottom-nav">
             <div class="container">
-                <div class="demoday-frame" data-aos="zoom-out">
-                    <div class="demoday-info">
-                        <h2 class="zi-title">DEMO DAY</h2>
-                        <p>舞台は、福岡の起業家が集う聖地「FGN（Fukuoka Growth Next）」。<br>
-                        緊張感あふれる会場で、自らの事業を「本気」でぶつける経験は、一生の財産になります。</p>
-                    </div>
-                    <div class="placeholder-img full">
-                        <span class="img-label">FGN DEMO DAY PHOTO</span>
-                    </div>
+                <!-- Luma Registration Area -->
+                <div id="luma-registration-area" data-aos="fade-up">
+                    <p>参加登録（Luma）埋め込みエリア</p>
+                </div>
+
+                <!-- Back to List Button -->
+                <div class="back-to-list-wrapper" data-aos="fade-up" data-aos-delay="100">
+                    <a href="activity.html" class="back-to-list-btn">ACTIVITY一覧に戻る</a>
                 </div>
             </div>
         </section>
 
-        <!-- CTA SECTION -->
-        <section class="section zi-cta">
-            <div class="container center-text">
-                <h2 data-aos="fade-up">あなたの熱を、形に。</h2>
-                <p data-aos="fade-up" data-aos-delay="100">ゼロイチへの参加や、QUSISとの連携に関するお問い合わせはこちらから。</p>
-                <div class="cta-btns" data-aos="fade-up" data-aos-delay="200">
-                    <a href="contact.html" class="btn-primary">CONTACT</a>
-                    <a href="activity.html" class="btn-outline">ACTIVITY一覧</a>
-                </div>
+        <!-- FOOTER CTA -->
+        <section class="footer-cta">
+            <div class="container">
+                <h2>共に、社会に、熱を。</h2>
+                <p>QUSISとの共創、取材依頼など、<br>社会を熱くするあらゆる一歩をお待ちしております。</p>
+                <a href="contact.html" class="cta-btn">CONTACT</a>
             </div>
         </section>
     </main>
