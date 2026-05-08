@@ -8,9 +8,9 @@
 /* Hero Section */
 .zi-hero {
     position: relative;
-    height: 100vh;
-    min-height: 700px;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('../../images/zero-ichi.webp');
+    height: 80vh; /* Match member.html feel */
+    min-height: 600px;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../images/zero-ichi.webp');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -20,7 +20,7 @@
     z-index: 1;
 }
 
-/* 01 Background Graphics (Refined) */
+/* 01 Background Graphics (Ultimate Minimal) */
 .zi-hero-bg-graphics {
     position: absolute;
     top: 50%;
@@ -38,43 +38,27 @@
 .bg-text {
     font-family: var(--font-en);
     font-weight: 900;
-    font-size: 50vw;
+    font-size: 80vw; /* Even larger, overflowing */
     line-height: 1;
     color: transparent;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
     user-select: none;
     letter-spacing: -0.05em;
+    opacity: 1; /* Already handled by text-stroke color */
 }
 
-/* Main Content */
-.hero-content-rich {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-}
-
-.zi-hero-title {
-    font-family: var(--font-en);
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.5em;
-    color: #86cac9;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    opacity: 0.8;
-}
-
+/* Main Content (Static & Sharp) */
 .zi-main-copy {
-    font-size: clamp(3.5rem, 15vw, 8.5rem);
+    font-size: clamp(5rem, 18vw, 15rem);
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1;
     margin: 0;
     display: inline-block;
-    background: linear-gradient(135deg, #008080 0%, #e0e0e0 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--color-teal);
     position: relative;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
+    text-shadow: none;
+    text-transform: none;
 }
 
 /* Section Headers */
