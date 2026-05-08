@@ -33,10 +33,8 @@
         <!-- HERO SECTION -->
         <section class="section hero-sub zi-hero">
             <div class="zi-hero-bg-graphics">
-                <span class="bg-text bg-0">0</span>
-                <span class="bg-text bg-1">1</span>
+                <span class="bg-text">01</span>
             </div>
-            <div id="hero-particles" class="hero-particles"></div>
             <div class="container hero-content-rich">
                 <h1 class="zi-hero-title" data-aos="fade-down">ZERO ICHI 2026</h1>
                 <div class="zi-main-copy-wrapper" data-aos="zoom-in" data-aos-delay="200">
@@ -44,33 +42,6 @@
                 </div>
             </div>
         </section>
-
-        <script>
-            // Particle Generation
-            document.addEventListener('DOMContentLoaded', () => {
-                const container = document.getElementById('hero-particles');
-                const particleCount = 30;
-                
-                for (let i = 0; i < particleCount; i++) {
-                    const p = document.createElement('div');
-                    p.className = 'particle';
-                    
-                    // Random positions and animations
-                    const size = Math.random() * 6 + 2;
-                    p.style.width = `${size}px`;
-                    p.style.height = `${size}px`;
-                    p.style.left = `${Math.random() * 100}%`;
-                    p.style.bottom = `-20px`;
-                    
-                    const delay = Math.random() * 10;
-                    const duration = Math.random() * 5 + 5;
-                    p.style.animationDelay = `${delay}s`;
-                    p.style.animationDuration = `${duration}s`;
-                    
-                    container.appendChild(p);
-                }
-            });
-        </script>
 
         <!-- ABOUT SECTION -->
         <section class="section zi-about">

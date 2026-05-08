@@ -10,7 +10,7 @@
     position: relative;
     height: 100vh;
     min-height: 700px;
-    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('../../images/zero-ichi.webp');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('../../images/zero-ichi.webp');
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -20,65 +20,30 @@
     z-index: 1;
 }
 
-/* 01 Background Graphics */
+/* 01 Background Graphics (Refined) */
 .zi-hero-bg-graphics {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
     pointer-events: none;
     z-index: -1;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bg-text {
-    position: absolute;
     font-family: var(--font-en);
     font-weight: 900;
-    font-size: 60vw;
+    font-size: 50vw;
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
     user-select: none;
-    opacity: 0.5;
-}
-
-.bg-0 {
-    top: -10%;
-    left: -15%;
-    transform: rotate(-15deg);
-}
-
-.bg-1 {
-    bottom: -15%;
-    right: -10%;
-    transform: rotate(15deg);
-}
-
-/* Particles */
-.hero-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 2px; /* Square particles look more digital */
-    animation: rise linear infinite;
-}
-
-@keyframes rise {
-    0% { transform: translateY(0) scale(0); opacity: 0; }
-    20% { opacity: 0.8; }
-    80% { opacity: 0.8; }
-    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    letter-spacing: -0.05em;
 }
 
 /* Main Content */
@@ -90,51 +55,26 @@
 
 .zi-hero-title {
     font-family: var(--font-en);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.5em;
     color: #86cac9;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     text-transform: uppercase;
-}
-
-.zi-main-copy-wrapper {
-    display: inline-block;
-    perspective: 1000px;
+    opacity: 0.8;
 }
 
 .zi-main-copy {
-    font-size: clamp(3.5rem, 15vw, 9rem);
+    font-size: clamp(3.5rem, 15vw, 8.5rem);
     font-weight: 900;
     line-height: 1.1;
     margin: 0;
-    transform: rotate(-3deg);
     display: inline-block;
-    background: linear-gradient(135deg, #008080 0%, #86cac9 40%, #FF4500 100%);
+    background: linear-gradient(135deg, #008080 0%, #e0e0e0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
-    animation: floating 4s ease-in-out infinite;
     position: relative;
-}
-
-/* Ghosting effect */
-.zi-main-copy::before {
-    content: "変化を遊べ。";
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    z-index: -1;
-    background: linear-gradient(135deg, rgba(0, 128, 128, 0.3), rgba(255, 69, 0, 0.3));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: blur(8px);
-    transform: translate(5px, 5px);
-}
-
-@keyframes floating {
-    0%, 100% { transform: rotate(-3deg) translateY(0); }
-    50% { transform: rotate(-3deg) translateY(-25px); }
+    letter-spacing: 0.05em;
 }
 
 /* Section Headers */
