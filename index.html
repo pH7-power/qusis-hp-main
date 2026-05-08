@@ -65,6 +65,29 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Heat Haze SVG Filter -->
+            <svg style="display: none;">
+                <filter id="heat-haze">
+                    <feTurbulence id="turbulence" baseFrequency="0.02" numOctaves="3" seed="1" />
+                    <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" />
+                </filter>
+            </svg>
+
+            <script>
+                const turb = document.querySelector('#turbulence');
+                let frame = 0;
+                function animate() {
+                    frame += 0.01;
+                    // Subtly fluctuate baseFrequency for the haze effect
+                    const bf = 0.015 + Math.sin(frame) * 0.005;
+                    const bf2 = 0.025 + Math.cos(frame * 0.7) * 0.005;
+                    turb.setAttribute('baseFrequency', `${bf} ${bf2}`);
+                    requestAnimationFrame(animate);
+                }
+                animate();
+            </script>
+
             <div class="scroll-indicator">
                 <span class="scroll-text font-en">SCROLL</span>
                 <div class="scroll-line"></div>

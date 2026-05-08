@@ -448,7 +448,7 @@ body.intro-done .intro-logo {
   align-items: center;
   justify-content: flex-start;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .main-copy-group {
@@ -456,6 +456,8 @@ body.intro-done .intro-logo {
   align-items: flex-end;
   gap: clamp(20px, 4vw, 50px);
   text-align: left;
+  /* Blend text with background slides */
+  mix-blend-mode: lighten;
 }
 
 .main-title {
@@ -463,35 +465,32 @@ body.intro-done .intro-logo {
   font-weight: 900;
   line-height: 0.8;
   margin: 0;
-  background: linear-gradient(135deg, #008080 20%, #ff4500 50%, #ffffff 80%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: heatPulse 5s ease-in-out infinite;
+  color: #fff;
+  /* SVG Filter for Haze */
+  filter: url(#heat-haze);
+  /* Strong Glow */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.5), 0 0 80px rgba(0, 128, 128, 0.3);
   letter-spacing: -0.05em;
   padding-bottom: 0.1em;
+  /* Breathing animation remains */
+  animation: heatPulse 5s ease-in-out infinite;
 }
 
 @keyframes heatPulse {
-  0% {
-    background-position: 0% 50%;
-    filter: drop-shadow(0 0 10px rgba(0, 128, 128, 0.4));
+  0%, 100% {
     transform: scale(1);
+    opacity: 0.9;
   }
   50% {
-    background-position: 100% 50%;
-    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 50px rgba(255, 69, 0, 0.6));
-    transform: scale(1.02);
-  }
-  100% {
-    background-position: 0% 50%;
-    filter: drop-shadow(0 0 10px rgba(0, 128, 128, 0.4));
-    transform: scale(1);
+    transform: scale(1.03);
+    opacity: 1;
   }
 }
 
 .sub-copy-group {
   padding-bottom: clamp(10px, 2vw, 30px);
+  /* Ensure sub-copy is sharp and doesn't inherit filter/blend if not needed */
+  mix-blend-mode: normal;
 }
 
 .sub-copy {
@@ -504,11 +503,13 @@ body.intro-done .intro-logo {
   transform: translateY(20px);
   animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   white-space: nowrap;
+  /* No filter here */
+  filter: none !important;
 }
 
-.sub-copy:nth-child(1) { animation-delay: 1s; }
-.sub-copy:nth-child(2) { animation-delay: 1.3s; }
-.sub-copy:nth-child(3) { animation-delay: 1.6s; }
+.sub-copy:nth-child(1) { animation-delay: 1.2s; }
+.sub-copy:nth-child(2) { animation-delay: 1.5s; }
+.sub-copy:nth-child(3) { animation-delay: 1.8s; }
 
 @keyframes slideUpFade {
   to {
@@ -521,25 +522,18 @@ body.intro-done .intro-logo {
   .hero-content {
     justify-content: center;
     text-align: center;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
   }
   .main-copy-group {
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    text-align: center;
   }
   .main-title {
     font-size: 40vw;
-    padding-bottom: 0;
-  }
-  .sub-copy-group {
-    padding-bottom: 0;
   }
   .sub-copy {
     font-size: 1.1rem;
     letter-spacing: 0.2em;
-    transform: translateY(20px);
   }
 }
 
