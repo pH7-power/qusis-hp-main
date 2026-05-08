@@ -135,6 +135,36 @@ document.addEventListener('DOMContentLoaded', () => {
         lastScroll = currentScroll;
     });
 
+    // --- Scroll Animations (Intersection Observer) ---
+    const fadeElements = document.querySelectorAll('.fade-title, .fade-text, .fade-btn, .activity-item, .news-item');
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                scrollObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    fadeElements.forEach(el => scrollObserver.observe(el));
+
+    // Fallback: Force hide intro after 5 seconds
+    if (intro && body.classList.contains('intro-active')) {
+        setTimeout(() => {
+            if (body.classList.contains('intro-active')) {
+                console.log("Intro fallback triggered");
+                body.classList.add('intro-done');
+                body.classList.remove('intro-active');
+            }
+        }, 5000);
+    }
+
     // --- Enhanced Scroll & Transition Logic ---
 
     // Section Transition & Background Blending
@@ -345,4 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
             button.innerText = originalText; // Or "送信"
         });
     }
+
+    // --- Initialization ---
+    initSectionObserver();
+    initScrollControl();
 });
