@@ -45,21 +45,23 @@
     <main>
         <!-- 1. HERO -->
         <section class="hero" id="hero">
-            <!-- 1. Layer 1 (Bottom): スライドショー -->
-            <div class="hero-slider" id="hero-slider">
-                <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
-                <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
-                <div class="hero-slide" style="background-image: url('images/HP使用画像/9.webp');"></div>
-                <div class="hero-slide" style="background-image: url('images/HP使用画像/10.webp');"></div>
-                <div class="hero-slide" style="background-image: url('images/HP使用画像/11.webp');"></div>
-                <div class="hero-slide" style="background-image: url('images/HP使用画像/12.webp');"></div>
-                <div class="hero-slide" style="background-image: url('images/HP使用画像/13.webp');"></div>
+            <!-- 1. Background Slideshow (Masked) -->
+            <div class="hero-mask-container">
+                <!-- Layer 1.5: White Glow Layer -->
+                <div class="hero-text-glow">熱</div>
+                
+                <div class="hero-slider" id="hero-slider">
+                    <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
+                    <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
+                    <div class="hero-slide" style="background-image: url('images/HP使用画像/9.webp');"></div>
+                    <div class="hero-slide" style="background-image: url('images/HP使用画像/10.webp');"></div>
+                    <div class="hero-slide" style="background-image: url('images/HP使用画像/11.webp');"></div>
+                    <div class="hero-slide" style="background-image: url('images/HP使用画像/12.webp');"></div>
+                    <div class="hero-slide" style="background-image: url('images/HP使用画像/13.webp');"></div>
+                </div>
             </div>
 
-            <!-- 2. Layer 2 (Middle): マスクレイヤー -->
-            <h1 class="hero-title-heat">熱</h1>
-            
-            <!-- 3. Layer 3 (Top): サブコピーレイヤー -->
+            <!-- 2. Front Content Layer (Subcopy) -->
             <div class="sub-copy-layer container">
                 <div class="sub-copy-group">
                     <p class="sub-copy">それは人を動かす。</p>
@@ -68,29 +70,37 @@
                 </div>
             </div>
 
-            <!-- 陽炎（ディストーション）SVGフィルター -->
+            <!-- Advanced Mask & Distortion SVG -->
             <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
                 <defs>
+                    <mask id="hero-text-mask" maskUnits="userSpaceOnUse">
+                        <!-- Horizontal Stretch: scale(1.5, 1) -->
+                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" 
+                              class="mask-text-element" 
+                              style="font-family: 'Montserrat', 'Zen Kaku Gothic New', sans-serif; font-weight: 900; fill: white; transform-origin: center; transform: scale(1.5, 1);">熱</text>
+                    </mask>
                     <filter id="heat-haze">
-                        <feTurbulence id="turbulence" baseFrequency="0.015" numOctaves="3" seed="1" />
-                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="30" />
+                        <!-- Emphasizing horizontal distortion: 0.02 0.01 -->
+                        <feTurbulence id="turbulence" baseFrequency="0.02 0.01" numOctaves="3" seed="1" />
+                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="35" />
                     </filter>
                 </defs>
             </svg>
 
             <script>
-                // 陽炎（feTurbulence）のアニメーション
+                // Animate SVG Turbulence
                 const turb = document.querySelector('#turbulence');
                 let frame = 0;
                 function animateHaze() {
                     frame += 0.01;
-                    const bf = 0.015 + Math.sin(frame) * 0.002;
-                    turb.setAttribute('baseFrequency', bf);
+                    const bfX = 0.02 + Math.sin(frame) * 0.003;
+                    const bfY = 0.01 + Math.cos(frame * 0.8) * 0.002;
+                    turb.setAttribute('baseFrequency', `${bfX} ${bfY}`);
                     requestAnimationFrame(animateHaze);
                 }
                 animateHaze();
 
-                // 起動時の表示制御
+                // Reveal Sequence
                 window.addEventListener('load', () => {
                     setTimeout(() => {
                         document.getElementById('hero').classList.add('is-active');

@@ -441,7 +441,7 @@ body.intro-done .intro-logo {
 }
 
 .hero {
-  background: #fff;
+  background: #000;
   position: relative;
   overflow: hidden;
   height: 100vh;
@@ -458,40 +458,52 @@ body.intro-done .intro-logo {
   height: 100%;
   z-index: 1;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out;
+  transition: opacity 2s ease;
 }
 
 .hero.is-active .hero-slider {
   opacity: 1;
 }
 
-.hero-title-heat {
-  font-size: 65vw; /* Extremely huge */
-  font-weight: 900;
-  text-align: center;
-  color: #000; /* Black text creates the 'hole' */
-  background: #fff; /* White bg becomes transparent in screen mode */
-  mix-blend-mode: screen;
+.hero-mask-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  mask-image: url(#hero-text-mask);
+  -webkit-mask-image: url(#hero-text-mask);
+  mask-size: cover;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  filter: url(#heat-haze);
+}
+
+.mask-text-element {
+  font-size: 70vw;
+  line-height: 1;
+}
+
+.hero-text-glow {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  filter: url(#heat-haze);
-  line-height: 1;
-  margin: 0;
-  user-select: none;
+  transform: translate(-50%, -50%) scale(1.5, 1);
+  font-size: 70vw;
+  font-weight: 900;
+  color: transparent;
+  /* Subtle white glow to make text pop even on dark images */
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+  z-index: 6; /* On top of slides, but container is masked */
+  pointer-events: none;
   white-space: nowrap;
+  line-height: 1;
 }
 
 .sub-copy-layer {
   position: relative;
-  z-index: 20; /* Topmost */
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -501,27 +513,25 @@ body.intro-done .intro-logo {
 }
 
 .sub-copy-group {
-  padding-top: 10vh; /* Positioned relative to the huge text */
+  padding-top: 30vh; /* Positioned below the massive horizontal text */
 }
 
 .sub-copy {
-  font-size: clamp(1.2rem, 2.5vw, 2rem);
-  font-weight: 700;
-  margin: 15px 0;
-  color: #000; /* Dark text for contrast on white bg, or keep white if preferred */
-  /* If the bg is white, subcopy should be black/teal for visibility */
-  color: var(--color-teal); 
-  letter-spacing: 0.3em;
+  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+  font-weight: 300;
+  margin: 12px 0;
+  color: #fff;
+  letter-spacing: 0.4em;
   opacity: 0;
   transform: translateY(20px);
   animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   white-space: nowrap;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.sub-copy:nth-child(1) { animation-delay: 1s; }
-.sub-copy:nth-child(2) { animation-delay: 1.3s; }
-.sub-copy:nth-child(3) { animation-delay: 1.6s; }
+.sub-copy:nth-child(1) { animation-delay: 1.5s; }
+.sub-copy:nth-child(2) { animation-delay: 1.8s; }
+.sub-copy:nth-child(3) { animation-delay: 2.1s; }
 
 @keyframes slideUpFade {
   to {
@@ -531,12 +541,16 @@ body.intro-done .intro-logo {
 }
 
 @media (max-width: 768px) {
-  .hero-title-heat {
+  .mask-text-element {
     font-size: 85vw;
   }
+  .hero-text-glow {
+    font-size: 85vw;
+    transform: translate(-50%, -50%) scale(1.2, 1); /* Less stretch on mobile */
+  }
   .sub-copy {
-    font-size: 1.2rem;
-    letter-spacing: 0.15em;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
   }
 }
 
