@@ -77,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Parallax Logic
-    const heroSlides = document.querySelector('.hero-slides');
-    if (heroSlides) {
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider) {
         window.addEventListener('scroll', () => {
             const scrollY = window.scrollY;
             if (scrollY < window.innerHeight) {
-                heroSlides.style.transform = `translateY(${scrollY * 0.5}px)`;
+                heroSlider.style.transform = `translateY(${scrollY * 0.5}px)`;
             }
         });
 

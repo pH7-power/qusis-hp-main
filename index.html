@@ -45,24 +45,29 @@
     <main>
         <!-- 1. HERO -->
         <section class="hero" id="hero">
-            <div class="hero-slides-mask-container">
-                <div class="hero-slides">
-                    <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
-                    <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
-                    <div class="hero-slide" style="background-image: url('images/HP使用画像/9.webp');"></div>
-                    <div class="hero-slide" style="background-image: url('images/HP使用画像/10.webp');"></div>
-                    <div class="hero-slide" style="background-image: url('images/HP使用画像/11.webp');"></div>
-                    <div class="hero-slide" style="background-image: url('images/HP使用画像/12.webp');"></div>
-                    <div class="hero-slide" style="background-image: url('images/HP使用画像/13.webp');"></div>
+            <!-- 1. 最背面: スライドショー本体 -->
+            <div class="hero-slider" id="hero-slider">
+                <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/9.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/10.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/11.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/12.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/13.webp');"></div>
+            </div>
+
+            <!-- 2. 中間層: マスクレイヤー -->
+            <div class="heat-mask-layer">
+                <div class="main-copy-group">
+                    <h1 class="heat-text">熱</h1>
                 </div>
             </div>
             
-            <div class="hero-overlay"></div>
-            <div class="hero-content container" style="pointer-events: none;">
+            <!-- 3. 最前面: サブコピーレイヤー -->
+            <div class="sub-copy-layer container">
                 <div class="main-copy-group">
-                    <!-- The main title '熱' is now primarily visual through the mask, 
-                         but we keep an invisible/stroke version for SEO and potential glow layering if needed. -->
-                    <h1 class="main-title-hidden">熱</h1>
+                    <!-- レイアウト維持用のスペーサー -->
+                    <div class="main-title-spacer">熱</div>
                     <div class="sub-copy-group">
                         <p class="sub-copy">それは人を動かす。</p>
                         <p class="sub-copy">それは自分を動かす。</p>
@@ -71,44 +76,34 @@
                 </div>
             </div>
 
-            <!-- Advanced Text Mask & Heat Distortion SVG -->
+            <!-- SVGフィルター定義 -->
             <svg style="position: absolute; width: 0; height: 0; pointer-events: none;">
                 <defs>
-                    <mask id="hero-text-mask" maskUnits="userSpaceOnUse">
-                        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" 
-                              class="mask-text-element" 
-                              style="font-family: 'Montserrat', 'Zen Kaku Gothic New', sans-serif; font-weight: 900; fill: white;">熱</text>
-                    </mask>
-                    <filter id="heat-distortion">
-                        <feTurbulence id="turbulence" type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
-                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="20" />
+                    <filter id="heat-haze">
+                        <feTurbulence id="turbulence" baseFrequency="0.01 0.02" numOctaves="3" seed="1" />
+                        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" />
                     </filter>
                 </defs>
             </svg>
 
             <script>
-                // Heat Haze Animation
+                // 陽炎アニメーション
                 const turb = document.querySelector('#turbulence');
-                const slidesContainer = document.querySelector('.hero-slides-mask-container');
                 let frame = 0;
-
                 function animateHaze() {
                     frame += 0.01;
-                    const bfX = 0.01 + Math.sin(frame) * 0.003;
-                    const bfY = 0.015 + Math.cos(frame * 0.8) * 0.003;
+                    const bfX = 0.01 + Math.sin(frame) * 0.002;
+                    const bfY = 0.02 + Math.cos(frame * 0.7) * 0.002;
                     turb.setAttribute('baseFrequency', `${bfX} ${bfY}`);
                     requestAnimationFrame(animateHaze);
                 }
+                animateHaze();
 
-                // Initial Sequence
-                window.addEventListener('DOMContentLoaded', () => {
-                    // Start haze animation
-                    animateHaze();
-                    
-                    // Delay to show the masked slideshow (Stage 2)
+                // 起動シーケンス
+                window.addEventListener('load', () => {
                     setTimeout(() => {
-                        slidesContainer.classList.add('is-visible');
-                    }, 800);
+                        document.querySelector('.hero').classList.add('is-active');
+                    }, 500);
                 });
             </script>
 
