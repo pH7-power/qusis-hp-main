@@ -1624,37 +1624,27 @@ body.top-page main section {
 .typing-line {
   font-size: clamp(1rem, 3vw, 1.5rem);
   font-weight: 700;
-  color: #fff;
+  color: #ffffff !important; /* Always white */
   letter-spacing: 0.3em;
   margin: 0;
   min-height: 1.5em;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.9), 0 0 5px rgba(0, 0, 0, 0.5);
   font-family: var(--font-jp);
-  transition: color 1s ease, text-shadow 1s ease, filter 1s ease;
+  transition: opacity 1s ease;
 }
 
-/* Shared Burning State */
-.heat-title-serif.is-burning,
-.typing-line.is-burning {
+/* Shared Burning State - ONLY for Title now */
+.heat-title-serif.is-burning {
   color: transparent !important;
   background: linear-gradient(to bottom, #ffcc00, #ff4500);
   -webkit-background-clip: text;
   background-clip: text;
   filter: url(#heat-haze);
-}
-
-.heat-title-serif.is-burning {
   text-shadow: 
     0 0 10px rgba(255, 204, 0, 0.8),
     0 0 30px rgba(255, 69, 0, 0.6),
     0 0 60px rgba(255, 0, 0, 0.4),
     0 0 100px rgba(255, 69, 0, 0.2);
-}
-
-.typing-line.is-burning {
-  text-shadow: 
-    0 0 5px rgba(255, 204, 0, 0.8),
-    0 0 15px rgba(255, 69, 0, 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {

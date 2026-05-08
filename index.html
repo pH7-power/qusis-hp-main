@@ -121,12 +121,8 @@
 
                         // 5.5s approx: 覚醒 (Burning Text Start)
                         setTimeout(() => {
-                            // Apply Burning to Title
+                            // Apply Burning ONLY to Title
                             title.querySelector('.heat-title-serif').classList.add('is-burning');
-                            // Apply Burning to Messages
-                            document.querySelectorAll('.typing-line').forEach(line => {
-                                line.classList.add('is-burning');
-                            });
                             
                             // 6.0s: Background Transition
                             setTimeout(() => {
