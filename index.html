@@ -93,7 +93,7 @@
                     { id: 'line3', text: 'それは世界を変える' }
                 ];
 
-                async function typeText(elementId, text, speed = 100) {
+                async function typeText(elementId, text, speed = 80) {
                     const el = document.getElementById(elementId);
                     for (let i = 0; i < text.length; i++) {
                         el.textContent += text.charAt(i);
@@ -102,19 +102,18 @@
                 }
 
                 async function startHeroSequence() {
-                    // 1. Typing Phase (0s - 3s approx)
+                    // 1. Typing Phase
                     await typeText('line1', lines[0].text);
-                    await new Promise(r => setTimeout(r, 300));
+                    await new Promise(r => setTimeout(r, 400));
                     await typeText('line2', lines[1].text);
-                    await new Promise(r => setTimeout(r, 300));
+                    await new Promise(r => setTimeout(r, 400));
                     await typeText('line3', lines[2].text);
 
-                    // 2. Heat Mask Awakening (3.5s+)
+                    // 2. Heat Mask Awakening (Triggered after typing completes)
                     setTimeout(() => {
                         document.getElementById('hero').classList.add('is-revealed');
-                        // Also trigger slider visibility
                         document.getElementById('hero').classList.add('is-active');
-                    }, 500);
+                    }, 600);
                 }
 
                 // Animate SVG Turbulence (Constant)
@@ -131,7 +130,7 @@
 
                 // Start on Load
                 window.addEventListener('load', () => {
-                    setTimeout(startHeroSequence, 500);
+                    setTimeout(startHeroSequence, 800);
                 });
             </script>
 
