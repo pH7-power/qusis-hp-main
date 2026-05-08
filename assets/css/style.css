@@ -442,13 +442,13 @@ body.intro-done .intro-logo {
 
 .hero-content {
   position: relative;
-  z-index: 3;
+  z-index: 10;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   pointer-events: none;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 60%);
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .main-copy-group {
@@ -459,16 +459,35 @@ body.intro-done .intro-logo {
 }
 
 .main-title {
-  font-size: clamp(8rem, 25vw, 20rem);
+  font-size: clamp(8rem, 25vw, 25rem);
   font-weight: 900;
   line-height: 0.8;
   margin: 0;
-  background: linear-gradient(to bottom, #fff 20%, var(--color-teal) 100%);
+  background: linear-gradient(135deg, #008080 20%, #ff4500 50%, #ffffff 80%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 30px rgba(0, 128, 128, 0.3));
+  animation: heatPulse 5s ease-in-out infinite;
   letter-spacing: -0.05em;
   padding-bottom: 0.1em;
+}
+
+@keyframes heatPulse {
+  0% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 10px rgba(0, 128, 128, 0.4));
+    transform: scale(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 50px rgba(255, 69, 0, 0.6));
+    transform: scale(1.02);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: drop-shadow(0 0 10px rgba(0, 128, 128, 0.4));
+    transform: scale(1);
+  }
 }
 
 .sub-copy-group {
@@ -477,24 +496,24 @@ body.intro-done .intro-logo {
 
 .sub-copy {
   font-size: clamp(1.1rem, 2.2vw, 1.8rem);
-  font-weight: 700;
+  font-weight: 300;
   margin: 12px 0;
   color: var(--color-white);
-  letter-spacing: 0.3em;
+  letter-spacing: 0.4em;
   opacity: 0;
-  transform: translateX(30px);
-  animation: slideRightFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(20px);
+  animation: slideUpFade 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   white-space: nowrap;
 }
 
-.sub-copy:nth-child(1) { animation-delay: 0.8s; }
-.sub-copy:nth-child(2) { animation-delay: 1.1s; }
-.sub-copy:nth-child(3) { animation-delay: 1.4s; }
+.sub-copy:nth-child(1) { animation-delay: 1s; }
+.sub-copy:nth-child(2) { animation-delay: 1.3s; }
+.sub-copy:nth-child(3) { animation-delay: 1.6s; }
 
-@keyframes slideRightFade {
+@keyframes slideUpFade {
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -502,6 +521,7 @@ body.intro-done .intro-logo {
   .hero-content {
     justify-content: center;
     text-align: center;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 80%);
   }
   .main-copy-group {
     flex-direction: column;
@@ -510,17 +530,16 @@ body.intro-done .intro-logo {
     text-align: center;
   }
   .main-title {
-    font-size: 35vw;
+    font-size: 40vw;
     padding-bottom: 0;
   }
   .sub-copy-group {
     padding-bottom: 0;
   }
   .sub-copy {
-    font-size: 1.2rem;
-    letter-spacing: 0.15em;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
     transform: translateY(20px);
-    animation-name: slideUpFade;
   }
 }
 
