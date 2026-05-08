@@ -1740,22 +1740,6 @@ body.top-page main section {
   display: none !important;
 }
 
-.skip-opening .hero-black-bg,
-.skip-opening .hero-video-layer {
-  display: none !important;
-}
-
-.skip-opening .hero-title-layer,
-.skip-opening .heat-title-serif {
-  transition: none !important;
-  opacity: 1 !important;
-}
-
-.skip-opening .typing-line {
-  transition: none !important;
-  opacity: 1 !important;
-}
-
 @media (prefers-reduced-motion: reduce) {
 
   html,
