@@ -136,11 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Scroll Animations (Intersection Observer) ---
-    const fadeElements = document.querySelectorAll('.fade-title, .fade-text, .fade-btn, .activity-item, .news-item');
+    const fadeElements = document.querySelectorAll('.fade-title, .fade-text, .fade-btn, .activity-item, .news-item, .reveal-up');
     
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -100px 0px'
     };
 
     const scrollObserver = new IntersectionObserver((entries) => {
