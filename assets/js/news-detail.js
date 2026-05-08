@@ -96,13 +96,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="detail-meta">
                         <span class="detail-date">${formatDate(article.date)}</span>
                         <div class="detail-share-icons">
-                            <a href="#" title="X (Twitter)">
+                            <a href="${article.X || 'https://x.com/QUSIS_'}" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                             </a>
-                            <a href="#" title="Instagram">
+                            <a href="${article.instagram || 'https://www.instagram.com/qusis2025_/'}" target="_blank" rel="noopener noreferrer" title="Instagram">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                             </a>
-                            <a href="#" title="Copy Link">
+                            <a href="#" id="copy-link" title="Copy Link">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                             </a>
                         </div>
@@ -122,6 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </article>
         `;
+
+        // Add Copy Link logic
+        const copyBtn = document.getElementById('copy-link');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('リンクをコピーしました！');
+                });
+            });
+        }
     };
 
     init();
