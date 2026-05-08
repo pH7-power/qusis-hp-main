@@ -21,6 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const header = document.querySelector('.header');
+    const isTopPage = document.body.classList.contains('top-page');
+    const heroSection = document.getElementById('hero');
+
+    // Initial Hide for Top Page
+    if (isTopPage && window.scrollY < 100) {
+        header.classList.add('hide');
+    }
 
     // Intro Logic
     const intro = document.getElementById('intro');
@@ -106,8 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Header Scroll Logic
     let lastScroll = 0;
+
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
+        
+        if (isTopPage && heroSection) {
+            const heroHeight = heroSection.offsetHeight;
+            // Hide header if HERO is more than 50% visible (scroll < 50% of height)
+            if (currentScroll < heroHeight * 0.5) {
+                header.classList.add('hide');
+                lastScroll = currentScroll;
+                return;
+            }
+        }
+
+        // Normal Behavior (or after HERO threshold)
         if (currentScroll > lastScroll && currentScroll > 100) {
             header.classList.add('hide');
         } else {
