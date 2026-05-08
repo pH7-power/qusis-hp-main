@@ -378,5 +378,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initialization ---
     initSectionObserver();
-    initScrollControl();
+    // initScrollControl(); // Disabled to return to normal scrolling
 });

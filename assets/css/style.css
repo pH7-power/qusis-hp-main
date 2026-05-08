@@ -1457,9 +1457,9 @@ body.intro-done .intro-logo {
 /* Scroll Snap & Stage Transitions - JS Controlled (TOP PAGE ONLY) */
 html.top-page,
 body.top-page {
-  height: 100%;
-  overflow: hidden;
-  /* Hijack scroll */
+  height: auto;
+  overflow: visible;
+  /* Back to normal scroll */
 }
 
 /* Default for other pages */
@@ -1467,63 +1467,92 @@ html,
 body {
   overflow-x: hidden;
   /* Prevent horizontal scroll */
-  /* Remove height 100% and overflow hidden from global */
 }
 
 body.top-page main {
-  height: 100%;
-  transition: transform 0.7s cubic-bezier(.22, 1, .36, 1);
+  height: auto;
+  transition: none;
 }
 
 body.top-page main section {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
-  /* scroll-snap-align: start; REMOVED */
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
 
   /* Section Transition (Scale/Opacity effect) */
-  opacity: 1; /* Changed from 0 to 1 to prevent blank page */
+  opacity: 1; 
   transform: translateY(0);
   transition: opacity 0.7s cubic-bezier(.22, 1, .36, 1), transform 0.7s cubic-bezier(.22, 1, .36, 1);
 }
 
 .hero {
+  height: 100vh !important;
   opacity: 1 !important;
   transform: none !important;
+  background: #000;
 }
 
-main section.is-active {
-  opacity: 1;
-  transform: translateY(0);
+.hero-overlay-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
 }
 
-/* Delayed Fade-in Elements */
-.fade-title,
-.fade-text,
-.fade-btn {
+#heat-text {
+  font-size: 45vw;
+  transform-origin: center;
+  transform: scaleX(1.4);
+}
+
+.masked-rect {
+  filter: url(#heat-haze);
+}
+
+.hero-sub-copy-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 10;
+  text-align: center;
+  pointer-events: none;
+}
+
+.sequential-copy-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sequential-copy {
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.4em;
+  margin: 0;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(30px);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
+  animation: slideUpFadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-main section.is-active .fade-title {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s ease 0ms, transform 0.7s ease 0ms;
-}
+.sequential-copy:nth-child(1) { animation-delay: 1.0s; }
+.sequential-copy:nth-child(2) { animation-delay: 1.5s; }
+.sequential-copy:nth-child(3) { animation-delay: 2.0s; }
 
-main section.is-active .fade-text {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s ease 200ms, transform 0.7s ease 200ms;
-}
-
-main section.is-active .fade-btn {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.7s ease 400ms, transform 0.7s ease 400ms;
+@keyframes slideUpFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
