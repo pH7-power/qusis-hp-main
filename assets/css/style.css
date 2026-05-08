@@ -415,6 +415,7 @@ body.intro-done .intro-logo {
   margin-top: -1px; /* Avoid gap */
   overflow: hidden;
   z-index: 5;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5); /* Overlay shadow start */
 }
 
 .fire-divider-svg {
@@ -1588,7 +1589,7 @@ body.top-page main section {
   position: relative;
   z-index: 10;
   background-color: #ffffff; /* Default background */
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3); /* Overlay shadow */
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5); /* Overlay shadow */
 
   /* Section Transition (Opacity effect only, no transform to avoid sticky issues) */
   opacity: 1; 
