@@ -1573,7 +1573,7 @@ body.top-page main section {
   justify-content: center;
   position: relative;
   z-index: 10;
-  background-color: #ffffff; /* Default background */
+  /* background-color handled via data-bg in script.js or specific classes */
   box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Overlay shadow */
 
   /* Section Transition (Opacity effect only, no transform to avoid sticky issues) */

@@ -188,10 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     entry.target.classList.add('is-active');
                     entry.target.classList.add('is-visible');
 
-                    // Update Body Background Color based on data-bg (Sticky Parallax Support)
+                    // Update Section Background Color based on data-bg (Sticky Parallax Support)
                     const bg = entry.target.getAttribute('data-bg');
                     if (bg) {
-                        body.style.backgroundColor = bg;
+                        entry.target.style.backgroundColor = bg;
                     }
                 }
             });
