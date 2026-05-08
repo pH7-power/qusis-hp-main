@@ -377,7 +377,7 @@ body.intro-done .intro-logo {
 .font-afacad { font-family: 'Afacad Flux', sans-serif; }
 
 .philosophy-section {
-  background-color: #4b5563; /* Charcoal grey */
+  background-color: #ffffff; /* Changed to white */
   padding: 100px 0;
 }
 
@@ -392,7 +392,8 @@ body.intro-done .intro-logo {
   background: #ffffff;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee; /* Added border for white background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
 }
