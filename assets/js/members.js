@@ -30,7 +30,7 @@ const membersData = [
         nameEn: "Sakai Kota",
         roles: ["Member Manager", "PR/ Media Manager", "Self Resource Manager"],
         faculty: "理学部2年",
-        image: "assets/images/member-sakai.webp"
+        image: "images/坂井洸太.webp"
     },
     {
         id: "kimoto",
@@ -38,7 +38,7 @@ const membersData = [
         nameEn: "Kimoto Yu",
         roles: ["Member Manager"],
         faculty: "経済学部2年",
-        image: "assets/images/member-kimoto.webp"
+        image: "images/木元優.webp"
     },
     {
         id: "hirayama",
@@ -46,7 +46,7 @@ const membersData = [
         nameEn: "Hirayama Sara",
         roles: ["PR/ Media Manager", "Self Resource Manager"],
         faculty: "共創学部2年",
-        image: "assets/images/member-hirayama.webp"
+        image: "images/平山紗楽.webp"
     },
     {
         id: "sakoziri",
@@ -54,7 +54,7 @@ const membersData = [
         nameEn: "Sakoziri Reito",
         roles: ["Space Manager"],
         faculty: "工学部2年",
-        image: "assets/images/member-sakoziri.webp"
+        image: "images/迫尻礼杜.webp"
     },
     {
         id: "nakanome",
@@ -62,7 +62,7 @@ const membersData = [
         nameEn: "Nakanome Yu",
         roles: ["Project Manager"],
         faculty: "共創学部2年",
-        image: "assets/images/member-nakanome.webp"
+        image: "images/中ノ目ゆう.webp"
     },
     {
         id: "kuroiwa",
@@ -70,7 +70,7 @@ const membersData = [
         nameEn: "Kuroiwa Kosuke",
         roles: ["Project Manager"],
         faculty: "経済学部2年",
-        image: "assets/images/member-kuroiwa.webp"
+        image: "images/黒岩康佑.webp"
     },
     {
         id: "kinoshita",
@@ -78,7 +78,7 @@ const membersData = [
         nameEn: "Kinoshita Marika",
         roles: ["Project Manager"],
         faculty: "共創学部2年",
-        image: "assets/images/member-kinoshita.webp"
+        image: "images/木下茉莉花.webp"
     }
 ];
 
