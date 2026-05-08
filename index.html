@@ -45,7 +45,21 @@
     <main>
         <!-- 1. HERO -->
         <section class="hero" id="hero">
-            <!-- 1. Background Video Layer -->
+            <!-- 5. Background Slideshow Layer (Hidden initially) -->
+            <div class="hero-slider" id="hero-slider">
+                <div class="hero-slide active" style="background-image: url('images/HP使用画像/7.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/8.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/9.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/10.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/11.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/12.webp');"></div>
+                <div class="hero-slide" style="background-image: url('images/HP使用画像/13.webp');"></div>
+            </div>
+
+            <!-- 4. Black Background Layer -->
+            <div class="hero-black-bg" id="hero-black-bg"></div>
+
+            <!-- 3. Background Video Layer -->
             <video id="hero-video" class="hero-video" muted loop playsinline>
                 <source src="images/火の玉 炎のエフェクト.mp4" type="video/mp4">
             </video>
@@ -55,7 +69,7 @@
                 <p class="heat-title-serif">熱</p>
             </div>
 
-            <!-- 3. Typing Layer -->
+            <!-- 1. Typing Layer -->
             <div class="hero-typing-layer">
                 <div class="sequential-copy-group">
                     <p class="typing-line" id="line1"></p>
@@ -78,6 +92,7 @@
                 async function startHeroSequence() {
                     const video = document.getElementById('hero-video');
                     const title = document.getElementById('hero-title');
+                    const blackBg = document.getElementById('hero-black-bg');
                     const hero = document.getElementById('hero');
 
                     // 0.5s: Ignition (Video Fade-in & Play)
@@ -98,6 +113,14 @@
                         await typeText('line2', 'それは人を動かす');
                         await new Promise(r => setTimeout(r, 400));
                         await typeText('line3', 'それは世界を変える');
+
+                        // 覚醒 (Typing complete trigger)
+                        setTimeout(() => {
+                            video.classList.remove('is-active'); // Fade out video
+                            blackBg.classList.add('is-hidden');   // Fade out black bg
+                            // Video will stop after fade
+                            setTimeout(() => video.pause(), 1500);
+                        }, 800);
                     }, 2500);
                 }
 
