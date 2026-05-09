@@ -394,37 +394,26 @@ body.intro-done .intro-logo {
 .font-comfortaa { font-family: 'Comfortaa', cursive; }
 .font-afacad { font-family: 'Afacad Flux', sans-serif; }
 
-/* --- DEFINITION SECTION (Immersive 第2セクション) --- */
+/* --- DEFINITION SECTION (Clean White 第2セクション) --- */
 .definition-section {
   position: relative;
-  background-image: url('../images/HP使用画像.webp');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Parallax effect */
-  padding: 200px 0; /* Extra spacious padding */
+  background-color: #ffffff; /* Reverted to white */
+  padding: 180px 0;
   overflow: hidden;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
 }
 
-/* Dark Overlay */
+/* Remove Overlay */
 .definition-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Thin black overlay */
-  z-index: 1;
+  display: none;
 }
 
 .definition-section .container {
   position: relative;
-  z-index: 10; /* Above overlay and animation */
+  z-index: 10;
   text-align: center;
 }
 
@@ -438,9 +427,9 @@ body.intro-done .intro-logo {
 .definition-line {
   font-family: 'Afacad Flux', sans-serif;
   font-weight: 700;
-  font-size: clamp(2rem, 5vw, 3.8rem); /* Impactful but responsive */
-  color: #FFFFFF;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  color: #111; /* Dark text for white background */
+  text-shadow: none;
   line-height: 1.4;
   margin: 0;
   letter-spacing: 0.05em;
