@@ -849,7 +849,8 @@ body.intro-done .intro-logo {
 .poster-card-info p {
   margin: 5px 0 0;
   font-size: 0.9rem;
-  opacity: 0.9;
+  color: var(--color-white); /* Ensure pure white */
+  opacity: 1; /* Maximum visibility */
 }
 
 /* Legacy Member Styles (potentially unused or for member.html if shared) */
