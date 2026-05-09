@@ -510,19 +510,7 @@ body.intro-done .intro-logo {
   100% { transform: scale(1.1) rotate(10deg); opacity: 1; }
 }
 
-.heat-accent::before {
-  content: '';
-  position: absolute;
-  bottom: 10%;
-  left: -5%;
-  width: 110%;
-  height: 45%;
-  background-color: #FF4500;
-  opacity: 0.2;
-  border-radius: 100% 60% 100% 40%;
-  transform: rotate(-3deg);
-  z-index: -1;
-}
+
 
 /* Responsive */
 @media (max-width: 768px) {
