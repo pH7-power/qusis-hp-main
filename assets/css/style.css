@@ -830,10 +830,9 @@ body.intro-done .intro-logo {
   padding: 30px 20px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
   color: var(--color-white);
-  opacity: 0;
+  opacity: 1; /* Always visible */
   transition: 0.4s ease;
-  transform: translateY(20px);
-  /* Slide up effect preparation */
+  transform: translateY(0); /* No offset */
 }
 
 .poster-card:hover .poster-card-info {
