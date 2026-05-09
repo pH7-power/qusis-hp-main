@@ -2528,10 +2528,11 @@ body.modal-open {
 .activity-item {
   background: #ffffff;
   padding: 30px;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  transition: var(--trans-fast);
+  border: 2px solid #e0e0e0; /* Thicker and darker border */
+  border-radius: 12px; /* Slightly more rounded */
+  transition: all 0.3s ease;
   text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Add subtle default shadow for better depth */
 }
 
 .activity-item:hover {
