@@ -725,11 +725,8 @@ body.intro-done .intro-logo {
 
 /* Activity Summary Section */
 .activity-summary {
-  background-image: url('../images/activity-bg.webp');
-  background-size: cover;
-  background-position: center;
   position: relative;
-  color: var(--color-white);
+  /* color: var(--color-white); */ /* The bg is now light gray, maybe keep dark text? */
   overflow: hidden;
 }
 
@@ -1525,8 +1522,7 @@ body.intro-done .intro-logo {
 /* Add overlay for readability */
 .concept::before,
 .about-summary::before,
-.co-creation-summary::before,
-.activity-summary::before {
+.co-creation-summary::before {
   content: '';
   position: absolute;
   top: 0;
