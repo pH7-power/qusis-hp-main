@@ -394,48 +394,72 @@ body.intro-done .intro-logo {
 .font-comfortaa { font-family: 'Comfortaa', cursive; }
 .font-afacad { font-family: 'Afacad Flux', sans-serif; }
 
-/* --- DEFINITION SECTION (Clean White 第2セクション) --- */
+/* --- DEFINITION SECTION (3D Immersive Interaction) --- */
 .definition-section {
   position: relative;
-  background-color: #ffffff; /* Reverted to white */
-  padding: 180px 0;
+  background-color: #050505; /* Deep black for fire/white text impact */
+  padding: 120px 0;
   overflow: hidden;
   z-index: 10;
+  min-height: 90vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-/* Remove Overlay */
-.definition-section::before {
-  display: none;
 }
 
 .definition-section .container {
   position: relative;
-  z-index: 10;
-  text-align: center;
+  z-index: 20;
 }
 
-.definition-message-stack {
+/* 楕円形レイアウト用グリッド */
+.immersive-interaction-grid {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* 人物カード（白角丸） */
+.interaction-card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+  max-width: 320px;
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.interaction-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* 中央メッセージ */
+.interaction-message {
+  flex: 1.2;
+  text-align: center;
+  z-index: 15;
 }
 
 .definition-line {
   font-family: 'Afacad Flux', sans-serif;
   font-weight: 700;
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  color: #111; /* Dark text for white background */
-  text-shadow: none;
-  line-height: 1.4;
-  margin: 0;
-  letter-spacing: 0.05em;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #FFFFFF;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+  margin: 10px 0;
 }
 
-/* Special 'Heat' Accent */
+/* Heat Accent */
 .heat-accent {
   color: #FF4500;
   position: relative;
@@ -446,52 +470,69 @@ body.intro-done .intro-logo {
 .heat-accent::before {
   content: '';
   position: absolute;
-  bottom: 10%;
+  bottom: 0;
   left: -10%;
   width: 120%;
-  height: 80%;
+  height: 90%;
   background: radial-gradient(ellipse at center, rgba(255, 69, 0, 0.4) 0%, transparent 75%);
   filter: blur(10px);
   z-index: -1;
-  animation: flickerHeat 2s infinite alternate;
+  animation: flickerHeat 1.5s infinite alternate;
 }
 
-@keyframes flickerHeat {
-  0% { transform: scale(1) rotate(-1deg); opacity: 0.5; }
-  100% { transform: scale(1.2) rotate(1deg); opacity: 0.9; }
-}
-
-/* --- Fire Animation Layer --- */
-.fire-animation-wrapper {
+/* --- 3D Fire Loop --- */
+.fire-loop-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 5; /* Between overlay and container */
+  z-index: 5;
 }
 
-.fireball {
+.fireball-3d {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle, #ffcc00 10%, #ff4500 50%, transparent 80%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #ffd000 10%, #ff4500 50%, transparent 80%);
   border-radius: 50%;
-  filter: blur(2px);
-  box-shadow: 0 0 20px #ff4500, 0 0 50px rgba(255, 69, 0, 0.4);
-  /* Custom path weaving through the people in the image */
-  offset-path: path('M 900 300 C 800 150, 400 150, 200 300 C 50 450, 300 550, 500 450 C 700 350, 950 450, 900 300');
+  filter: blur(3px);
+  box-shadow: 0 0 20px #ff4500, 0 0 40px rgba(255, 69, 0, 0.6);
+  /* 立体的な8の字軌道（カードを縫うように） */
+  offset-path: path('M 100,250 C 100,50 400,50 500,250 C 600,450 900,450 900,250 C 900,50 600,50 500,250 C 400,450 100,450 100,250');
   offset-distance: 0%;
-  animation: moveFire 15s linear infinite, flickerFire 0.15s infinite alternate;
+  animation: moveFire3D 10s linear infinite, flickerFire 0.1s infinite alternate;
 }
 
-@keyframes moveFire {
+@keyframes moveFire3D {
   0% { offset-distance: 0%; z-index: 5; opacity: 1; filter: blur(2px); transform: scale(1); }
-  25% { offset-distance: 25%; z-index: 4; opacity: 0.8; filter: blur(4px); transform: scale(0.8); }
-  50% { offset-distance: 50%; z-index: 6; opacity: 1; filter: blur(1px); transform: scale(1.1); }
-  75% { offset-distance: 75%; z-index: 4; opacity: 0.8; filter: blur(4px); transform: scale(0.8); }
+  25% { offset-distance: 25%; z-index: 2; opacity: 0.6; filter: blur(8px); transform: scale(0.7); } /* 背面へ */
+  50% { offset-distance: 50%; z-index: 15; opacity: 1; filter: blur(1px); transform: scale(1.2); } /* 前面中央 */
+  75% { offset-distance: 75%; z-index: 2; opacity: 0.6; filter: blur(8px); transform: scale(0.7); } /* 背面へ */
   100% { offset-distance: 100%; z-index: 5; opacity: 1; filter: blur(2px); transform: scale(1); }
+}
+
+/* Responsive Ellipse */
+@media (max-width: 768px) {
+  .immersive-interaction-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .interaction-card {
+    max-width: 240px;
+  }
+  
+  .interaction-card:nth-child(1) { order: 1; } /* 女性 上 */
+  .interaction-message { order: 2; }
+  .interaction-card:nth-child(3) { order: 3; } /* 男性 下 */
+  
+  .fireball-3d {
+    offset-path: path('M 250,50 C 50,50 50,450 250,450 C 450,450 450,850 250,850 C 50,850 50,450 250,450 C 450,450 450,50 250,50');
+    width: 40px;
+    height: 40px;
+  }
 }
 
 @keyframes flickerFire {
