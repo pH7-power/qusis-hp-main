@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     labels: aboutData.compositionData.grade.map(d => d.name),
                     datasets: [{
                         data: aboutData.compositionData.grade.map(d => d.value),
-                        backgroundColor: ['#a7e4e3', '#20B2AA', '#48D1CC', '#AFEEEE', '#E0FFFF', '#5F9EA0', '#4682B4', '#B0C4DE'],
+                        backgroundColor: ['#71dddc', '#20B2AA', '#48D1CC', '#AFEEEE', '#E0FFFF', '#5F9EA0', '#4682B4', '#B0C4DE'],
                         borderWidth: 0
                     }]
                 },
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     labels: aboutData.compositionData.faculty.map(d => d.name),
                     datasets: [{
                         data: aboutData.compositionData.faculty.map(d => d.value),
-                        backgroundColor: ['#006666', '#a7e4e3', '#20B2AA', '#66CDAA', '#AFEEEE'],
+                        backgroundColor: ['#006666', '#71dddc', '#20B2AA', '#66CDAA', '#AFEEEE'],
                         borderWidth: 0
                     }]
                 },
