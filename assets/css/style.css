@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Afacad+Flux:wght@700&display=swap');
 
 :root {
   /* Colors */
@@ -394,39 +394,120 @@ body.intro-done .intro-logo {
 .font-comfortaa { font-family: 'Comfortaa', cursive; }
 .font-afacad { font-family: 'Afacad Flux', sans-serif; }
 
-/* --- DEFINITION SECTION (New 第2セクション) --- */
+/* --- DEFINITION SECTION (Immersive 第2セクション) --- */
 .definition-section {
-  background-color: #ffffff;
-  padding: 180px 0;
-  text-align: center;
   position: relative;
+  background-image: url('../images/HP使用画像.webp');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Parallax effect */
+  padding: 200px 0; /* Extra spacious padding */
+  overflow: hidden;
   z-index: 10;
-  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for straight boundary */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+/* Dark Overlay */
+.definition-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Thin black overlay */
+  z-index: 1;
+}
+
+.definition-section .container {
+  position: relative;
+  z-index: 10; /* Above overlay and animation */
+  text-align: center;
 }
 
 .definition-message-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 20px;
 }
 
 .definition-line {
   font-family: 'Afacad Flux', sans-serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900;
-  color: #1e1e1e;
-  line-height: 1.3;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.8rem); /* Impactful but responsive */
+  color: #FFFFFF;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  line-height: 1.4;
   margin: 0;
   letter-spacing: 0.05em;
 }
 
-/* "熱" Accent (Brush Stroke) */
+/* Special 'Heat' Accent */
 .heat-accent {
+  color: #FF4500;
   position: relative;
   display: inline-block;
   padding: 0 5px;
-  color: #FF4500; /* Direct color for impact */
+}
+
+.heat-accent::before {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -10%;
+  width: 120%;
+  height: 80%;
+  background: radial-gradient(ellipse at center, rgba(255, 69, 0, 0.4) 0%, transparent 75%);
+  filter: blur(10px);
+  z-index: -1;
+  animation: flickerHeat 2s infinite alternate;
+}
+
+@keyframes flickerHeat {
+  0% { transform: scale(1) rotate(-1deg); opacity: 0.5; }
+  100% { transform: scale(1.2) rotate(1deg); opacity: 0.9; }
+}
+
+/* --- Fire Animation Layer --- */
+.fire-animation-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5; /* Between overlay and container */
+}
+
+.fireball {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ffcc00 10%, #ff4500 50%, transparent 80%);
+  border-radius: 50%;
+  filter: blur(2px);
+  box-shadow: 0 0 20px #ff4500, 0 0 50px rgba(255, 69, 0, 0.4);
+  /* Custom path weaving through the people in the image */
+  offset-path: path('M 900 300 C 800 150, 400 150, 200 300 C 50 450, 300 550, 500 450 C 700 350, 950 450, 900 300');
+  offset-distance: 0%;
+  animation: moveFire 15s linear infinite, flickerFire 0.15s infinite alternate;
+}
+
+@keyframes moveFire {
+  0% { offset-distance: 0%; z-index: 5; opacity: 1; filter: blur(2px); transform: scale(1); }
+  25% { offset-distance: 25%; z-index: 4; opacity: 0.8; filter: blur(4px); transform: scale(0.8); }
+  50% { offset-distance: 50%; z-index: 6; opacity: 1; filter: blur(1px); transform: scale(1.1); }
+  75% { offset-distance: 75%; z-index: 4; opacity: 0.8; filter: blur(4px); transform: scale(0.8); }
+  100% { offset-distance: 100%; z-index: 5; opacity: 1; filter: blur(2px); transform: scale(1); }
+}
+
+@keyframes flickerFire {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.9; }
+  100% { transform: scale(1.1) rotate(10deg); opacity: 1; }
 }
 
 .heat-accent::before {
