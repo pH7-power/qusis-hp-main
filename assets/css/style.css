@@ -2,7 +2,7 @@
 
 :root {
   /* Colors */
-  --color-teal: #008080;
+  --color-teal: #a7e4e3;
   /* Adjust based on logo if needed, using a standard teal for now */
   --color-orange: #FF4500;
   /* Heat accent */
@@ -2257,7 +2257,7 @@ body.modal-open {
   z-index: 100; /* 最前面に固定 */
   
   /* エネルギッシュな多色グラデーション */
-  background: linear-gradient(to right, #008080, #ffffff 50%, #FF4500);
+  background: linear-gradient(to right, #a7e4e3, #ffffff 50%, #FF4500);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
