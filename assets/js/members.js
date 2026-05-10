@@ -90,10 +90,18 @@ const membersData = [
     {
         id: "nakanome",
         nameJa: "中ノ目 ゆう",
-        nameEn: "Nakanome Yu",
+        nameEn: "Nakanome Yuu",
         roles: ["Project Manager"],
         faculty: "共創学部2年",
-        image: "images/中ノ目ゆう.webp"
+        image: "images/中ノ目ゆう.webp",
+        history: `2025/06 先生の探究学習プログラム「先タン」登壇
+2025/07 インキュベーションプログラム「ゼロイチ」準優勝＆オーディエンス賞
+2025/07 株式会社Playflow_インターン
+2025/08 ラオスの教育ボランティア参加
+2025/09 CM参画_修羅プロ担当
+2025/09 株式会社へいせい_インターン
+2025/12 昭和レトロ仮装イベントナガトレトロ_イベントMC
+2026/04 ゼロイチAward_MC`
     },
     {
         id: "kuroiwa",
