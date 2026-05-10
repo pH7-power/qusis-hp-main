@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }, {
                 root: null,
-                rootMargin: "-45% 0px -45% 0px", // Targeted middle area
+                rootMargin: "-40% 0px -40% 0px", // Widen target area to 20% of viewport height
                 threshold: 0
             });
 
