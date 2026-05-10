@@ -3010,9 +3010,9 @@ body.modal-open {
   .modal-img-container {
     position: sticky !important;
     top: 0 !important;
-    z-index: 5 !important;
+    z-index: 10 !important; /* Higher than info to keep on top */
     flex: none !important;
-    height: 40vh !important; /* Slightly smaller for more text space */
+    height: 40vh !important;
     background: #000 !important;
     display: flex !important;
     align-items: center !important;
@@ -3025,11 +3025,11 @@ body.modal-open {
   }
   .modal-info {
     padding: 20px !important;
-    overflow-y: visible !important; /* No separate scroll */
+    overflow-y: visible !important;
     flex: none !important;
-    background: #fff !important; /* Ensure text background is solid */
+    background: #fff !important;
     position: relative !important;
-    z-index: 6 !important;
+    z-index: 1 !important; /* Lower than image container */
   }
   .modal-info-header {
     top: 0 !important; /* Adjust sticky header if present */
