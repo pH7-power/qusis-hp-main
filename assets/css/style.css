@@ -1128,7 +1128,7 @@ body.intro-done .intro-logo {
 
 .chart-wrapper {
   position: relative;
-  height: 250px;
+  height: 350px; /* Increased to accommodate bottom legend */
   width: 100%;
 }
 

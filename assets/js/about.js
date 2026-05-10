@@ -21,6 +21,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const renderCharts = () => {
         // Doughnut Charts (unchanged)
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 12,
+                        padding: 15,
+                        font: {
+                            family: "'Montserrat', sans-serif",
+                            size: 11
+                        }
+                    }
+                }
+            },
+            cutout: '65%'
+        };
+
         const gradeCtx = document.getElementById('chart-grade');
         if (gradeCtx) {
             new Chart(gradeCtx, {
@@ -33,12 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         borderWidth: 0
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { family: "'Montserrat', sans-serif" } } } },
-                    cutout: '60%'
-                }
+                options: chartOptions
             });
         }
 
@@ -50,16 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     labels: aboutData.compositionData.faculty.map(d => d.name),
                     datasets: [{
                         data: aboutData.compositionData.faculty.map(d => d.value),
-                        backgroundColor: ['#006666', '#71dddc', '#20B2AA', '#66CDAA', '#AFEEEE'],
+                        backgroundColor: ['#006666', '#71dddc', '#20B2AA', '#66CDAA', '#AFEEEE', '#5F9EA0', '#4682B4', '#B0C4DE'],
                         borderWidth: 0
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { boxWidth: 12 } } },
-                    cutout: '60%'
-                }
+                options: chartOptions
             });
         }
 
