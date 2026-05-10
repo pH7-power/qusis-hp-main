@@ -54,7 +54,15 @@ const membersData = [
         nameEn: "Kimoto Yu",
         roles: ["Member Manager"],
         faculty: "経済学部2年",
-        image: "images/木元優.webp"
+        image: "images/木元優.webp",
+        history: `2025/07 IVS NEXTスタッフ参加
+2025/07 QUSISインキュベーションプログラム「ゼロイチ」_準優勝＆オーディエンス賞
+2025/07 CM参画_部室活動日担当
+2025/08-09 リクルート主催プログラム「WOW BASE」_美容師の離職率改善策アイデアの提案
+2025/10 QUSIS部室活動日企画_「話し方講座」
+2025/11 QSHOPチーム（ウクライナ料理「ボルシチ」を九大祭で出店）参画_最優秀賞獲得
+2026/02 Q-dai Rainbow Link参画_広報担当
+2026/03 特定非営利法人セルプセンター福岡_インターン`
     },
     {
         id: "hirayama",
