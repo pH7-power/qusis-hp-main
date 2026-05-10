@@ -110,34 +110,48 @@ document.addEventListener('DOMContentLoaded', () => {
         const historyRows = document.querySelectorAll('.history-row');
 
         if (fixedYear && historyRows.length > 0) {
-            // Scroll interaction for history rows (Screen-based trigger)
-            const historyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Remove active from all rows
-                        historyRows.forEach(r => r.classList.remove('active'));
-                        // Set active on intersecting row
-                        entry.target.classList.add('active');
-                        // Update Fixed Year display with a subtle animation
-                        if (entry.target.dataset.year && fixedYear.textContent !== entry.target.dataset.year) {
-                            fixedYear.style.opacity = '0';
-                            fixedYear.style.transform = 'translateY(-50%) scale(0.8)';
-                            
-                            setTimeout(() => {
-                                fixedYear.textContent = entry.target.dataset.year;
-                                fixedYear.style.opacity = '1';
-                                fixedYear.style.transform = 'translateY(-50%) scale(1)';
-                            }, 150);
-                        }
-                    }
-                });
-            }, {
-                root: null,
-                rootMargin: "-40% 0px -40% 0px", // Widen target area to 20% of viewport height
-                threshold: 0
-            });
+            const isMobile = window.innerWidth <= 768;
 
-            historyRows.forEach(row => historyObserver.observe(row));
+            const updateActiveRow = (row) => {
+                // Remove active from all rows
+                historyRows.forEach(r => r.classList.remove('active'));
+                // Set active on selected row
+                row.classList.add('active');
+                // Update Fixed Year display with a subtle animation
+                if (row.dataset.year && fixedYear.textContent !== row.dataset.year) {
+                    fixedYear.style.opacity = '0';
+                    fixedYear.style.transform = 'translateY(-50%) scale(0.8)';
+                    
+                    setTimeout(() => {
+                        fixedYear.textContent = row.dataset.year;
+                        fixedYear.style.opacity = '1';
+                        fixedYear.style.transform = 'translateY(-50%) scale(1)';
+                    }, 150);
+                }
+            };
+
+            if (isMobile) {
+                // Mobile: Scroll interaction (Screen-based trigger)
+                const historyObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateActiveRow(entry.target);
+                        }
+                    });
+                }, {
+                    root: null,
+                    rootMargin: "-40% 0px -40% 0px", // Targeted middle area
+                    threshold: 0
+                });
+                historyRows.forEach(row => historyObserver.observe(row));
+            } else {
+                // PC: Hover interaction (Cursor-based trigger)
+                historyRows.forEach(row => {
+                    row.addEventListener('mouseenter', () => updateActiveRow(row));
+                });
+                // Default: Activate first row on load for PC
+                if (historyRows.length > 0) updateActiveRow(historyRows[0]);
+            }
         }
 
         // Shared Value Scroll Experience
