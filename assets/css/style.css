@@ -2863,17 +2863,17 @@ body.modal-open {
     flex-direction: row !important;
     min-height: 200px !important; /* Significantly increased height */
     height: auto !important;
-    align-items: center !important;
+    align-items: stretch !important; /* Fill vertical space */
     margin-bottom: 25px !important;
     background: #fff !important;
     border-radius: 12px !important;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    overflow: hidden !important; /* Ensure image respects border radius */
   }
 
   .poster-img {
     width: 35% !important;
-    height: 200px !important; /* Match min-height */
-    min-height: 200px !important;
+    height: auto !important; /* Stretch to fill container */
     object-fit: cover !important;
     filter: none !important; /* Ensure visibility */
   }
