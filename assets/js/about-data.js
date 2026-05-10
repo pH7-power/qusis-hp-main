@@ -36,7 +36,7 @@ const aboutData = {
     historyData: [
         { year: "2017", title: "設立", description: "九大起業部を創設。学生発スタートアップ創出を目指す" },
         { year: "2022", title: "リブランディング", description: "QUSIS（九大起業部）に名称変更。学生主体のコミュニティ運営に変化" },
-        { year: "2024", title: "体制確立", description: "コミュニティのMVCを再策定し、”熱”を重視したコミュニティ体制へ" },
+        { year: "2024", title: "体制確立", description: "コミュニティのMVCを再策定し、”熱”を重視した新体制を確立" },
         { year: "2026", title: "更なる成長へ", description: "メンバーが78名となり、新たなコミュニティへ変革を目指す" }
     ]
 };
