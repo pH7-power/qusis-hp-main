@@ -11,6 +11,7 @@
     <style>
         :root {
             --color-shura-accent: #FF4500; /* Heat Orange */
+            --color-shura-teal: #008080;   /* Specified Shura Teal */
         }
         
         .shura-hero {
@@ -18,7 +19,7 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 150px 0 100px;
+            padding: 180px 0 120px;
             text-align: center;
         }
 
@@ -30,55 +31,119 @@
             background-color: white;
         }
 
-        /* 4A Feedback Styles */
-        .rules-section {
-            background-color: #f9f9f9;
-            padding: 100px 0;
+        /* FEATURES Grid Override */
+        .shura-features .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .rules-grid {
+        @media (max-width: 768px) {
+            .shura-features .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 4A MINDS Styles */
+        .minds-section {
+            background-color: #ffffff;
+            padding: 120px 0;
+        }
+
+        .minds-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
         }
 
-        .rule-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        .mind-block {
+            padding: 50px;
+            border-radius: 24px;
             transition: all 0.3s ease;
-            border-top: 4px solid var(--color-teal);
-            position: relative;
+            height: 100%;
         }
 
-        .rule-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 69, 0, 0.1);
-            border-top-color: var(--color-shura-accent);
+        .mind-block.speaker {
+            background-color: #fcfcfc;
+            border: 1px solid #f0f0f0;
         }
 
-        .rule-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--color-teal);
+        .mind-block.listener {
+            background-color: #f8f9f9;
+            border: 1px solid #eef0f0;
+        }
+
+        .mind-role {
             font-family: var(--font-en);
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
         }
 
-        .rule-card:hover h3 {
+        .mind-block.speaker .mind-role {
+            background: rgba(255, 69, 0, 0.1);
             color: var(--color-shura-accent);
         }
 
-        .rule-card p {
+        .mind-block.listener .mind-role {
+            background: rgba(0, 128, 128, 0.1);
+            color: var(--color-shura-teal);
+        }
+
+        .mind-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .mind-item {
+            margin-bottom: 35px;
+        }
+
+        .mind-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .mind-item-title {
+            font-family: var(--font-en);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-shura-teal);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .mind-item p {
             font-size: 0.95rem;
-            color: #666;
-            line-height: 1.6;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .mind-keyword {
+            color: var(--color-shura-accent);
+            font-weight: 700;
+        }
+
+        @media (max-width: 992px) {
+            .minds-container {
+                grid-template-columns: 1fr;
+            }
+            .mind-block {
+                padding: 40px 30px;
+            }
         }
 
         /* Timeline Styles */
         .shura-timeline {
-            padding: 100px 0;
+            padding: 120px 0;
+            background-color: #fdfdfd;
         }
 
         .phase-container {
@@ -89,7 +154,7 @@
         .phase-item {
             display: flex;
             gap: 40px;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
             position: relative;
         }
 
@@ -175,8 +240,8 @@
         <!-- HERO SECTION -->
         <section class="shura-hero">
             <div class="container">
-                <p class="hero-label" style="font-family: var(--font-label); letter-spacing: 0.2em; margin-bottom: 20px;">ACTIVITY - SHURA PROGRAM</p>
-                <h1 class="zi-title" data-aos="fade-down" style="font-size: 4rem;">修羅プログラム</h1>
+                <p class="hero-label" style="font-family: var(--font-en); letter-spacing: 0.2em; margin-bottom: 20px;">ACTIVITY - SHURA PROGRAM</p>
+                <h1 class="zi-title" data-aos="fade-down" style="font-size: clamp(3rem, 8vw, 4.5rem);">修羅プログラム</h1>
                 <p class="lead" data-aos="fade-up" style="font-size: 1.5rem; font-weight: 700; margin-top: 20px;">自らのキャリア仮説を検証し、行動する場所</p>
             </div>
         </section>
@@ -201,7 +266,7 @@
         </section>
 
         <!-- FEATURES SECTION -->
-        <section class="section zi-features bg-light">
+        <section class="section zi-features bg-light shura-features">
             <div class="container">
                 <div class="zi-section-header center" data-aos="fade-up">
                     <h2 class="zi-title">FEATURES</h2>
@@ -217,8 +282,8 @@
                     </div>
                     <!-- Feature 2 -->
                     <div class="f-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="f-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        <div class="f-icon" style="color: var(--color-shura-accent); background: rgba(255, 69, 0, 0.05);">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.5 4 6.5 2 2 3 5.5 3 8.5a7 7 0 0 1-14 0c0-3 1-6 3-9C6 11 7 13 8.5 14.5z"></path></svg>
                         </div>
                         <h3>期間限定の「修羅場」</h3>
                         <p>全員合意の上で、あえて厳しい環境＝「温泉モード」へ。熱く鋭い議論を交わし続けることで、短期間で劇的な成長を遂げることができます。</p>
@@ -243,33 +308,45 @@
             </div>
         </section>
 
-        <!-- SPECIAL RULES: 4A FEEDBACK -->
-        <section class="rules-section">
+        <!-- 4A MINDS SECTION -->
+        <section class="minds-section">
             <div class="container">
                 <div class="zi-section-header center" data-aos="fade-up">
-                    <h2 class="zi-title">SPECIAL RULES</h2>
-                    <p style="margin-top: 10px; font-weight: 700;">NETFLIX流 フィードバックルール「4A」</p>
+                    <h2 class="zi-title">4A MINDS</h2>
+                    <p style="margin-top: 10px; font-weight: 700; color: #555;">修羅のフィードバック作法</p>
                 </div>
-                <div class="rules-grid">
-                    <!-- Rule 1 -->
-                    <div class="rule-card" data-aos="fade-left" data-aos-delay="100">
-                        <h3>Aim to Assist</h3>
-                        <p>相手を助けるために指摘する。批判ではなく、相手の成長と事業の成功を心から願う姿勢が前提です。</p>
+                
+                <div class="minds-container">
+                    <!-- Speaker -->
+                    <div class="mind-block speaker" data-aos="fade-right">
+                        <span class="mind-role">Speaker - 放つ側のマインド</span>
+                        <h3>伝える側としての作法</h3>
+                        
+                        <div class="mind-item">
+                            <span class="mind-item-title">Aim to Assist</span>
+                            <p>相手を助けるために。壊すためではなく、<span class="mind-keyword">より高く積むための愛</span>を持って指摘する。</p>
+                        </div>
+                        
+                        <div class="mind-item">
+                            <span class="mind-item-title">Actionable</span>
+                            <p>行動変化を促す。「ダサい」ではなく、<span class="mind-keyword">「ここをこう変えてみては？」</span>と具体的に提案する。</p>
+                        </div>
                     </div>
-                    <!-- Rule 2 -->
-                    <div class="rule-card" data-aos="fade-left" data-aos-delay="200">
-                        <h3>Actionable</h3>
-                        <p>具体的な行動変化を提案する。抽象的な指摘に留まらず、次に何をすべきかを明確にします。</p>
-                    </div>
-                    <!-- Rule 3 -->
-                    <div class="rule-card" data-aos="fade-left" data-aos-delay="300">
-                        <h3>Appreciate</h3>
-                        <p>指摘に感謝する。耳の痛いフィードバックこそが成長の種であることを理解し、真摯に受け止めます。</p>
-                    </div>
-                    <!-- Rule 4 -->
-                    <div class="rule-card" data-aos="fade-left" data-aos-delay="400">
-                        <h3>Accept or Discard</h3>
-                        <p>採用するかは自分で決める。最終的な意思決定者は自分。すべての指摘を鵜呑みにせず、自らの責任で選択します。</p>
+
+                    <!-- Listener -->
+                    <div class="mind-block listener" data-aos="fade-left">
+                        <span class="mind-role">Listener - 受ける側のマインド</span>
+                        <h3>受け取る側としての作法</h3>
+                        
+                        <div class="mind-item">
+                            <span class="mind-item-title">Appreciate</span>
+                            <p>感謝する。言いにくい指摘をしてくれた相手と、<span class="mind-keyword">熱い温泉（議論の場）</span>に感謝を示す。</p>
+                        </div>
+                        
+                        <div class="mind-item">
+                            <span class="mind-item-title">Accept or Discard</span>
+                            <p>取捨選択。アドバイスを<span class="mind-keyword">「取り入れるか、捨てるか」</span>は自分で決める。</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -335,10 +412,10 @@
                 </div>
                 <div class="footer-nav">
                     <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="activity.html">Activity</a></li>
-                        <li><a href="member.html">Member</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="activity.html">ACTIVITY</a></li>
+                        <li><a href="member.html">MEMBER</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
                     </ul>
                 </div>
             </div>
