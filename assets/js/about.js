@@ -135,12 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const historyObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
+                            // On mobile, once it enters, it stays visible
+                            entry.target.classList.add('is-visible');
+                            // Update the "active" year (even if sticky year is hidden, it triggers animations)
                             updateActiveRow(entry.target);
                         }
                     });
                 }, {
                     root: null,
-                    rootMargin: "-40% 0px -40% 0px", // Targeted middle area
+                    rootMargin: "0px 0px -15% 0px", // Trigger earlier when coming from bottom
                     threshold: 0
                 });
                 historyRows.forEach(row => historyObserver.observe(row));

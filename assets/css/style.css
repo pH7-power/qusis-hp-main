@@ -1349,12 +1349,15 @@ body.intro-done .intro-logo {
 .history-row {
   margin-bottom: 100px;
   opacity: 0.3;
-  transition: opacity 0.3s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
   position: relative;
 }
 
-.history-row.active {
+.history-row.active,
+.history-row.is-visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* Bullet point */
