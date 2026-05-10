@@ -2998,10 +2998,21 @@ body.modal-open {
 
 /* Mobile Modal Adjustments */
 @media (max-width: 767px) {
+  .modal-content {
+    max-height: 90vh !important;
+    width: 95% !important;
+  }
+  .modal-body {
+    display: block !important;
+    overflow-y: auto !important; /* Entire body scrolls */
+    -webkit-overflow-scrolling: touch;
+  }
   .modal-img-container {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 5 !important;
     flex: none !important;
-    height: auto !important;
-    max-height: 50vh !important;
+    height: 40vh !important; /* Slightly smaller for more text space */
     background: #000 !important;
     display: flex !important;
     align-items: center !important;
@@ -3009,16 +3020,21 @@ body.modal-open {
   }
   .modal-img-container img {
     width: 100% !important;
-    height: auto !important;
-    max-height: 50vh !important;
-    object-fit: contain !important; /* Entire photo visible */
+    height: 100% !important;
+    object-fit: contain !important;
   }
   .modal-info {
-    padding: 30px 20px;
+    padding: 20px !important;
+    overflow-y: visible !important; /* No separate scroll */
+    flex: none !important;
+    background: #fff !important; /* Ensure text background is solid */
+    position: relative !important;
+    z-index: 6 !important;
   }
   .modal-info-header {
-    top: -30px !important;
-    margin-top: -30px !important;
+    top: 0 !important; /* Adjust sticky header if present */
+    margin-top: 0 !important;
+    padding-top: 0 !important;
   }
 }
 
