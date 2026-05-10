@@ -196,33 +196,48 @@
 
 
 
-        <section id="definition" class="section definition-section" data-bg="#ffffff">
+        <!-- 2. ABOUT -->
+        <section id="about" class="section about-section" data-bg="#ffffff" style="background: #ffffff; padding: 100px 0;">
             <div class="container">
-                <div class="fire-interaction-container">
-                    <!-- 3D Fireball (Direct sibling for Z-index interweaving) -->
-                    <div class="fireball-seed"></div>
-
-                    <!-- Woman Card -->
-                    <div class="fire-card female" data-aos="fade-right">
-                        <img src="images/熱人間 女.webp" alt="QUSIS Member Female">
-                    </div>
-
-                    <!-- Message -->
-                    <div class="fire-message">
-                        <div class="definition-message-stack">
-                            <p class="definition-line" data-aos="fade-up" data-aos-delay="200">多様なメンバーが</p>
-                            <p class="definition-line" data-aos="fade-up" data-aos-delay="400">互いの「<span class="heat-accent">熱</span>」を</p>
-                            <p class="definition-line" data-aos="fade-up" data-aos-delay="600">“応援し合う”コミュニティ</p>
+                <div class="about-grid">
+                    <div class="about-content" data-aos="fade-right">
+                        <h2 class="section-title text-teal" style="text-align: left; margin-bottom: 30px;">ABOUT</h2>
+                        <div class="about-text">
+                            <p class="lead" style="font-size: 1.5rem; font-weight: 700; color: var(--color-teal); margin-bottom: 20px;">「熱」を応援し、共創するコミュニティ</p>
+                            <p style="margin-bottom: 20px; line-height: 1.8;">QUSISは、九州大学公認の起業部として、学生が自らのアイデアを形にし、社会に価値を還元するための共創コミュニティです。</p>
+                            <p style="margin-bottom: 30px; line-height: 1.8;">多様なバックグラウンドを持つメンバーが、互いの「熱」を応援し合い、共に挑戦を続ける場所。私たちは、単なる部活動を超えた、次世代のリーダーを輩出するプラットフォームを目指しています。</p>
+                            <a href="about.html" class="btn-primary" style="display: inline-block;">LEARN MORE</a>
                         </div>
                     </div>
-
-                    <!-- Man Card -->
-                    <div class="fire-card male" data-aos="fade-left">
-                        <img src="images/熱人間 男.webp" alt="QUSIS Member Male">
+                    <div class="about-visual" data-aos="fade-left">
+                        <div class="about-img-container">
+                            <img src="images/舞台上画像.webp" alt="QUSIS Community" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <style>
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 60px;
+                align-items: center;
+            }
+            @media (max-width: 992px) {
+                .about-grid {
+                    grid-template-columns: 1fr;
+                    gap: 40px;
+                }
+                .about-content {
+                    order: 2;
+                }
+                .about-visual {
+                    order: 1;
+                }
+            }
+        </style>
 
         <!-- 3. Activity (2x2 Grid) -->
         <section class="section activity-summary" style="background: #ffffff;" data-bg="#ffffff">
