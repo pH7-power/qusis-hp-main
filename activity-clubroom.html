@@ -24,16 +24,36 @@
 
         .archive-card {
             background: white;
-            padding: 30px;
+            padding: 0; /* Image spans full width */
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border-left: 4px solid var(--color-teal);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 4px solid transparent;
         }
 
         .archive-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 128, 128, 0.1);
+            border-bottom-color: var(--color-teal);
+        }
+
+        .archive-img-wrapper {
+            width: 100%;
+        }
+
+        .archive-img-wrapper .t-photo-placeholder {
+            margin-top: 0;
+            border-radius: 0;
+            border: none;
+            background: #f8f9f9;
+        }
+
+        .archive-body {
+            padding: 25px;
+            flex: 1;
         }
 
         .archive-tag {
@@ -155,24 +175,39 @@
                 <div class="archive-grid">
                     <!-- Archive 1 -->
                     <div class="archive-card" data-aos="fade-up" data-aos-delay="100">
-                        <span class="archive-tag">Entrepreneur Session</span>
-                        <h3>「挑戦の火は、どこから始まったのか」</h3>
-                        <p class="archive-speaker">登壇者：飯塚統さん（メドメイン株式会社 創業）</p>
-                        <p class="archive-content">九大起業部出身の先輩から、創業期の苦労やオフィス見学を通して、実際の仕事を感じる貴重な経験を得ました。</p>
+                        <div class="archive-img-wrapper">
+                            <div class="t-photo-placeholder"></div>
+                        </div>
+                        <div class="archive-body">
+                            <span class="archive-tag">Entrepreneur Session</span>
+                            <h3>「挑戦の火は、どこから始まったのか」</h3>
+                            <p class="archive-speaker">登壇者：飯塚統さん（メドメイン株式会社 創業）</p>
+                            <p class="archive-content">九大起業部出身の先輩から、創業期の苦労やオフィス見学を通して、実際の仕事を感じる貴重な経験を得ました。</p>
+                        </div>
                     </div>
                     <!-- Archive 2 -->
                     <div class="archive-card" data-aos="fade-up" data-aos-delay="200">
-                        <span class="archive-tag">Member Workshop</span>
-                        <h3>話し方講座</h3>
-                        <p class="archive-speaker">登壇者：木元優（QUSISメンバー）</p>
-                        <p class="archive-content">放送部での経験を活かし、ピッチの準備や話し方の基礎・実践を学びました。メンバーの特技を還元した活動。</p>
+                        <div class="archive-img-wrapper">
+                            <div class="t-photo-placeholder"></div>
+                        </div>
+                        <div class="archive-body">
+                            <span class="archive-tag">Member Workshop</span>
+                            <h3>話し方講座</h3>
+                            <p class="archive-speaker">登壇者：木元優（QUSISメンバー）</p>
+                            <p class="archive-content">放送部での経験を活かし、ピッチの準備や話し方の基礎・実践を学びました。メンバーの特技を還元した活動。</p>
+                        </div>
                     </div>
                     <!-- Archive 3 -->
                     <div class="archive-card" data-aos="fade-up" data-aos-delay="300">
-                        <span class="archive-tag">Career & Strategy</span>
-                        <h3>未来を創る事業開発とキャリア戦略</h3>
-                        <p class="archive-speaker">登壇者：織田一彰さん（スローガン株式会社 共同創業者）</p>
-                        <p class="archive-content">プロの起業家から見た日本と世界について。自身の経験に基づくリアルでインパクトのあるお話をいただきました。</p>
+                        <div class="archive-img-wrapper">
+                            <div class="t-photo-placeholder"></div>
+                        </div>
+                        <div class="archive-body">
+                            <span class="archive-tag">Career & Strategy</span>
+                            <h3>未来を創る事業開発とキャリア戦略</h3>
+                            <p class="archive-speaker">登壇者：織田一彰さん（スローガン株式会社 共同創業者）</p>
+                            <p class="archive-content">プロの起業家から見た日本と世界について。自身の経験に基づくリアルでインパクトのあるお話をいただきました。</p>
+                        </div>
                     </div>
                 </div>
             </div>
