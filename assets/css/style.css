@@ -2904,28 +2904,40 @@ body.modal-open {
   }
 
   .member-grid .poster-card {
-    width: 280px !important; /* Hug the image / consistent width */
-    height: auto !important;
-    min-height: 0 !important; /* Reset activity style */
+    position: relative !important;
     display: flex !important;
     flex-direction: column !important;
-    background: #fff !important;
-    border-radius: 8px !important;
+    width: 280px !important;
+    min-height: 380px !important; /* Portrait poster style */
+    height: auto !important;
+    margin-bottom: 30px !important;
+    border-radius: 12px !important;
     overflow: hidden !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
   }
 
-  .member-grid .poster-card img {
+  .member-grid img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 3 / 4 !important; /* Portrait poster style */
+    height: 100% !important;
+    z-index: 1 !important;
     object-fit: cover !important;
+    filter: brightness(0.8) !important;
   }
 
   .member-grid .poster-card-info {
-    padding: 15px !important;
-    background: #fff !important;
-    color: #333 !important;
-    min-height: 0 !important;
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    padding: 20px !important;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9)) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    min-height: 380px !important;
+    text-align: left !important;
   }
 
   .poster-container .poster-title {
@@ -2945,14 +2957,16 @@ body.modal-open {
   }
 
   .member-grid .poster-title {
-    color: #333 !important;
-    font-size: 1.3rem !important;
+    color: #fff !important; /* White on mobile overlay */
+    font-size: 1.4rem !important;
     margin-bottom: 5px !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
   }
 
   .member-grid .poster-caption {
-    color: #666 !important;
-    font-size: 0.9rem !important;
+    color: rgba(255, 255, 255, 0.9) !important; /* White on mobile overlay */
+    font-size: 0.95rem !important;
     line-height: 1.4 !important;
     margin-bottom: 10px !important;
   }
@@ -2985,8 +2999,19 @@ body.modal-open {
 /* Mobile Modal Adjustments */
 @media (max-width: 767px) {
   .modal-img-container {
-    flex: none;
-    height: 35vh;
+    flex: none !important;
+    height: auto !important;
+    max-height: 50vh !important;
+    background: #000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .modal-img-container img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 50vh !important;
+    object-fit: contain !important; /* Entire photo visible */
   }
   .modal-info {
     padding: 30px 20px;
