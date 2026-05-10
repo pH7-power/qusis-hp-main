@@ -2861,30 +2861,32 @@ body.modal-open {
 
   .poster-card {
     flex-direction: row; /* Landscape */
-    height: 120px;
+    height: 160px; /* Increased height */
     align-items: center;
+    margin-bottom: 20px; /* Extra breathing room between cards */
   }
 
   .poster-img {
-    width: 40%;
+    width: 35%; /* Slightly smaller image to give more room to text */
     height: 100%;
     object-fit: cover;
   }
 
   .poster-card-info {
-    width: 60%;
-    padding: 10px;
+    width: 65%;
+    padding: 20px; /* More padding for breathing room */
     text-align: left;
   }
 
   .poster-title {
-    font-size: 1.1rem;
-    margin-bottom: 2px;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
   }
 
   .poster-caption {
-    font-size: 0.75rem;
-    margin-bottom: 5px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
