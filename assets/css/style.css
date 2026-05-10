@@ -2860,52 +2860,63 @@ body.modal-open {
   }
 
   .poster-card {
-    flex-direction: row !important;
-    min-height: 200px !important; /* Significantly increased height */
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 250px !important;
     height: auto !important;
-    align-items: stretch !important; /* Fill vertical space */
-    margin-bottom: 25px !important;
-    background: #fff !important;
+    margin-bottom: 30px !important;
     border-radius: 12px !important;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
-    overflow: hidden !important; /* Ensure image respects border radius */
+    overflow: hidden !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3) !important;
   }
 
   .poster-img {
-    width: 35% !important;
-    height: auto !important; /* Stretch to fill container */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
     object-fit: cover !important;
-    filter: none !important; /* Ensure visibility */
+    filter: brightness(0.7) !important; /* Dim for readability */
   }
 
   .poster-card-info {
-    width: 65% !important;
-    padding: 25px !important; /* More padding for breathing room */
-    text-align: left !important;
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    padding: 60px 20px 20px 20px !important; /* Top padding to push text down */
+    background: linear-gradient(transparent, rgba(0,0,0,0.9)) !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
+    justify-content: flex-end !important;
+    min-height: 250px !important;
+    text-align: left !important;
   }
 
   .poster-title {
-    font-size: 1.4rem !important;
-    margin-bottom: 10px !important;
-    color: #333 !important;
+    color: #fff !important;
+    font-size: 1.6rem !important;
+    margin-bottom: 8px !important;
+    font-weight: 800 !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5) !important;
   }
 
   .poster-caption {
-    font-size: 0.95rem !important;
-    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
     margin-bottom: 15px !important;
-    color: #666 !important;
-    display: block !important; /* Remove line clamp for better readability if space allows */
-    -webkit-line-clamp: none !important;
+    display: block !important;
   }
 
   .click-info {
-    font-size: 0.85rem !important;
-    color: var(--color-teal) !important;
+    align-self: flex-end !important; /* Place at bottom right */
+    color: #71dddc !important; /* Bright teal for contrast */
+    font-size: 0.9rem !important;
     font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
   }
 
   /* Member Section (Already defined above) */
