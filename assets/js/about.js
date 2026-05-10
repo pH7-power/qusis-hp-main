@@ -101,21 +101,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const historyRows = document.querySelectorAll('.history-row');
 
         if (fixedYear && historyRows.length > 0) {
-            // Hover interaction for history rows (replace IntersectionObserver)
-            historyRows.forEach(row => {
-                row.addEventListener('mouseenter', () => {
-                    // Remove active from all rows
-                    historyRows.forEach(r => r.classList.remove('active'));
-                    // Set active on hovered row
-                    row.classList.add('active');
-                    // Update Fixed Year display
-                    if (row.dataset.year) {
-                        fixedYear.textContent = row.dataset.year;
-                        fixedYear.style.opacity = '0.5';
-                        setTimeout(() => { fixedYear.style.opacity = '1'; }, 150);
+            // Scroll interaction for history rows (Screen-based trigger)
+            const historyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active from all rows
+                        historyRows.forEach(r => r.classList.remove('active'));
+                        // Set active on intersecting row
+                        entry.target.classList.add('active');
+                        // Update Fixed Year display with a subtle animation
+                        if (entry.target.dataset.year && fixedYear.textContent !== entry.target.dataset.year) {
+                            fixedYear.style.opacity = '0';
+                            fixedYear.style.transform = 'translateY(-50%) scale(0.8)';
+                            
+                            setTimeout(() => {
+                                fixedYear.textContent = entry.target.dataset.year;
+                                fixedYear.style.opacity = '1';
+                                fixedYear.style.transform = 'translateY(-50%) scale(1)';
+                            }, 150);
+                        }
                     }
                 });
+            }, {
+                root: null,
+                rootMargin: "-45% 0px -45% 0px", // Targeted middle area
+                threshold: 0
             });
+
+            historyRows.forEach(row => historyObserver.observe(row));
         }
 
         // Shared Value Scroll Experience
