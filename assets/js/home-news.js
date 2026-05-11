@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         homeNewsList.innerHTML = top3.map(item => `
             <li>
-                <a href="news-detail.html?id=${item.id}">
+                <a href="news-detail.html?id=${item.id}" class="home-news-link">
                     <span class="date">${formatDate(item.date)}</span>
                     <span class="category-tag">${item.category || 'お知らせ'}</span>
                     <span class="title">${item.title}</span>
@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show skeletons while loading
     const showSkeletons = () => {
         homeNewsList.innerHTML = Array(3).fill(0).map(() => `
-            <li class="skeleton-list-item" style="display: flex; align-items: center; padding: 20px 0; gap: 30px; border-bottom: 1px solid #eee;">
+            <li class="skeleton-list-item" style="display: flex; flex-direction: column; align-items: flex-start; padding: 25px 0; gap: 12px; border-bottom: 1px solid #eee;">
                 <div class="skeleton-date" style="width: 80px; height: 16px; background: #f5f5f5; border-radius: 4px;"></div>
                 <div class="skeleton-tag" style="width: 60px; height: 20px; background: #f5f5f5; border-radius: 4px;"></div>
-                <div class="skeleton-title" style="flex: 1; height: 20px; background: #f5f5f5; border-radius: 4px;"></div>
+                <div class="skeleton-title" style="width: 100%; height: 20px; background: #f5f5f5; border-radius: 4px;"></div>
             </li>
         `).join('');
     };

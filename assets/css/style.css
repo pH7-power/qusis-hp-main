@@ -2699,30 +2699,34 @@ body.modal-open {
 
 .news-list-alt li a {
   display: flex;
-  align-items: center;
-  padding: 20px 0;
-  gap: 30px;
+  flex-direction: column; /* 縦並びに変更 */
+  align-items: flex-start;
+  padding: 25px 0;
+  gap: 12px; /* 行間の調整 */
 }
 
 .news-list-alt .date {
   font-family: var(--font-en);
-  color: var(--color-teal);
-  font-weight: 700;
-  min-width: 100px;
+  color: #999; /* NEWSページに合わせる */
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .news-list-alt .category-tag {
   font-size: 0.7rem;
-  padding: 2px 8px;
+  padding: 4px 10px;
   background: var(--color-teal);
   color: #fff;
   border-radius: 4px;
   white-space: nowrap;
+  font-weight: 700;
 }
 
 .news-list-alt .title {
   font-weight: 500;
   color: #333;
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
 /* Shared Value Summary Overrides */
