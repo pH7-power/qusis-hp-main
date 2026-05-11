@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゼロイチNEXT | ACTIVITY | QUSIS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/activity-detail.css">
+    <!-- AOS.js for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Afacad+Flux:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .zi-standard-hero {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/zero-ichi.webp') !important;
+        }
+        .next-hero .hero-label {
+            font-family: var(--font-en);
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .next-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .next-hero .lead {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+
+        /* 4 STEPS Vertical Timeline */
+        .steps-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto 0;
+            padding: 40px 0;
+        }
+        .steps-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: #e0f2f1;
+            transform: translateX(-50%);
+        }
+        .step-item {
+            position: relative;
+            margin-bottom: 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .step-number {
+            position: relative;
+            background: var(--color-teal);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Comfortaa', cursive;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0, 128, 128, 0.2);
+        }
+        .step-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        .step-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #333;
+            font-family: 'Afacad Flux', sans-serif;
+            font-weight: 700;
+        }
+        .step-card .step-desc {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Diagrams */
+        .step-diagram {
+            margin-top: 30px;
+            padding: 30px;
+            background: #fdfdfd;
+            border-radius: 15px;
+            border: 1px dashed #ddd;
+        }
+
+        /* Step 1 Branching */
+        .branch-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px 0;
+        }
+        .branch-origin {
+            background: #eee;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .branch-path {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+        .branch-item {
+            position: relative;
+            padding-left: 30px;
+        }
+        .branch-item::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-teal);
+            font-weight: bold;
+        }
+        .branch-item.highlight {
+            color: var(--color-teal);
+            font-weight: 700;
+        }
+        .branch-item.highlight span {
+            background: rgba(0, 128, 128, 0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Step 2 Props */
+        .props-diagram {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .prop-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+        }
+        .prop-box i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+            font-style: normal;
+        }
+        .prop-box span {
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* Step 3 Interview */
+        .interview-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .bubble {
+            padding: 15px 20px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .bubble.interviewer {
+            background: #f0f4f4;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+        .bubble.interviewee {
+            background: #e8f5f5;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+            text-align: right;
+        }
+
+        /* Step 4 Discussion */
+        .convergence-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .inputs-nodes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .node {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .arrow-down-v {
+            font-size: 1.5rem;
+            color: #ccc;
+        }
+        .insight-result {
+            background: #fff;
+            border: 2px solid #FF4500;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 69, 0, 0.1);
+        }
+        .insight-tag {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FF4500;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+        .insight-text {
+            color: #333;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .steps-timeline::before { left: 20px; }
+            .step-item { align-items: flex-start; padding-left: 50px; }
+            .step-number { position: absolute; left: 0; top: 0; }
+            .props-diagram { grid-template-columns: 1fr; }
+            .branch-diagram { flex-direction: column; align-items: flex-start; }
+            .comparison-box { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo"><a href="index.html"><img decoding="async" loading="lazy" src="images/qusis-logo-main.webp" alt="QUSIS"></a></div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="about.html">ABOUT</a></li>
+                <li class="nav-item"><a href="activity.html">ACTIVITY</a></li>
+                <li class="nav-item"><a href="member.html">MEMBER</a></li>
+                <li class="nav-item"><a href="news.html">NEWS</a></li>
+                <li class="nav-item"><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <a href="contact.html" class="mobile-contact-btn">CONTACT</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="section hero-sub zi-standard-hero">
+            <div class="container" data-aos="fade-up">
+                <h1 class="section-title text-teal">ゼロイチNEXT</h1>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="section zi-about">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-right">
+                    <h2 class="zi-title">ABOUT</h2>
+                </div>
+                <div class="zi-text" data-aos="fade-up" style="max-width: 900px; margin: 0 auto;">
+                    <p class="lead" style="text-align: center; margin-bottom: 40px;">「課題ドリブンから、未来ドリブンへ。」</p>
+                    <p style="text-align: center; font-weight: 500; margin-bottom: 30px;">未来を問い、問題を創造する3日間。<br>与えられた問題を解くのではなく、自ら問題を創造する力を獲得する。</p>
+                    <p>これまでの事業開発は、目の前の「困っている人」を探し、その課題を解決する「課題解決型」が主流でした。しかし、変化の激しい現代において、単なる課題解決は既存の延長線上の未来しか生み出しません。</p>
+                    <p>ゼロイチNEXTでは、バックキャスティング思考を徹底。「あるべき未来の姿」を起点に、そこに至るための革新的な問いを立てることで、非連続な成長と<span class="heat-brush">熱</span>狂的な挑戦を生み出します。</p>
+                    
+                </div>
+        </section>
+
+        <!-- CREATING AGENDA SECTION -->
+        <section class="section zi-agenda-process" style="padding: 100px 0;">
+            <div class="container">
+                <div class="zi-section-header center" data-aos="fade-up">
+                    <span style="font-family: 'Comfortaa', cursive; font-size: 0.9rem; letter-spacing: 0.4em; color: #888; display: block; margin-bottom: 10px;">STEP 04</span>
+                    <h2 class="zi-title">CREATING AGENDA</h2>
+                </div>
+
+                <div class="convergence-container" data-aos="fade-up">
+                    <style>
+                        .convergence-container {
+                            max-width: 1000px;
+                            margin: 60px auto 0;
+                            height: 500px;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: transparent;
+                        }
+                        .core-agenda {
+                            font-family: 'Afacad Flux', sans-serif;
+                            font-weight: 700;
+                            font-size: 1.8rem;
+                            color: #FF4500;
+                            text-align: center;
+                            line-height: 1.4;
+                            letter-spacing: 0.1em;
+                            z-index: 10;
+                            padding: 20px;
+                        }
+                        .insight-node {
+                            position: absolute;
+                            font-family: 'Afacad Flux', sans-serif;
+                            font-weight: 700;
+                            font-size: 1rem;
+                            color: #888;
+                            letter-spacing: 0.05em;
+                            white-space: nowrap;
+                        }
+                        .convergence-svg {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            pointer-events: none;
+                        }
+                        
+                        /* Positioning Nodes */
+                        .n-top { top: 10%; left: 50%; transform: translateX(-50%); }
+                        .n-top-right { top: 25%; right: 15%; }
+                        .n-bottom-right { bottom: 25%; right: 15%; }
+                        .n-bottom { bottom: 10%; left: 50%; transform: translateX(-50%); }
+                        .n-bottom-left { bottom: 25%; left: 15%; }
+                        .n-top-left { top: 25%; left: 15%; }
+
+                        @media (max-width: 768px) {
+                            .convergence-container { height: 600px; }
+                            .core-agenda { font-size: 1.4rem; width: 200px; }
+                            .insight-node { font-size: 0.85rem; }
+                            .n-top-right { right: 5%; }
+                            .n-bottom-right { right: 5%; }
+                            .n-bottom-left { left: 5%; }
+                            .n-top-left { left: 5%; }
+                        }
+                    </style>
+
+                    <svg class="convergence-svg" viewBox="0 0 1000 500">
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#e0e0e0" />
+                            </marker>
+                        </defs>
+                        <!-- Lines from nodes to center -->
+                        <line x1="500" y1="50" x2="500" y2="180" stroke="#e0e0e0" stroke-width="1" marker-end="url(#arrowhead)" />
+                        <line x1="850" y1="125" x2="620" y2="210" stroke="#e0e0e0" stroke-width="1" marker-end="url(#arrowhead)" />
+                        <line x1="850" y1="375" x2="620" y2="290" stroke="#e0e0e0" stroke-width="1" marker-end="url(#arrowhead)" />
+                        <line x1="500" y1="450" x2="500" y2="320" stroke="#e0e0e0" stroke-width="1" marker-end="url(#arrowhead)" />
+                        <line x1="150" y1="375" x2="380" y2="290" stroke="#e0e0e0" stroke-width="1" marker-end="url(#arrowhead)" />
+                        <line x1="150" y1="125" x2="380" y2="210" stroke="#e0e0e0" stroke-width="1" marker-end="url(#arrowhead)" />
+                    </svg>
+
+                    <div class="insight-node n-top">Aさんの違和感</div>
+                    <div class="insight-node n-top-right">インタビューで得た事実</div>
+                    <div class="insight-node n-bottom-right">未来のインサイト</div>
+                    <div class="insight-node n-bottom">常識の否定</div>
+                    <div class="insight-node n-bottom-left">既存市場の限界</div>
+                    <div class="insight-node n-top-left">予兆となる小さな変化</div>
+
+                    <div class="core-agenda">
+                        私たちが創るべき<br>
+                        「あるべき姿（アジェンダ）」
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section zi-features bg-light" style="padding: 100px 0;">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-up">
+                    <h2 class="zi-title">4 STEPS</h2>
+                </div>
+                
+                <div class="steps-timeline">
+                    <!-- Step 1 -->
+                    <div class="step-item" data-aos="fade-up">
+                        <div class="step-number">01</div>
+                        <div class="step-card">
+                            <h3>仮の世界線を定義</h3>
+                            <p class="step-desc">「現代の延長線上の未来」と「そうでない別路線の未来」について想像を膨らませる。</p>
+                            
+                            <div class="step-diagram">
+                                <style>
+                                    .future-graph {
+                                        position: relative;
+                                        width: 100%;
+                                        height: 200px;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                    }
+                                    .future-svg {
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 100%;
+                                        z-index: 1;
+                                    }
+                                    .future-labels {
+                                        position: relative;
+                                        width: 100%;
+                                        height: 100%;
+                                        z-index: 2;
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        padding: 0 20px;
+                                    }
+                                    .origin-node {
+                                        background: #333;
+                                        color: white;
+                                        padding: 8px 16px;
+                                        border-radius: 5px;
+                                        font-size: 0.9rem;
+                                        font-weight: 700;
+                                    }
+                                    .future-destinations {
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 60px;
+                                        text-align: left;
+                                    }
+                                    .dest-node {
+                                        padding: 10px 15px;
+                                        border-radius: 8px;
+                                        background: white;
+                                        border: 1px solid #ddd;
+                                        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                                        max-width: 280px;
+                                    }
+                                    .dest-node.highlight {
+                                        border-color: var(--color-teal);
+                                        border-width: 2px;
+                                    }
+                                    .dest-node h4 {
+                                        margin: 0 0 5px 0;
+                                        font-size: 0.95rem;
+                                        color: #333;
+                                    }
+                                    .dest-node.highlight h4 { color: var(--color-teal); }
+                                    .dest-node p {
+                                        margin: 0;
+                                        font-size: 0.75rem;
+                                        color: #888;
+                                    }
+                                </style>
+                                <div class="future-graph">
+                                    <svg class="future-svg" viewBox="0 0 800 200" preserveAspectRatio="none">
+                                        <!-- Bottom path (Fixed/Linear) -->
+                                        <path d="M 100 100 Q 400 100 700 160" stroke="#eee" stroke-width="2" fill="none" />
+                                        <!-- Top path (Speculative/Highlight) -->
+                                        <path d="M 100 100 Q 400 100 700 40" stroke="var(--color-teal)" stroke-width="3" stroke-dasharray="8 4" fill="none" />
+                                        <!-- Origin Circle -->
+                                        <circle cx="100" cy="100" r="6" fill="#333" />
+                                    </svg>
+                                    <div class="future-labels">
+                                        <div class="origin-node">現代</div>
+                                        <div class="future-destinations">
+                                            <div class="dest-node highlight">
+                                                <h4>非常識な未来（別路線）</h4>
+                                                <p>前提を覆す思考実験、SF fossil 発想</p>
+                                            </div>
+                                            <div class="dest-node">
+                                                <h4>延長線上の未来（既定路線）</h4>
+                                                <p>現在の社会や技術が続いた姿</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="step-item" data-aos="fade-up">
+                        <div class="step-number">02</div>
+                        <div class="step-card">
+                            <h3>小道具（MSP）の創造</h3>
+                            <p class="step-desc">インタビュイーが未来をリアルに体感できるよう、小道具を創造する。</p>
+                            
+                            <div class="step-diagram">
+                                <div class="props-diagram">
+                                    <div class="prop-box">
+                                        <i>📱</i>
+                                        <span>サービスのプロトタイプ</span>
+                                    </div>
+                                    <div class="prop-box">
+                                        <i>🖼️</i>
+                                        <span>広告ポスター</span>
+                                    </div>
+                                    <div class="prop-box">
+                                        <i>🎥</i>
+                                        <span>日常を切り取った動画</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="step-item" data-aos="fade-up">
+                        <div class="step-number">03</div>
+                        <div class="step-card">
+                            <h3>インタビュー</h3>
+                            <p class="step-desc">小道具を用いて、未来に関するユニークな一次情報を獲得する。</p>
+                            
+                            <div class="step-diagram">
+                                <div class="interview-diagram">
+                                    <div class="bubble interviewer">「このサービスが2050年に流行っているよ！」</div>
+                                    <div class="bubble interviewee">「私はその未来が好きじゃない！理由は……」</div>
+                                    <div style="font-size: 0.85rem; color: var(--color-teal); font-weight: 700; margin-top: 10px;">未来を体験した人の「リアルな反応」を引き出す</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="step-item" data-aos="fade-up">
+                        <div class="step-number">04</div>
+                        <div class="step-card">
+                            <h3>議論</h3>
+                            <p class="step-desc">得られた一次情報を統合し、多くの人に共感される「あるべき姿」を導く。</p>
+                            
+                            <div class="step-diagram">
+                                <div class="convergence-diagram">
+                                    <div class="inputs-nodes">
+                                        <div class="node">Aさん: ○○</div>
+                                        <div class="node">Bさん: △△</div>
+                                        <div class="node">Cさん: □□</div>
+                                    </div>
+                                    <div class="arrow-down-v">↓</div>
+                                    <div class="insight-result">
+                                        <div class="insight-tag">INSIGHT</div>
+                                        <p class="insight-text">つまり「○△□」という未来が<br>多くの人から共感を得られるのではないか？！</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- NAVIGATION -->
+        <section class="section zi-bottom-nav">
+            <div class="container">
+                <div class="back-to-list-wrapper" data-aos="fade-up">
+                    <a href="activity.html" class="back-to-list-btn">ACTIVITY一覧に戻る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER CTA -->
+        <section class="footer-cta">
+            <div class="container">
+                <h2>共に、社会に、<span class="heat-brush">熱</span>を。</h2>
+                <p>QUSISとの共創、取材依頼など、<br>社会を<span class="heat-brush">熱</span>くするあらゆる一歩をお待ちしております。</p>
+                <a href="contact.html" class="cta-btn">CONTACT</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img decoding="async" loading="lazy" src="images/qusis-logo-main.webp" style="filter: brightness(0) invert(1); width: 120px;" alt="QUSIS">
+                </div>
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="activity.html">ACTIVITY</a></li>
+                        <li><a href="member.html">MEMBER</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-links" style="margin-bottom: 10px;">
+                <a href="privacy-policy.html" style="color: #888; font-size: 0.8rem; text-decoration: none;">プライバシーポリシー</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 QUSIS. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

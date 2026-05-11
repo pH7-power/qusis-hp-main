@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUSIS運動会 | ACTIVITY | QUSIS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/activity-detail.css">
+    <!-- AOS.js for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Afacad+Flux:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .zi-standard-hero {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/others.webp') !important;
+        }
+        .sports-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .sports-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .sports-f-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .sports-f-card:hover {
+            transform: translateY(-10px);
+        }
+        .sports-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+        .sports-f-card h3 {
+            color: #008080 !important;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .sports-f-card p {
+            font-family: 'Afacad Flux', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .sports-features-grid {
+                grid-template-columns: 1fr;
+            }
+            .sports-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo"><a href="index.html"><img decoding="async" loading="lazy" src="images/qusis-logo-main.webp" alt="QUSIS"></a></div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="about.html">ABOUT</a></li>
+                <li class="nav-item"><a href="activity.html">ACTIVITY</a></li>
+                <li class="nav-item"><a href="member.html">MEMBER</a></li>
+                <li class="nav-item"><a href="news.html">NEWS</a></li>
+                <li class="nav-item"><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <a href="contact.html" class="mobile-contact-btn">CONTACT</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="section hero-sub zi-standard-hero">
+            <div class="container" data-aos="fade-up">
+                <h1 class="section-title text-teal">QUSIS運動会</h1>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="section zi-about">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-right">
+                    <h2 class="zi-title">ABOUT</h2>
+                </div>
+                <div class="zi-text" data-aos="fade-up" style="max-width: 900px; margin: 0 auto;">
+                    <p style="text-align: center; font-weight: 700; font-size: 1.2rem; margin-bottom: 20px;">本気で遊び、本気で競う。</p>
+                    <p class="lead" style="text-align: center; margin-bottom: 40px;">「Shared Valueを、体で感じる。」</p>
+                    <p>普段、パソコンを前に論理やデータを駆使して事業を創っている私たちですが、QUSIS運動会ではその「脳」を一旦休め、「体」のすべてを解放します。</p>
+                    <p>遊びであっても勝利に執着し、全員が本気で競技に取り組む。応援や摩擦、共に流す汗を通して、言葉だけでは伝わらないShared Value（共通価値）を体感し、組織全体の<span class="heat-brush">熱</span>量を底上げする特別な一日です。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section class="section zi-features bg-light">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-up">
+                    <h2 class="zi-title">FEATURES</h2>
+                </div>
+                <div class="sports-features-grid">
+                    <!-- Feature 1 -->
+                    <div class="sports-f-card" data-aos="fade-up" data-aos-delay="100">
+                        <span class="sports-icon">🧩</span>
+                        <h3>予測不能な競技</h3>
+                        <p>従来の運動会にはない、クリエイティビティやチームワークを極限まで試すQUSISオリジナル種目を多数用意。</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="sports-f-card" data-aos="fade-up" data-aos-delay="200">
+                        <span class="sports-icon">👟</span>
+                        <h3>ガチの全力投球</h3>
+                        <p>「遊びだから」という妥協はありません。勝利を目指して全力で取り組むことで、メンバー間の深い信頼と心理的安全性を高めます。</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="sports-f-card" data-aos="fade-up" data-aos-delay="300">
+                        <span class="sports-icon">⚡</span>
+                        <h3><span class="heat-brush">熱</span>の伝播</h3>
+                        <p>個人の<span class="heat-brush">熱</span>が応援を通してチームへ、そして組織全体へと引火していくプロセスを全員で共有します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVIGATION -->
+        <section class="section zi-bottom-nav">
+            <div class="container">
+                <div class="back-to-list-wrapper" data-aos="fade-up">
+                    <a href="activity.html" class="back-to-list-btn">ACTIVITY一覧に戻る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER CTA -->
+        <section class="footer-cta">
+            <div class="container">
+                <h2>共に、社会に、<span class="heat-brush">熱</span>を。</h2>
+                <p>QUSISとの共創、取材依頼など、<br>社会を<span class="heat-brush">熱</span>くするあらゆる一歩をお待ちしております。</p>
+                <a href="contact.html" class="cta-btn">CONTACT</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img decoding="async" loading="lazy" src="images/qusis-logo-main.webp" style="filter: brightness(0) invert(1); width: 120px;" alt="QUSIS">
+                </div>
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="activity.html">ACTIVITY</a></li>
+                        <li><a href="member.html">MEMBER</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-links" style="margin-bottom: 10px;">
+                <a href="privacy-policy.html" style="color: #888; font-size: 0.8rem; text-decoration: none;">プライバシーポリシー</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 QUSIS. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

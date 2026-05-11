@@ -242,6 +242,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Contact Form Logic (Formspree) ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
+        // Prevent Enter key from submitting the form (excluding textarea)
+        contactForm.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+            }
+        });
+
         contactForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 

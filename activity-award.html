@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゼロイチAWARD | ACTIVITY | QUSIS</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/activity-detail.css">
+    <!-- AOS.js for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Afacad+Flux:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .zi-standard-hero {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/ゼロイチAward集合写真.webp') !important;
+        }
+        .award-hero .hero-label {
+            font-family: var(--font-en);
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: block;
+            color: #FFD700;
+        }
+        .award-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        .pitch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .pitch-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--color-teal);
+        }
+        .pitch-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .pitch-card.passion { border-color: #FF4500; }
+        .judging-section {
+            background: #fdfdfd;
+            padding: 100px 0;
+        }
+        .judging-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .judging-card {
+            text-align: center;
+            padding: 30px;
+        }
+        .heat-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        .zi-features .f-card h3 {
+            color: #008080 !important;
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .zi-features .f-card p {
+            font-family: 'Afacad Flux', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .pitch-grid, .judging-grid {
+                grid-template-columns: 1fr;
+            }
+            .award-hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo"><a href="index.html"><img decoding="async" loading="lazy" src="images/qusis-logo-main.webp" alt="QUSIS"></a></div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="about.html">ABOUT</a></li>
+                <li class="nav-item"><a href="activity.html">ACTIVITY</a></li>
+                <li class="nav-item"><a href="member.html">MEMBER</a></li>
+                <li class="nav-item"><a href="news.html">NEWS</a></li>
+                <li class="nav-item"><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <a href="contact.html" class="mobile-contact-btn">CONTACT</a>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="section hero-sub zi-standard-hero">
+            <div class="container" data-aos="fade-up">
+                <h1 class="section-title text-teal">ゼロイチAWARD</h1>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section class="section zi-about">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-right">
+                    <h2 class="zi-title">ABOUT</h2>
+                </div>
+                <div class="zi-content-grid">
+                    <div class="zi-text" data-aos="fade-up">
+                        <p style="font-weight: 700; font-size: 1.2rem; margin-bottom: 20px;">何者でもない自分を、熱狂の渦で再定義する。</p>
+                        <p class="lead" style="margin-bottom: 30px;">「“すごい”で終わらせない。行動変容を促す舞台。」</p>
+                        <p>ゼロイチAWARDは、単なるアイデアの優劣を競う場所ではありません。一ヶ月のプログラム期間中、どれだけ泥臭く動き、どれだけ多くの失敗と発見を積み上げてきたか。その「行動の証跡」を称え、次の一手へと繋げるためのピッチコンテストです。</p>
+                        <p>新入生には「同世代のトップランナーとの圧倒的な差」を突きつけ、在校生には「知っているつもり」という慢心と自己認識のズレを自覚させる。現状維持の心地よさを破壊し、再び<span class="heat-brush">熱</span>を帯びて動き出すための起爆剤となります。</p>
+                    </div>
+                    <div class="zi-image" data-aos="zoom-in">
+                        <img src="images/ゼロイチAWARD_KV.webp" alt="ゼロイチAWARD キービジュアル" class="zi-about-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section class="section zi-features bg-light">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-up">
+                    <h2 class="zi-title">FEATURES</h2>
+                </div>
+                <div class="features-grid">
+                    <!-- Point 1 -->
+                    <div class="f-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="f-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#008080" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                        </div>
+                        <h3>泥臭い行動ログの可視化</h3>
+                        <p>綺麗な成功話ではなく、スケジュールや失敗、拒絶された経験などの「証拠」を公開します。</p>
+                    </div>
+                    <!-- Point 2 -->
+                    <div class="f-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="f-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#008080" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3>観覧者参加型審査</h3>
+                        <p>「自分と何が違うか」を評価基準にし、観客自身の次の行動を促します。</p>
+                    </div>
+                    <!-- Point 3 -->
+                    <div class="f-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="f-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#008080" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        </div>
+                        <h3>次の一手を決める決意表明</h3>
+                        <p>会場に設置された「決意の壁」に、帰宅後の具体的なアクションを貼り出す仕組みです。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PITCH STYLE SECTION -->
+        <section class="section">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-right">
+                    <h2 class="zi-title">PITCH STYLE</h2>
+                </div>
+                <div class="pitch-grid">
+                    <div class="pitch-card passion" data-aos="fade-up">
+                        <img src="images/ゼロイチAward熱量ピッチ.webp" alt="熱量ピッチ" class="pitch-img">
+                        <h3><span class="heat-brush">熱</span>量ピッチ（3分）</h3>
+                        <p>個人の原体験、なぜ自分がやるのかという「Will」を凝縮。論理を超えた共感と<span class="heat-brush">熱</span>を伝播させます。</p>
+                    </div>
+                    <div class="pitch-card" data-aos="fade-up" data-aos-delay="200">
+                        <img src="images/ゼロイチAward事業ピッチ.webp" alt="事業ピッチ" class="pitch-img" style="object-position: center 15%;">
+                        <h3>事業ピッチ（7分）</h3>
+                        <p>一ヶ月で得られた事実に基づき、市場性、優位性、収益性を説明。地に足の着いた、次の一歩のための提案を行います。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JUDGING SECTION -->
+        <section class="judging-section">
+            <div class="container">
+                <div class="zi-section-header" data-aos="fade-right">
+                    <h2 class="zi-title">JUDGING CRITERIA</h2>
+                </div>
+                <div class="judging-grid">
+                    <div class="judging-card" data-aos="fade-up" data-aos-delay="100">
+                        <span class="heat-icon">🔥</span>
+                        <h4>代謝・摩擦熱</h4>
+                        <p>どれだけ多くの行動（摩擦）を起こし、自らの内面をアップデート（代謝）させたか。</p>
+                    </div>
+                    <div class="judging-card" data-aos="fade-up" data-aos-delay="200">
+                        <span class="heat-icon">🧬</span>
+                        <h4>変異熱</h4>
+                        <p>固定観念を打ち破り、今までにない新しい価値観や解決策への進化（変異）を感じさせたか。</p>
+                    </div>
+                    <div class="judging-card" data-aos="fade-up" data-aos-delay="300">
+                        <span class="heat-icon">🧨</span>
+                        <h4>引火熱</h4>
+                        <p>そのプレゼンテーションが、周囲の人間を動かすほどの<span class="heat-brush">熱</span>を持っていたか。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVIGATION -->
+        <section class="section zi-bottom-nav">
+            <div class="container">
+                <div class="back-to-list-wrapper" data-aos="fade-up">
+                    <a href="activity.html" class="back-to-list-btn">ACTIVITY一覧に戻る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER CTA -->
+        <section class="footer-cta">
+            <div class="container">
+                <h2>共に、社会に、<span class="heat-brush">熱</span>を。</h2>
+                <p>QUSISとの共創、取材依頼など、<br>社会を<span class="heat-brush">熱</span>くするあらゆる一歩をお待ちしております。</p>
+                <a href="contact.html" class="cta-btn">CONTACT</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img decoding="async" loading="lazy" src="images/qusis-logo-main.webp" style="filter: brightness(0) invert(1); width: 120px;" alt="QUSIS">
+                </div>
+                <div class="footer-nav">
+                    <ul>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="activity.html">ACTIVITY</a></li>
+                        <li><a href="member.html">MEMBER</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-links" style="margin-bottom: 10px;">
+                <a href="privacy-policy.html" style="color: #888; font-size: 0.8rem; text-decoration: none;">プライバシーポリシー</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 QUSIS. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

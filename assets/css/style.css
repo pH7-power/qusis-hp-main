@@ -1197,6 +1197,27 @@ body.intro-done .intro-logo {
   animation: heatFlicker 3s infinite;
 }
 
+.heat-brush {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  padding: 0 0.1em;
+}
+
+.heat-brush::before {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  left: -5%;
+  width: 110%;
+  height: 60%;
+  background: rgba(255, 69, 0, 0.15); /* 薄いオレンジ */
+  z-index: -1;
+  transform: rotate(-1deg) skewX(-15deg);
+  border-radius: 5px 10px 8px 12px;
+  filter: blur(1px);
+}
+
 @keyframes heatFlicker {
 
   0%,
