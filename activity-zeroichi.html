@@ -8,6 +8,30 @@
     <link rel="stylesheet" href="assets/css/activity-detail.css">
     <!-- AOS.js for animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Afacad+Flux:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* KV Image Wrapper (NEXT Style) */
+        .about-kv-wrapper {
+            margin: 40px auto;
+            max-width: 1000px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+        .about-kv-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .zi-text {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .zi-standard-hero {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('images/zero-ichi.webp') !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -30,9 +54,10 @@
         </nav>
     </header>
 
+    <main>
         <!-- HERO SECTION -->
         <section class="section hero-sub zi-standard-hero">
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <h1 class="section-title text-teal">ゼロイチ</h1>
             </div>
         </section>
@@ -43,15 +68,15 @@
                 <div class="zi-section-header" data-aos="fade-right">
                     <h2 class="zi-title">ABOUT</h2>
                 </div>
-                <div class="zi-content-grid">
-                    <div class="zi-text" data-aos="fade-up">
-                        <p class="lead">挑戦の第一歩を、最高の熱量で。</p>
-                        <p>「ゼロイチ」は、新入部員を対象としたQUSIS独自の**新規事業創出プログラム**です。2021年の開始以来、多くの学生がこの場所から自らのアイデアを形にし、社会へと踏み出してきました。</p>
-                        <p>1ヶ月という限られた時間の中で、チーム結成から市場調査、プロトタイプ開発、そして最終ピッチまでを一気に駆け抜けます。</p>
-                    </div>
-                    <div class="zi-image" data-aos="zoom-in">
-                        <img src="images/ゼロイチ説明ページ画像/2025ゼロイチデモデイの写真 3972.webp" alt="ゼロイチ デモデイ" class="zi-about-img">
-                    </div>
+                
+                <div class="about-kv-wrapper" data-aos="fade-up">
+                    <img src="images/ゼロイチ説明ページ画像/2025ゼロイチデモデイの写真 3972.webp" alt="ゼロイチ Key Visual">
+                </div>
+
+                <div class="zi-text" data-aos="fade-up">
+                    <p class="lead" style="font-weight: 700; font-size: 1.2rem; margin-bottom: 20px;">挑戦の第一歩を、最高の熱量で。</p>
+                    <p style="margin-bottom: 20px;">「ゼロイチ」は、新入部員を対象としたQUSIS独自の**新規事業創出プログラム**です。2021年の開始以来、多くの学生がこの場所から自らのアイデアを形にし、社会へと踏み出してきました。</p>
+                    <p>1ヶ月という限られた時間の中で、チーム結成から市場調査、プロトタイプ開発、そして最終ピッチまでを一気に駆け抜けます。</p>
                 </div>
             </div>
         </section>

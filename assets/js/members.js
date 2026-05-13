@@ -71,7 +71,19 @@ const membersData = [
         nameEn: "Hirayama Sara",
         roles: ["PR/ Media Manager", "Self Resource Manager"],
         faculty: "共創学部2年",
-        image: "images/平山紗楽.webp"
+        image: "images/平山紗楽.webp",
+        history: `2025/05 アイデア・バトル採択
+2025/07 IVS NEXTスタッフ参加
+2025/8 Thursday Gathering アンバサダー
+2025/8 Fullasia 上海プログラム参加
+2025/09 CM参画_渉外担当
+2025/10 Giving Campaign 2025
+2025/10 Colive Fukuoka ボランティアスタッフ
+2025/10 F Venturesインターン
+2026/01 TORYUMON KYUSHU 2026 焔_代表
+2026/03 PARKS 韓国プログラム参加
+2026/04 Takeoff Tokyo ボランティアスタッフ
+2026/04 SusHi Tech 2026 ボランティアスタッフ`
     },
     {
         id: "sakoziri",
@@ -118,7 +130,16 @@ const membersData = [
         nameEn: "Kinoshita Marika",
         roles: ["Project Manager"],
         faculty: "共創学部2年",
-        image: "images/木下茉莉花.webp"
+        image: "images/木下茉莉花.webp",
+        history: `2025/05 アイデア・バトル採択（高校生の探究学習の大学生メンター）
+2025/5 IQLab コンサルインターン
+2025/7 QUSISインキュベーションプログラム「ゼロイチ」優勝
+2025/9 CAPタイ短期留学
+2025/9 QUSIS CM参画
+2025/11  IQLab コンサルインターン離脱
+2025/12 九大ギルド初期メンバー
+2026/02 アイデアバトル採択(自炊塾)
+2026/03 PARKS韓国プログラム参加`
     }
 ];
 
