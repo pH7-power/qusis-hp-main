@@ -84,7 +84,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Data Cleansing and Header Conversion
         const cleanContent = article.content.trim().replace(/^\ufeff/g, '');
-        const formattedContent = cleanContent.replace(/【(.*?)】/g, '<h3>【$1】</h3>');
+        
+        // 1. Convert 【 】 to headers
+        // 2. Convert **bold** to <strong>
+        // 3. Convert Google Drive links to <img> tags
+        const formattedContent = cleanContent
+            .replace(/【(.*?)】/g, '<h3>【$1】</h3>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/(https?:\/\/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=)([\w-]+)[^\s<]*)/g, (match, url, id) => {
+                const imgUrl = `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+                return `<img src="${imgUrl}" alt="本文画像" class="content-drive-img">`;
+            });
 
         detailContainer.innerHTML = `
             <article class="news-article fade-in">

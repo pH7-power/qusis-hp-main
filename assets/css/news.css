@@ -305,6 +305,15 @@
     margin-bottom: 30px;
 }
 
+.content-drive-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 40px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
     .detail-title { font-size: 1.8rem; }
     .detail-subtitle { font-size: 1.1rem; }

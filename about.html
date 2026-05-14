@@ -66,35 +66,21 @@
                         transition-delay: 0.4s;
                     }
                     .on-stage-text-override {
-                        position: static !important;
+                        position: relative !important;
+                        left: auto !important;
+                        bottom: auto !important;
+                        z-index: 1000 !important;
                         transform: none !important;
                         margin: 0 !important;
                         white-space: nowrap;
-                    }
-                    .on-stage-audio-trigger {
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 10px;
-                        background: rgba(113, 221, 220, 0.2);
-                        border: 1px solid #71dddc;
-                        color: #71dddc;
-                        padding: 8px 20px;
-                        border-radius: 50px;
                         cursor: pointer;
-                        font-family: 'Afacad Flux', sans-serif;
-                        font-weight: 700;
                         transition: all 0.3s ease;
-                        font-size: 0.9rem;
+                        pointer-events: auto !important;
                     }
-                    .on-stage-audio-trigger:hover {
-                        background: #71dddc;
-                        color: #000;
-                        transform: scale(1.05);
-                    }
-                    .on-stage-audio-trigger svg {
-                        width: 18px;
-                        height: 18px;
-                        fill: currentColor;
+                    .on-stage-text-override:hover {
+                        transform: scale(1.15) !important;
+                        text-shadow: 0 0 20px rgba(113, 221, 220, 0.8), 0 0 40px rgba(113, 221, 220, 0.4);
+                        opacity: 1;
                     }
                     @media (max-width: 768px) {
                         .on-stage-wrapper {
@@ -107,11 +93,7 @@
                     <img decoding="async" loading="lazy" src="images/舞台上画像.webp" alt="Stage Frame" class="stage-frame story-climax-anim">
                     <img decoding="async" loading="lazy" src="images/Shared Value画像②-2.webp" alt="Jumping People" class="people-image jumping-people story-climax-anim">
                     <div class="on-stage-wrapper">
-                        <h2 class="on-stage-text font-en on-stage-text-override">On Stage!</h2>
-                        <button class="on-stage-audio-trigger" onclick="playOnStageAudio()">
-                            <svg viewBox="0 0 24 24"><path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.85 14,18.71V20.77C18.01,19.86 21,16.28 21,12C21,7.72 18.01,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16.02C15.5,15.29 16.5,13.77 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/></svg>
-                            Play Sound
-                        </button>
+                        <h2 class="on-stage-text font-en on-stage-text-override" onmouseenter="playOnStageAudio()" onclick="playOnStageAudio()">On Stage!</h2>
                     </div>
                     <audio id="audio-on-stage" src="images/On Stage!動画音声変換用.mp3"></audio>
                 </div>

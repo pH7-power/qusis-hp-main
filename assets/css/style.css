@@ -884,6 +884,13 @@ body.intro-done .intro-logo {
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: grayscale(100%);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.member-preview-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.05);
 }
 
 .member-preview-info {
@@ -2671,6 +2678,9 @@ body.modal-open {
   transition: all 0.3s ease;
   text-align: left;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Add subtle default shadow for better depth */
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .activity-item:hover {
@@ -3089,4 +3099,126 @@ body.modal-open {
   width: 100%;
   background: #eee;
   border-radius: 12px;
+}
+
+/* --- Categorized Activity Styles --- */
+.activity-category-section {
+    padding: 100px 0;
+}
+
+.category-title {
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    color: #008080; /* Requested Teal */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.category-subtitle {
+    font-family: var(--font-jp);
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 60px;
+    font-weight: 500;
+}
+
+/* Grids */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+/* Card Styles */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: #fcfcfc;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-card-img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.project-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.project-card:hover .project-card-img img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.project-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-card-title {
+    font-family: var(--font-jp);
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.project-card-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.8;
+    font-family: var(--font-jp);
+}
+
+.project-card-link {
+    margin-top: auto;
+    padding-top: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #008080;
+    font-family: var(--font-en);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .projects-grid.current,
+    .projects-grid.past {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .activity-category-section {
+        padding: 80px 0;
+    }
+    .projects-grid.current,
+    .projects-grid.past {
+        grid-template-columns: 1fr;
+    }
+    .project-card-img {
+        height: 200px;
+    }
 }
