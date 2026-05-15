@@ -60,41 +60,118 @@
                         opacity: 0;
                         transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
                     }
+                    .on-stage-wrapper {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 90%;
+                        height: 80%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 100;
+                        opacity: 0;
+                        transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+                        pointer-events: none;
+                    }
+                    .on-stage-wrapper {
+                        position: absolute;
+                        top: 55%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 100;
+                        opacity: 0;
+                        transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+                        perspective: 1200px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        pointer-events: none;
+                    }
                     .sv-climax.is-visible .on-stage-wrapper {
                         opacity: 1;
-                        transform: translate(-50%, 0);
                         transition-delay: 0.4s;
                     }
-                    .on-stage-text-override {
-                        position: relative !important;
-                        left: auto !important;
-                        bottom: auto !important;
-                        z-index: 1000 !important;
-                        transform: none !important;
-                        margin: 0 !important;
-                        white-space: nowrap;
+                    .on-stage-3d-text {
+                        display: flex;
                         cursor: pointer;
-                        transition: all 0.3s ease;
-                        pointer-events: auto !important;
+                        pointer-events: auto;
+                        transform-style: preserve-3d;
+                        gap: 0.02em;
+                        transition: transform 0.5s ease;
+                        /* グラデーションの連続性を保つための設定 */
+                        background: linear-gradient(to right, #71dddc, #ffffff 50%, #FF4500);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        background-size: 100% 100%;
                     }
-                    .on-stage-text-override:hover {
-                        transform: scale(1.15) !important;
-                        text-shadow: 0 0 20px rgba(113, 221, 220, 0.8), 0 0 40px rgba(113, 221, 220, 0.4);
-                        opacity: 1;
+                    .on-stage-3d-text:hover {
+                        transform: scale(1.05);
+                    }
+                    .char {
+                        display: inline-block;
+                        font-family: var(--font-en);
+                        font-weight: 900;
+                        font-size: clamp(4rem, 15vw, 13rem);
+                        line-height: 1.1;
+                        white-space: pre;
+                        
+                        /* 各文字に元のグラデーションを適用（文字ごとに位置をずらす） */
+                        background: inherit;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        
+                        /* 文字を背景から際立たせ、明るく見せるための縁取り */
+                        -webkit-text-stroke: 1.5px #ffffff;
+                        
+                        /* drop-shadowを重ねがけして、より深く重厚感のある立体ブロックを生成（0px〜7pxの厚み） */
+                        filter: drop-shadow(0px 1px 0px #5cc6c5) 
+                                drop-shadow(0px 2px 0px #1d8180)
+                                drop-shadow(0px 4px 0px #083333)
+                                drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.9))
+                                drop-shadow(0px 0px 25px rgba(113, 221, 220, 0.3));
+                        
+                        /* 球面への回り込み（歪みを軽減し、視認性を優先） */
+                        transform: 
+                            rotateY(calc(var(--i) * 8deg)) 
+                            translateZ(calc(60px - var(--dist) * 12px)) 
+                            scale(calc(1.05 - var(--dist) * 0.04));
+                        
+                        opacity: calc(1.05 - var(--dist) * 0.05);
+                        transition: all 0.4s ease;
                     }
                     @media (max-width: 768px) {
                         .on-stage-wrapper {
-                            align-items: center; /* スマホでは中央揃え */
-                            bottom: 5%;
+                            top: 50%;
+                            perspective: 1000px;
+                        }
+                        .char {
+                            transform: 
+                                rotateY(calc(var(--i) * 6deg)) 
+                                translateZ(calc(30px - var(--dist) * 6px)) 
+                                scale(calc(1.03 - var(--dist) * 0.03));
                         }
                     }
                 </style>
                 <div class="climax-container">
                     <img decoding="async" loading="lazy" src="images/舞台上画像.webp" alt="Stage Frame" class="stage-frame story-climax-anim">
                     <img decoding="async" loading="lazy" src="images/Shared Value画像②-2.webp" alt="Jumping People" class="people-image jumping-people story-climax-anim">
+                    
                     <div class="on-stage-wrapper">
-                        <h2 class="on-stage-text font-en on-stage-text-override" onmouseenter="playOnStageAudio()" onclick="playOnStageAudio()">On Stage!</h2>
+                        <div class="on-stage-3d-text" onclick="playOnStageAudio()">
+                            <span class="char" style="--i: -4; --dist: 4;">O</span>
+                            <span class="char" style="--i: -3; --dist: 3;">n</span>
+                            <span class="char" style="--i: -2.2; --dist: 2.2;"> </span>
+                            <span class="char" style="--i: -1.2; --dist: 1.2;">S</span>
+                            <span class="char" style="--i: 0; --dist: 0;">t</span>
+                            <span class="char" style="--i: 1.2; --dist: 1.2;">a</span>
+                            <span class="char" style="--i: 2.2; --dist: 2.2;">g</span>
+                            <span class="char" style="--i: 3.2; --dist: 3.2;">e</span>
+                            <span class="char" style="--i: 4.2; --dist: 4.2;">!</span>
+                        </div>
                     </div>
+                    
                     <audio id="audio-on-stage" src="images/On Stage!動画音声変換用.mp3"></audio>
                 </div>
             </div>
