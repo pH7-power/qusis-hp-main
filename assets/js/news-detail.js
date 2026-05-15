@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const escapeHTML = (str) => {
+        if (str === null || str === undefined) return '';
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    };
+
     const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyU06AKU3Pq4v7tqEQzCkDv1-FgZGMW0eewWvWRVwHjCnwlD2GhotLgWROS2qjsgIU45g/exec';
     const CACHE_KEY = 'qusis_news_cache';
     const detailContainer = document.getElementById('news-detail-container');
@@ -80,15 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderDetail = (article) => {
-        document.title = `${article.title} | QUSIS`;
+        document.title = `${escapeHTML(article.title)} | QUSIS`;
 
         // Data Cleansing and Header Conversion
         const cleanContent = article.content.trim().replace(/^\ufeff/g, '');
+        const safeContent = escapeHTML(cleanContent);
         
         // 1. Convert 【 】 to headers
         // 2. Convert **bold** to <strong>
         // 3. Convert Google Drive links to <img> tags
-        const formattedContent = cleanContent
+        const formattedContent = safeContent
             .replace(/【(.*?)】/g, '<h3>【$1】</h3>')
             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
             .replace(/(https?:\/\/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?id=)([\w-]+)[^\s<]*)/g, (match, url, id) => {
@@ -99,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
         detailContainer.innerHTML = `
             <article class="news-article fade-in">
                 <header class="news-detail-header">
-                    <span class="detail-category">${article.category}</span>
-                    <h1 class="detail-title">${article.title}</h1>
-                    <span class="detail-subtitle">${article.subtitle}</span>
+                    <span class="detail-category">${escapeHTML(article.category)}</span>
+                    <h1 class="detail-title">${escapeHTML(article.title)}</h1>
+                    <span class="detail-subtitle">${escapeHTML(article.subtitle)}</span>
                     
                     <div class="detail-meta">
                         <span class="detail-date">${formatDate(article.date)}</span>
@@ -120,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </header>
 
                 <div class="detail-main-visual">
-                    <img src="${optimizeDriveUrl(article.image_url)}" alt="${article.title}" loading="lazy">
+                    <img src="${optimizeDriveUrl(article.image_url)}" alt="${escapeHTML(article.title)}" loading="lazy">
                 </div>
 
                 <div class="detail-content">

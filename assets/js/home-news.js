@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const escapeHTML = (str) => {
+        if (str === null || str === undefined) return '';
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    };
+
     const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyU06AKU3Pq4v7tqEQzCkDv1-FgZGMW0eewWvWRVwHjCnwlD2GhotLgWROS2qjsgIU45g/exec';
     const CACHE_KEY = 'qusis_news_cache';
     const homeNewsList = document.getElementById('home-news-list');
@@ -35,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <a href="news-detail.html?id=${item.id}" class="home-news-link">
                     <span class="date">${formatDate(item.date)}</span>
                     <span class="category-tag">${item.category || 'お知らせ'}</span>
-                    <span class="title">${item.title}</span>
+                    <span class="title">${escapeHTML(item.title)}</span>
                 </a>
             </li>
         `).join('');

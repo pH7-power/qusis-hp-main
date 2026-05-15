@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const escapeHTML = (str) => {
+        if (str === null || str === undefined) return '';
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    };
+
     // API URL
     const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyU06AKU3Pq4v7tqEQzCkDv1-FgZGMW0eewWvWRVwHjCnwlD2GhotLgWROS2qjsgIU45g/exec'; 
     const CACHE_KEY = 'qusis_news_cache';
@@ -106,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="pickup-overlay"></div>
                 <div class="pickup-content">
                     <span class="pickup-label">PICKUP</span>
-                    <h2 class="pickup-title">${item.title}</h2>
+                    <h2 class="pickup-title">${escapeHTML(item.title)}</h2>
                     <p>MORE DETAIL →</p>
                 </div>
             </a>
@@ -131,8 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
         newsContainer.innerHTML = items.map((item, index) => `
             <a href="news-detail.html?id=${item.id}" class="news-list-item fade-in" style="animation-delay: ${index * 0.05}s">
                 <span class="news-date">${formatDate(item.date)}</span>
-                <span class="news-category-tag">${item.category}</span>
-                <span class="news-list-title">${item.title}</span>
+                <span class="news-category-tag">${escapeHTML(item.category)}</span>
+                <span class="news-list-title">${escapeHTML(item.title)}</span>
             </a>
         `).join('');
     };

@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const escapeHTML = (str) => {
+        if (str === null || str === undefined) return '';
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    };
+
     // Check if Chart.js is loaded
     if (typeof Chart === 'undefined') {
         console.warn('Chart.js not loaded');
@@ -12,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container.innerHTML = aboutData.basicFacts.map(fact => `
             <div class="fact-card">
-                <div class="fact-value font-en">${fact.value}<span class="fact-unit">${fact.unit}</span></div>
-                <div class="fact-label">${fact.label}</div>
+                <div class="fact-value font-en">${escapeHTML(fact.value)}<span class="fact-unit">${fact.unit}</span></div>
+                <div class="fact-label">${escapeHTML(fact.label)}</div>
                 <div class="fact-sub">${fact.sub}</div>
             </div>
         `).join('');
@@ -93,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.className = 'history-row';
             row.dataset.year = item.year;
             row.innerHTML = `
-                <div class="history-year-label font-en">${item.year}</div>
+                <div class="history-year-label font-en">${escapeHTML(item.year)}</div>
                 <h3 class="history-title">${item.title}</h3>
                 <p class="history-desc">${item.description}</p>
             `;
