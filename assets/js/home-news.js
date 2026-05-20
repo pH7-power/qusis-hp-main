@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatDate = (dateStr) => {
         if (!dateStr) return '';
         const date = new Date(dateStr);
-        if (isNaN(date.getTime())) return dateStr;
+        if (isNaN(date.getTime())) return escapeHTML(dateStr);
         const y = date.getFullYear();
         const m = String(date.getMonth() + 1).padStart(2, '0');
         const d = String(date.getDate()).padStart(2, '0');
@@ -42,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         homeNewsList.innerHTML = top3.map(item => `
             <li>
-                <a href="news-detail.html?id=${item.id}" class="home-news-link">
+                <a href="news-detail.html?id=${encodeURIComponent(item.id)}" class="home-news-link">
                     <span class="date">${formatDate(item.date)}</span>
-                    <span class="category-tag">${item.category || 'お知らせ'}</span>
+                    <span class="category-tag">${escapeHTML(item.category || 'お知らせ')}</span>
                     <span class="title">${escapeHTML(item.title)}</span>
                 </a>
             </li>

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatDate = (dateStr) => {
         if (!dateStr) return '';
         const date = new Date(dateStr);
-        if (isNaN(date.getTime())) return dateStr;
+        if (isNaN(date.getTime())) return escapeHTML(dateStr);
         const y = date.getFullYear();
         const m = String(date.getMonth() + 1).padStart(2, '0');
         const d = String(date.getDate()).padStart(2, '0');
@@ -117,10 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="detail-meta">
                         <span class="detail-date">${formatDate(article.date)}</span>
                         <div class="detail-share-icons">
-                            <a href="${article.X || 'https://x.com/QUSIS_'}" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
+                            <a href="${escapeHTML(article.X || 'https://x.com/QUSIS_')}" target="_blank" rel="noopener noreferrer" title="X (Twitter)">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                             </a>
-                            <a href="${article.instagram || 'https://www.instagram.com/qusis2025_/'}" target="_blank" rel="noopener noreferrer" title="Instagram">
+                            <a href="${escapeHTML(article.instagram || 'https://www.instagram.com/qusis2025_/')}" target="_blank" rel="noopener noreferrer" title="Instagram">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
                             </a>
                             <a href="#" id="copy-link" title="Copy Link">
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </header>
 
                 <div class="detail-main-visual">
-                    <img src="${optimizeDriveUrl(article.image_url)}" alt="${escapeHTML(article.title)}" loading="lazy">
+                    <img src="${escapeHTML(optimizeDriveUrl(article.image_url))}" alt="${escapeHTML(article.title)}" loading="lazy">
                 </div>
 
                 <div class="detail-content">

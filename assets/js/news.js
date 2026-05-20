@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formatDate = (dateStr) => {
         if (!dateStr) return '';
         const date = new Date(dateStr);
-        if (isNaN(date.getTime())) return dateStr; 
+        if (isNaN(date.getTime())) return escapeHTML(dateStr); 
         const y = date.getFullYear();
         const m = String(date.getMonth() + 1).padStart(2, '0');
         const d = String(date.getDate()).padStart(2, '0');
@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pickupSection.style.display = 'grid';
         pickupSection.innerHTML = pickupItems.map(item => `
-            <a href="news-detail.html?id=${item.id}" class="pickup-item fade-in">
-                <div class="pickup-bg" style="background-image: url('${optimizeDriveUrl(item.image_url, 1000)}')"></div>
+            <a href="news-detail.html?id=${encodeURIComponent(item.id)}" class="pickup-item fade-in">
+                <div class="pickup-bg" style="background-image: url('${escapeHTML(optimizeDriveUrl(item.image_url, 1000))}')"></div>
                 <div class="pickup-overlay"></div>
                 <div class="pickup-content">
                     <span class="pickup-label">PICKUP</span>
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         newsContainer.innerHTML = items.map((item, index) => `
-            <a href="news-detail.html?id=${item.id}" class="news-list-item fade-in" style="animation-delay: ${index * 0.05}s">
+            <a href="news-detail.html?id=${encodeURIComponent(item.id)}" class="news-list-item fade-in" style="animation-delay: ${index * 0.05}s">
                 <span class="news-date">${formatDate(item.date)}</span>
                 <span class="news-category-tag">${escapeHTML(item.category)}</span>
                 <span class="news-list-title">${escapeHTML(item.title)}</span>
