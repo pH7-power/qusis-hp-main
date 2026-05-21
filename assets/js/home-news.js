@@ -39,16 +39,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const top3 = newsItems.slice(0, 3);
         
         homeNewsList.style.opacity = '0'; // For fade-in effect
+        homeNewsList.innerHTML = ''; // Clear existing content safely
         
-        homeNewsList.innerHTML = top3.map(item => `
-            <li>
-                <a href="news-detail.html?id=${encodeURIComponent(item.id)}" class="home-news-link">
-                    <span class="date">${formatDate(item.date)}</span>
-                    <span class="category-tag">${escapeHTML(item.category || 'お知らせ')}</span>
-                    <span class="title">${escapeHTML(item.title)}</span>
-                </a>
-            </li>
-        `).join('');
+        top3.forEach(item => {
+            const li = document.createElement('li');
+            
+            const a = document.createElement('a');
+            a.href = `news-detail.html?id=${encodeURIComponent(item.id)}`;
+            a.className = 'home-news-link';
+            
+            const spanDate = document.createElement('span');
+            spanDate.className = 'date';
+            spanDate.textContent = formatDate(item.date);
+            
+            const spanCategory = document.createElement('span');
+            spanCategory.className = 'category-tag';
+            spanCategory.textContent = item.category || 'お知らせ';
+            
+            const spanTitle = document.createElement('span');
+            spanTitle.className = 'title';
+            spanTitle.textContent = item.title || '';
+            
+            a.appendChild(spanDate);
+            a.appendChild(spanCategory);
+            a.appendChild(spanTitle);
+            li.appendChild(a);
+            homeNewsList.appendChild(li);
+        });
 
         // Fade in
         setTimeout(() => {
@@ -89,9 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem(CACHE_KEY, JSON.stringify(data));
             renderNews(data);
         } catch (err) {
-            console.error('Home news fetch failed:', err);
+            console.error("News Load Error:", err);
             if (!cached) {
-                homeNewsList.innerHTML = '<li>ニュースの取得に失敗しました。</li>';
+                homeNewsList.innerHTML = '';
+                const li = document.createElement('li');
+                li.textContent = 'ニュースの取得に失敗しました。';
+                homeNewsList.appendChild(li);
             }
         }
     };

@@ -72,9 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderAll();
             }
         } catch (err) {
-            console.error('Failed to fetch news:', err);
+            console.error("News Load Error:", err);
             if (!cachedData) {
-                newsContainer.innerHTML = '<p style="text-align:center; padding: 40px;">ニュースの読み込みに失敗しました。</p>';
+                newsContainer.innerHTML = '';
+                const p = document.createElement('p');
+                p.style.textAlign = 'center';
+                p.style.padding = '40px';
+                p.textContent = 'ニュースの読み込みに失敗しました。';
+                newsContainer.appendChild(p);
             }
         }
     };
@@ -110,17 +115,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         pickupSection.style.display = 'grid';
-        pickupSection.innerHTML = pickupItems.map(item => `
-            <a href="news-detail.html?id=${encodeURIComponent(item.id)}" class="pickup-item fade-in">
-                <div class="pickup-bg" style="background-image: url('${escapeHTML(optimizeDriveUrl(item.image_url, 1000))}')"></div>
-                <div class="pickup-overlay"></div>
-                <div class="pickup-content">
-                    <span class="pickup-label">PICKUP</span>
-                    <h2 class="pickup-title">${escapeHTML(item.title)}</h2>
-                    <p>MORE DETAIL →</p>
-                </div>
-            </a>
-        `).join('');
+        pickupSection.innerHTML = ''; // Clear safely
+
+        pickupItems.forEach(item => {
+            const a = document.createElement('a');
+            a.href = `news-detail.html?id=${encodeURIComponent(item.id)}`;
+            a.className = 'pickup-item fade-in';
+
+            const imgBg = document.createElement('img');
+            imgBg.className = 'pickup-bg';
+            imgBg.style.objectFit = 'cover';
+            imgBg.src = optimizeDriveUrl(item.image_url, 1000);
+            imgBg.alt = item.title || '';
+
+            const divOverlay = document.createElement('div');
+            divOverlay.className = 'pickup-overlay';
+
+            const divContent = document.createElement('div');
+            divContent.className = 'pickup-content';
+
+            const spanLabel = document.createElement('span');
+            spanLabel.className = 'pickup-label';
+            spanLabel.textContent = 'PICKUP';
+
+            const h2Title = document.createElement('h2');
+            h2Title.className = 'pickup-title';
+            h2Title.textContent = item.title || '';
+
+            const pDetail = document.createElement('p');
+            pDetail.textContent = 'MORE DETAIL →';
+
+            divContent.appendChild(spanLabel);
+            divContent.appendChild(h2Title);
+            divContent.appendChild(pDetail);
+
+            a.appendChild(imgBg);
+            a.appendChild(divOverlay);
+            a.appendChild(divContent);
+
+            pickupSection.appendChild(a);
+        });
     };
 
     const renderFilteredList = () => {
@@ -133,18 +167,41 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderList = (items) => {
+        newsContainer.innerHTML = ''; // Clear safely
+
         if (items.length === 0) {
-            newsContainer.innerHTML = '<p style="text-align:center; padding: 40px;">該当するニュースはありません。</p>';
+            const p = document.createElement('p');
+            p.style.textAlign = 'center';
+            p.style.padding = '40px';
+            p.textContent = '該当するニュースはありません。';
+            newsContainer.appendChild(p);
             return;
         }
 
-        newsContainer.innerHTML = items.map((item, index) => `
-            <a href="news-detail.html?id=${encodeURIComponent(item.id)}" class="news-list-item fade-in" style="animation-delay: ${index * 0.05}s">
-                <span class="news-date">${formatDate(item.date)}</span>
-                <span class="news-category-tag">${escapeHTML(item.category)}</span>
-                <span class="news-list-title">${escapeHTML(item.title)}</span>
-            </a>
-        `).join('');
+        items.forEach((item, index) => {
+            const a = document.createElement('a');
+            a.href = `news-detail.html?id=${encodeURIComponent(item.id)}`;
+            a.className = 'news-list-item fade-in';
+            a.style.animationDelay = `${index * 0.05}s`;
+
+            const spanDate = document.createElement('span');
+            spanDate.className = 'news-date';
+            spanDate.textContent = formatDate(item.date);
+
+            const spanCategory = document.createElement('span');
+            spanCategory.className = 'news-category-tag';
+            spanCategory.textContent = item.category || '';
+
+            const spanTitle = document.createElement('span');
+            spanTitle.className = 'news-list-title';
+            spanTitle.textContent = item.title || '';
+
+            a.appendChild(spanDate);
+            a.appendChild(spanCategory);
+            a.appendChild(spanTitle);
+
+            newsContainer.appendChild(a);
+        });
     };
 
     const renderPagination = (totalItems) => {
