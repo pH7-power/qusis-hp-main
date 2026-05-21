@@ -198,7 +198,7 @@
 
 /* --- NEWS DETAIL PAGE --- */
 .news-detail-page {
-    padding: 100px 0;
+    padding: 80px 0 100px;
     min-height: 80vh; /* ガタつき防止 */
 }
 
@@ -317,7 +317,7 @@
 @media (max-width: 768px) {
     .detail-title { font-size: 1.8rem; }
     .detail-subtitle { font-size: 1.1rem; }
-    .news-detail-page { padding: 60px 0; }
+    .news-detail-page { padding: 80px 0 60px; }
 }
 
 /* Animation */
@@ -375,4 +375,9 @@
         align-items: flex-start;
         gap: 10px;
     }
+}
+
+/* ニュース一覧ページのヘッダーとコンテンツをくっつける */
+body:not(.top-page) main section.hero-sub:first-of-type {
+    padding-top: 80px; /* 固定ヘッダーの高さ(80px)と同一にして直結させる */
 }
