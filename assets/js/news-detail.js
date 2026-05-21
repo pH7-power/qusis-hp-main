@@ -195,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const divBack = document.createElement('div');
         divBack.style.textAlign = 'center';
         divBack.style.marginTop = '80px';
-        divBack.style.marginBottom = '100px';
         const aBack = document.createElement('a');
         aBack.href = 'news.html';
         aBack.className = 'btn-primary';
